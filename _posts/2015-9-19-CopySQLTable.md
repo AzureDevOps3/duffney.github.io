@@ -15,12 +15,12 @@ As mentioned in the (Applies To:) this function depends on a SQLcmdlets module, 
 
 At this point I'm assuming you already have a database with tables that you need to copy. This will be refered to as your source database and tables. With that already taken care of you'll have to create a new database on the same server or a different server. In my example I have both databases on the same server and instance of SQL Express. My source database is OmahaPSUG and my target database is OmahaPSUG_BK.
 
-![an image alt text]({{ site.baseurl }}/images/2015-9-19-CopySQLTable/SQLDatabases.PNG "SQLDatabases")
+![SQLDatabases](/images/posts/2015-9-19/SQLDatabases.PNG "SQLDatabases")
 
 The last thing you need in order to run the Copy-SQLTable function is a table in the target database with the same column strucutre as the source. This simpliest way is to right click on the table you wish to copy select Script Table as > Create To > New Query Editor Window. This will pull up some SQL code you can execute to create the table in the new database, copy this code and paste it into a new query workspace on the target database. Besure to replace the database name in line 1 of the code to the new target database name. In my example I'll change OmahaPSUG to OmahaPSUG_BK, once the database name is changed execute the query.
 
-![an image alt text]({{ site.baseurl }}/images/2015-9-19-CopySQLTable/ScriptTableAs.PNG "ScriptTableAs")
-![an image alt text]({{ site.baseurl }}/images/2015-9-19-CopySQLTable/CreateTableScript.PNG "CreateTableScript")
+![ScriptTableAs](/images/posts/2015-9-19/ScriptTableAs.PNG "ScriptTableAs")
+![CreateTableScript](/images/posts/2015-9-19/CreateTableScript.PNG "CreateTableScript")
 
 ### Using Copy-SQLTable
 

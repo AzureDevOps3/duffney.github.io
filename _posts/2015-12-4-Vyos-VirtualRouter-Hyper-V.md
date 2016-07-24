@@ -7,7 +7,7 @@ date: 2015-12-4 8:00:00
 ---
 #### Applies to: Windows PowerShell 5.0, Windows 10, Windows Server 2016
 
-![an image alt text]({{ site.baseurl }}/images/2015-12-4\vyoslogo.png "vyoslogo")
+![VyosLogo](/images/posts/2015-12-4/vyoslogo.png "vyoslogo")
 
 In this post we'll be walking through how to setup a Vyos virtual router for a Hyper-V lab. Vyos is an open source virtual router, which allows us to have a separate network for all of our Hyper-V virtual machines and route it's traffic through our normal private network to the internet. We'll keep it simple and have only two networks to worry about. One will be named Internal, meaning the internal Hyper-V network. The second will be named External referring to our private network we'll use to access the internet.
 
@@ -15,7 +15,7 @@ In this post we'll be walking through how to setup a Vyos virtual router for a H
 
 First things first, we need to identify the network adapter that provides internet access to our host machine. Of course we'll use PowerShell to determine this, the cmdlet is Get-NetAdapter. I've added a select statement to only show the name and interface description to make it easier to read. Warning, this cmdlet will only work on Windows 8.1 and above.
 
-![an image alt text]({{ site.baseurl }}/images/2015-12-4\get-netadapter.png "get-netadapter")
+![Get-NetAdapter](/images/posts/2015-12-4/get-netadapter.png "get-netadapter")
 
 You can discard the Pertino Connection adapter, it's an awesome VPN solution but we care about the Local Area Connection. That is the name of the adapter on my desktop that provides internet access to my Hyper-V host. With this knowledge we can create the Hyper-V network switches. Again, we are going to create two networks for Hyper-V to use one called Internal and one called External. With the external being our internet source. We could create them in the Hyper-V manager GUI, but why right? Below is a gist of code that will create the adapters, since I have two Local Area Connection and the Pertino adapter I'm specifying the Local Area Connection by using $NetAdapterName[0]
 
@@ -35,7 +35,7 @@ Vyos Login: vyos
 
 Password: vyos
 
-![an image alt text]({{ site.baseurl }}/images/2015-12-4\vyosstartscreen.png "vyosstartscreen")
+![vyosstartscreen](/images/posts/2015-12-4/vyosstartscreen.png "vyosstartscreen")
 
 ### Install and Configure Vyos
 
@@ -76,7 +76,7 @@ After we get logged into the device issue the following commands to install and 
     
 Make sure Ethernet eth1 gets and IP address from DHCP, if it doesn't eth0 is your internet interface. Now any virtual machine in Hyper-V with the internal adapter will be on its own network and will have internet access if configured on the 192.168.2.0/24 network with a default gateway of 192.168.2.1.
 
-![an image alt text]({{ site.baseurl }}/images/2015-12-4\vyosinterface.png "vyosinterface")
+![VyosInterface](/images/posts/2015-12-4/vyosinterface.png "vyosinterface")
 
 Sources
 

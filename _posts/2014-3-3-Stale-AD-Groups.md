@@ -21,4 +21,4 @@ Warning! There are most likely some built-in groups in these results, which shou
 
 {% gist ba2d523bc25204e3267a %}
 
-![Out-GridView](/images/StaleADGroupsOGV.PNG)
+![Out-GridView](/images/posts/StaleADGroupsOGV.PNG)

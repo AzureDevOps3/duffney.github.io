@@ -61,5 +61,6 @@ Foreach ($MSI in $Paths) {
    }
 }
 ```
-### Source
+
+
 [Spiceworks Community Post](https://community.spiceworks.com/topic/587947-powershell-foreach-inputting-blank-lines?page=1&source=homepage-feed#entry-3810509) Best Answer by [Martin9700](https://community.spiceworks.com/people/martin9700)

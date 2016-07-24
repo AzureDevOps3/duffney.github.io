@@ -37,16 +37,16 @@ the node. Modify the below code to match your environment. Things like the domai
 
 After executing the configuration you should see output similar to the one displayed below.
 
-![an image alt text]({{ site.baseurl }}/images/2015-12-14\verboseCertconfig.png "verboseCertconfig")
+![verboseCertconfig](/images/posts/2015-12-14/verboseCertconfig.png "verboseCertconfig")
 
 ### Verifying the Config
 
 There are a few cmdlets worth mentioning for DSC, first off is Test-DscConfiguration. This cmdlet will return a true or false value, letting us know if the target node is in it's desired state. The next one is Get-DscConfigurationStatus, which provides more detailed information about the configuration.
 
-![an image alt text]({{ site.baseurl }}/images/2015-12-14\testcertconfig.png "testcertconfig")
+![TestCertConfig](/images/posts/2015-12-14\testcertconfig.png "testcertconfig")
 
 We can also verify if the ADCS install properly and is operational by opening the Certification Authority tool included in RSAT and connecting to our new certificate authority.
 
-![an image alt text]({{ site.baseurl }}/images/2015-12-14\CAgui01.png "CAgui01")
+![CAGUI01](/images/posts/2015-12-14/CAgui01.png "CAgui01")
 
-![an image alt text]({{ site.baseurl }}/images/2015-12-14\CAgui02.png "CAgui02")
+![CAGUI02](/images/posts/2015-12-14/CAgui02.png "CAgui02")
