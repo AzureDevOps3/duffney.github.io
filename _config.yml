@@ -1,7 +1,8 @@
 # Site settings
 title: Josh Duffneys Blog
 description: 'Senior Systems Engineer focused on DevOps within a Windows World!'
-url: "http://duffney.github.io"
+url: "https://duffney.github.io"
+enforce_ssl: duffney.github.io
 baseurl: /
 google_analytics: 'UA-41356215-2'
 
