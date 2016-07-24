@@ -1,16 +1,16 @@
 # Site settings
-title: Matthew Hodgkins Blog
-description: 'System Engineer, PowerShell, Chef and Automation lover and Aussie. Living and working in the Netherlands.'
+title: Josh Duffneys Blog
+description: 'Senior Systems Engineer focused on DevOps within a Windows World!'
 url: "http://duffney.github.io"
 baseurl: /
-google_analytics: 'UA-72498951-1'
+google_analytics: 'UA-41356215-2'
 
 author:
-  name: 'Matthew Hodgkins'
-  email: matthodge@gmail.com
-  twitter_username: matthodge
-  github_username:  matthodge
-  linkedin_username:  matthewhodgkins
+  name: 'Josh Duffney'
+  email: duffney@outlook.com
+  twitter_username: joshduffney
+  github_username:  duffney
+  linkedin_username:  joshduffney
 
 # Build settings
 destination: _site
