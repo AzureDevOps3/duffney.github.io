@@ -7,7 +7,7 @@ date: 2016-02-15 8:00:00
 ---
 #### Applies to: Windows PowerShell 5.0
 
-![an image alt text]({{ site.baseurl }}\images\2016-2-15\convertto-mofinstance-error.png "convertto-mofinstance-error")
+![convertto-mofinstance-error](/images/posts/2016-2-15/convertto-mofinstance-error.png "convertto-mofinstance-error")
 
 You probably ran into this error while using a Windows 10 or Windows Server 2016 Technical Preview when attempting to encrypt DSC configuratiosn, as I did. For some reason, the certificates I had been using no loneger worked. 
 When I attempted to ecnrypt my DSC configurations I got the above error saying the the function ConvertTo-MofInstance failed and that the certificate that I was using could not be used
