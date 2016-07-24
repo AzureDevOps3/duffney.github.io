@@ -52,7 +52,7 @@ With all certificate holders re-enrolled you can begin encrypting .mof files onc
 
 Another way you might have issued the certificates is by generating a self signed certificate. I'm currently not aware of how you'd modify an existing certificate, but you could use the [New-SelfSignedCertificateEX](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6)
 to generate a new certificate. Below is a snippet of code that shows the syntax of how to accomplish that, I'm using a technique called splatting to provide the parameters. To learn more
-about splatting check out this [post](http://duffney.github.io/Splatting-Parameters-Within-AdvancedFunctions/).
+about splatting check out this [post](https://duffney.github.io/Splatting-Parameters-Within-AdvancedFunctions/).
 
 {% highlight powershell %}
 $params = @{
