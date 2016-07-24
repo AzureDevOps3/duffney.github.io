@@ -1,6 +1,6 @@
 # Site settings
 title: Josh Duffneys Blog
-description: 'Senior Systems Engineer focused on DevOps within a Windows World!'
+description: 'Senior Systems Engineer focused on DevOps within a Windows World'
 url: "https://duffney.github.io"
 enforce_ssl: duffney.github.io
 baseurl: /
