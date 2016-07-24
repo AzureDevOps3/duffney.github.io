@@ -1,0 +1,34 @@
+# Site settings
+title: Matthew Hodgkins Blog
+description: 'System Engineer, PowerShell, Chef and Automation lover and Aussie. Living and working in the Netherlands.'
+url: 'https://hodgkins.io'
+enforce_ssl: hodgkins.io
+baseurl: /
+google_analytics: 'UA-72498951-1'
+
+author:
+  name: 'Matthew Hodgkins'
+  email: matthodge@gmail.com
+  twitter_username: matthodge
+  github_username:  matthodge
+  linkedin_username:  matthewhodgkins
+
+# Build settings
+destination: _site
+paginate: 10
+permalink: /:title
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  # use Github Flavored Markdown
+  input: GFM
+  # do not replace newlines by <br>s
+  hard_wrap: false
+
+gems:
+  - jemoji
+  - jekyll-sitemap
+  - jekyll-gist
+
+exclude: ['README.md', 'Gemfile', 'Gemfile.lock', 'screenshot.png']
