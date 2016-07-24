@@ -24,7 +24,7 @@ To install the extension follow the steps defined below.
 5. Click Install
 6. Click Enable
 
-![an image alt text]({{ site.baseurl }}/images/2016-7-22/Install-Extension.gif "Install-Extension")
+![Install-Extension](/images/2016-7-22/Install-Extension.gif "Install-Extension")
 
 ### Setting up Connections
 
