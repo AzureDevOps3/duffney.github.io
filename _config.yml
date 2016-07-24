@@ -13,6 +13,10 @@ author:
   github_username:  duffney
   linkedin_username:  joshduffney
 
+pages_list:
+  Archives: '/archives/'
+  
+
 # Build settings
 destination: _site
 paginate: 10
