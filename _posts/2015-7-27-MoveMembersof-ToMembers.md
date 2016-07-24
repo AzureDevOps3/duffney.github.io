@@ -13,7 +13,7 @@ Recently my team and I discovered an Active Directory group that was causing tok
 To use this function, either copy the code and paste into your ISE session or save it as a .ps1 file and load the script into your PowerShell session. This function only has one
 parameter called TargetGroup. This is the group that you want to move all the members of to members and remove them from the members of section. Below demonstrates how to use this function.
 
-![moveadgroupmemberof](/images/posts/2015-8-24/moveadgroupmemberof.gif "moveadgroupmemberof")
+![moveadgroupmemberof](/images/posts/2015-7-27/moveadgroupmemberof.gif "moveadgroupmemberof")
 
 {% gist 804daede01d58cfa1118 %}
 
