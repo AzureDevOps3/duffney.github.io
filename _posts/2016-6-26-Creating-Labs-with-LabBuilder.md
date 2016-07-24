@@ -18,10 +18,9 @@ setup Windows Event Forwarding on a few domain controllers. My goal with this is
 ###  Download LabBuilder
 First of course, you must download the LabBuilder module. It is on GitHub, but it's on the PowerShell Gallery as well. I'll use Install-Module to install it on my Hyper-V host (Windows 10 Desktop).
 
-
-``` PowerShell
+{% highlight powershell %}
 Find-Module LabBuilder | Install-Module -Verbose
-```
+{% endhighlight %}
 
 ### Create a New LabBuilder Environment
 Now that I have download the LabBuilder module, next I'll use one of the cmdlets included in the module to setup the framework for my Windows Event Forwarding lab environment. New-Lab, is the
@@ -29,15 +28,12 @@ name of the cmdlet. This cmdlet basically creates the folder structure for every
 which is used to define every aspect of the lab. LabBuilder reads in this .xml file and creates all the network adapters, vlans, virtual machines, etc... 
 
 
-
-``` PowerShell
+{% highlight powershell %}
 New-Lab -ConfigPath $env:SystemDrive:\WEFADSecurityLogs\WEFADSecurityLogs.xml -LabPath $env:SystemDrive:\WEFADSecurityLogs -Name WEFADSecurityLogs
-```
+{% endhighlight %}
 
 
-
-
-![an image alt text]({{ site.baseurl }}/images/2016-6-26\NewLab.png "NewLab")
+![NewLab](/images/posts/2016-6-26/NewLab.png "NewLab")
 
 ### Modify .XML Configuration File
 With the framework in place, next I'll modify the .xml fit to my needs. Refer to the module samples and [documentation](https://github.com/PlagueHO/LabBuilder/blob/dev/LabBuilder/docs/labbuilderconfig-schema.md)
@@ -50,15 +46,14 @@ It will deploy 4x Windows Server 2016 TP5 servers, three will be domain controll
 Since I'm only using one operating system [Windows Server 2016 TP5](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-technical-preview), I only need to download one ISO and place it in the ISOFiles directory New-Lab created.
 It's important to keep the name the same as when it downloaded or update it in your .xml file.
 
-![an image alt text]({{ site.baseurl }}/images/2016-6-26\ISOFiles.png "ISOFiles")
+![ISOFiles](/images/posts/2016-6-26/ISOFiles.png "ISOFiles")
 
 ### Update DSC Configurations
 
 For this particluar lab, I wanted a few machines that use the Member Default DSC configuration to have the Active Directory PowerShell module and the Group Policy Management console installed. So instead of doing that manually, I just modified the MEMBER_DEFAULT.DSC.ps1 file.
 I added the below lines of code to it to accomplish what I needed.
 
-
-``` PowerShell
+{% highlight powershell %}
 Windowsfeature RSATADPowerShell {
     Ensure = 'Present'
     Name = 'RSAT-AD-PowerShell'
@@ -67,14 +62,15 @@ Windowsfeature RSATADPowerShell {
 Windowsfeature GPMC {
     Ensure = 'Present'
     Name = 'GPMC'
-}   
-```
+}  
+{% endhighlight %}
+
               
 ### Installing the Lab
 To build the lab environment use the cmdlet Install-Lab, this is the cmdlet that kicks off all the automation. Simply provide it the path for the configuration .xml and watch the magic happen! 
 
-``` PowerShell
+{% highlight powershell %}
 Install-Lab -ConfigPath G:\WEFADSecurityLogs\WEFADSecurityLogs.xml -Verbose  
-```
+{% endhighlight %}
 
-![an image alt text]({{ site.baseurl }}/images/2016-6-26\InstallLab.png "InstallLab")
+![InstallLab](/images/posts/2016-6-26/InstallLab.png "InstallLab")

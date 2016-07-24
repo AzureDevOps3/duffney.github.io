@@ -20,17 +20,17 @@ First we want to confirm that the Group Policy auto enrollment has worked and is
 
 {% gist 121544ca0359abe9d1ed %}
 
-![an image alt text]({{ site.baseurl }}/images/2016-1-11\view-certificate-thumbprints.png "view-certificate-thumbprints")
+![view-Certificate-thumbprints](/images/posts/2016-1-11/view-certificate-thumbprints.png "view-certificate-thumbprints")
 
 Next we need to harvest the certificate, which simply means copying it from the target system S3 to our client computer S4. To do this we'll be using excerpted code from Pluralsight's Advanced Windows PowerShell Desired State Configuration course, available here. Copyright 2015 Pluralsight, LLC." Written by Jeff Hicks. The function is called Export-MachineCert, it does exactly what it leads you too believe. It exports the machine cert off S3 and copies it to S4. I've modified the original code a bit to include an additional parameter for the type of template used during the creation process. It provides parameter validation so you don't have to remember what it's exactly called. Load the code into your PowerShell session and then execute the export-machine command against your remote system to get the certificate copied locally.
 
 {% gist 7522ec3edd561e916d06 %}
 
-![an image alt text]({{ site.baseurl }}/images/2016-1-11\export-machinecert.png "export-machinecert")
+![Export-MachineCert](/images/posts/2016-1-11/export-machinecert.png "export-machinecert")
 
 With the certificate harvested and the location of the certificate known the final piece of information we need before we can start building the DSC config is the certificate thumbprint, which is used to identify which certificate is used for encryption and decryption. The certificate we exported has the public key used to encrypt the file and the remote system has the private key to decrypt. Below is the command you can use to gather the thumbprint data. Again we are using the certificate with the thumbprint D2504957B1259FD16109F8041A00EFD94FBFFB40.
 
-![an image alt text]({{ site.baseurl }}/images/2016-1-11\view-certificate-thumbprints02.png "view-certificate-thumbprints02")
+![view-Certificate-thumbprint02](/images/posts/2016-1-11/view-certificate-thumbprints02.png "view-certificate-thumbprints02")
 
 ### Generating an Encrypted .Mof
 
@@ -40,10 +40,10 @@ We are now at the point where we can generate the .mof file. With the certificat
 
 Let's start by walking through the DSC configuration, as mentioned this is a very simple DSC config that creates a group on the local system and add a domain user in this case jduffney from the domain source to the group. You'll want to change it to a valid user in your active directory domain for this to work when you run it. Next up is the configdata, this contains the data used to encrypt the .mof. Be sure to update nodename, certificatefile and thumbprint to match your environment before running. Lines 35-36 call the configuration to execute which results in the creation of the encrypted .mof file named s3.mof in our example. Line 38 configures the LCM on S3 with the thumbprint of the certificate we encrypted the .mof with, now it knows which certificate private key to use when decyrpting. Line 40 starts the DSC configuration, making it so. Below is the output from these commands.
 
-![an image alt text]({{ site.baseurl }}/images/2016-1-11\verbose-output.png "verbose-output")
+![verbose-output](/images/posts/2016-1-11/verbose-output.png "verbose-output")
 
 ### Verify the .Mof was Encrypted
 
 To verify the .mof was successfully encrypted we can view it's contents. We can open it in notepad or any text editor to validate the password wasn't stored in clear text.
 
-![an image alt text]({{ site.baseurl }}/images/2016-1-11\encryptedmof.png "encryptedmof")
+![encryptmof](/images/posts/2016-1-11/encryptedmof.png "encryptedmof")

@@ -38,13 +38,13 @@ logging into the Certification Server (This is a trick don't do it). Then follow
 9. Locate Document Encryption and double click it then hit OK
 10. Click OK twice to close out of both Property boxes
 
-![an image alt text]({{ site.baseurl }}\images\2016-2-15\certextensions.png "certextensions")
+![certextensions](/images/posts/2016-2-15/certextensions.png "certextensions")
 
 #### Reenroll Certificates
 
 With the certificate extension updated you now need to re-enroll all of the certificate. To do that right click on the certificate and click "Reenroll All Certificate Holders"
 
-![an image alt text]({{ site.baseurl }}\images\2016-2-15\reenroll.png "reenroll")
+![reenroll](/images/posts/2016-2-15/reenroll.png "reenroll")
 
 With all certificate holders re-enrolled you can begin encrypting .mof files once again!
 
@@ -54,7 +54,7 @@ Another way you might have issued the certificates is by generating a self signe
 to generate a new certificate. Below is a snippet of code that shows the syntax of how to accomplish that, I'm using a technique called splatting to provide the parameters. To learn more
 about splatting check out this [post](http://duffney.github.io/Splatting-Parameters-Within-AdvancedFunctions/).
 
-``` PowerShell
+{% highlight powershell %}
 $params = @{
     'Subject' = 'CN=Cert'
     'StoreLocation' = 'LocalMachine'
@@ -63,5 +63,4 @@ $params = @{
     'FriendlyName' = 'SelfSigned'
 }
 New-SelfSignedCertificateEx @params
-```
-
+{% endhighlight %}

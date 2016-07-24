@@ -24,7 +24,7 @@ To install the extension follow the steps defined below.
 5. Click Install
 6. Click Enable
 
-![Install-Extension](/images/2016-7-22/Install-Extension.gif "Install-Extension")
+![Install-Extension](/images/posts/2016-7-22/Install-Extension.gif "Install-Extension")
 
 ### Setting up Connections
 
@@ -36,7 +36,7 @@ code. I chose to modify the User Settings.
 4. Click User Settings
 5. Within the settings.json file define your databases settings, see below for details.
 
-![an image alt text]({{ site.baseurl }}/images/2016-7-22/SQL-Connections.png "SQL-Connections")
+![Sql-connections](/images/posts/2016-7-22/SQL-Connections.png "SQL-Connections")
 
 ### Connect to the Database
 
@@ -47,7 +47,7 @@ With the connections settings defined you can now use the extension to issue T-S
 3. Hit Enter
 4. Select the database you want, then hit Enter
 
-![an image alt text]({{ site.baseurl }}/images/2016-7-22/Connect-To-Database.gif "Connect-To-Database")
+![Connect-To-Database](/images/posts/2016-7-22/Connect-To-Database.gif "Connect-To-Database")
 
 ### Issuing T-SQL statements within Visual Studio Code
 
@@ -60,4 +60,4 @@ file skip to line 4.
 3. Hit Ctrl+K then hit M and type SQL and hit enter [Changes language syntax to SQL]
 4. Hit Ctrl+Shift+E [Exectues the T-SQL]
 
-![an image alt text]({{ site.baseurl }}/images/2016-7-22/Execute_TSQL.gif "Execute_TSQL")
+![ExectueTSQL](/images/posts/2016-7-22/Execute_TSQL.gif "Execute_TSQL")

@@ -54,13 +54,13 @@ Write-Host -ForegroundColor Green "Execute-MSI Uninstall -Path $UninstallCOde"
 
 ### Solution
 
-``` PowerShell
+{% highlight powershell %}
 Foreach ($MSI in $Paths) {
    If ($MSI)
    {  $UninstallCodes += MSI -Path "$MSI" -Property ProductCode
    }
 }
-```
+{% endhighlight %}
 
 
 [Spiceworks Community Post](https://community.spiceworks.com/topic/587947-powershell-foreach-inputting-blank-lines?page=1&source=homepage-feed#entry-3810509) Best Answer by [Martin9700](https://community.spiceworks.com/people/martin9700)

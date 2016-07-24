@@ -24,7 +24,7 @@ resource copied to the VM. If the VM has internet connectivity you can issue the
 
 {% gist a3c7bdf1a928022fc8c8 %}
 
-![an image alt text]({{ site.baseurl }}/images/2016-2-2\Get-DscResource.png "Get-DscResource")
+![Get-DscResource](/images/posts/2016-2-2/Get-DscResource.png "Get-DscResource")
 
 ### Creating the Web Cert
 
@@ -43,7 +43,7 @@ Next up, you have to request a web cert for your HTTPS Pull Server. To do that, 
 11. Input a Friendly name of PSDSCPullServerCert
 12. Finish
 
-![an image alt text]({{ site.baseurl }}/images/2016-2-2\WebCert.png "WebCert")
+![WebCert](/images/posts/2016-2-2/WebCert.png "WebCert")
 
 ### Exporting & Importing the Web Cert onto the PullServer
 
@@ -70,7 +70,7 @@ Now that I have a certificate created, I can now start to write the DSC config f
 With the thumbprint in hand, I can write the DSC Config for the HTTPS Pull Server. Really the only difference between an HTTP and HTTPS is this thumbprint. 
 You replace AllowUnencryptedTraffic in the CertificateThumbPrint field with the thumbprint of the certificate, which I got from ZCert01 in this example.
 
-![an image alt text]({{ site.baseurl }}/images/2016-2-2\DscConfig.png "DscConfig")
+![DscConfig](/images/posts/2016-2-2/DscConfig.png "DscConfig")
 
 I've now got all I need, it's time to generate the .mof by running the config and then apply it to the PullServer. Take the below snippet of code modify it for your environment and run it. For a full configuration including IP address domain join etc.. see my Github Repo [DSC_LabAsCode](https://github.com/Duffney/DSC_LabAsCode). Please also noticed that I included the module version, I had two version of the xPSDesiredStateConfiguration on the machine. Which forced me to include -moduleVersion, you may not have to do this and if you do make sure it's the right version number.
 
@@ -83,4 +83,4 @@ string to match your environment. [Replace zpull01.zephyr.org with your PullServ
 
 {% gist 019393caa040c583490d %}
 
-![an image alt text]({{ site.baseurl }}/images/2016-2-2\VerifyPullWebURL.png "VerifyPullWebURL")
+![VerifyPullWebURL](/images/posts/2016-2-2/VerifyPullWebURL.png "VerifyPullWebURL")
