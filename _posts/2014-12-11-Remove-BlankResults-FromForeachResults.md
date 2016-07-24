@@ -10,7 +10,7 @@ date: 2014-12-11 22:00:00
 While creating a script that gathers all the product codes of .MSI files in a directory, I discovered a problem. The variable that I had place them in was generating blank lines between my variables. Below is
 an example of the problem
 
-![foreachissue](\images\posts\2014-12-11\foreachissue.png "foreachissue")
+![foreachissue](/images/posts/2014-12-11/foreachissue.png "foreachissue")
 
 After not being able to Google the correct combination of works, I quickly posted this problem to the Spiceworks community to help, shortly after I had my answer. Below lists the problem code, then followed by the solution. Place an If statement verifying that there is real data in the variable prevents it from running the foreach with newlines and character returns.
 
