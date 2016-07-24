@@ -7,6 +7,7 @@ date: 2015-8-24 8:00:00
 ---
 #### Applies to: Windows PowerShell 3.0+
 
+
 Cleaning up Active Directory isn't something every organization does or does well, but it's very important. For semi obvious reasons 
 it's best practice to disable computers after X amount of days and is part of any System Administrators job. The script in this blog 
 post will help automate the disabling and moving of objects to a specified OU. This task is fairly easy to script out within a simple 
