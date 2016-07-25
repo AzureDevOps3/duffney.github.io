@@ -6,7 +6,7 @@ permalink: /about/
 
 <img align="right" src="https://duffney.github.io/images/geek.jpg">
 
-My name is Josh Duffney. I am an IT Professional turned PowerShell Developer, who is fascinated by all things DevOps and automation. I am a Pluralsight author, speaker, blogger, technical writer and an automation engineer. I love learning and it is this love of learning that has inspired me to share my knowledge with you and anyone who is willing listen. 
+My name is Josh Duffney. I am an IT Professional turned PowerShell Developer, who is fascinated by all things DevOps and automation. I am a Pluralsight author, speaker, blogger, technical writer and an automation engineer. I love learning and it is this love of learning that has inspired me to share my knowledge with you and anyone who is willing to listen. 
 
 Information Technology is changing at an ever increasing rate. It is impossible for someone to know everything and it is near impossible to keep up with what new technology is released, let alone learn all about it. My mission is to shorten that learning curve and to help you obtain the knowledge you need to do your job, grow your career, or to simply learn something cool. 
 
