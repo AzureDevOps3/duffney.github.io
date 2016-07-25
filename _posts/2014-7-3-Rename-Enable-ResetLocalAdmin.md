@@ -36,5 +36,9 @@ invoke-command { net user Ron.Johnson Adm.$servicetag /active:Yes }
 
 ### Acknowledgements
 [myitforum](http://myitforum.com/cs2/blogs/yli628/archive/2010/05/19/mdt-create-a-task-sequence-using-powershell-to-rename-local-administrator-account.aspx)
+
+
 [jdhitsolutions](http://jdhitsolutions.com/blog/2014/04/set-local-user-account-with-powershell/)
+
+
 [Spiceworks](https://community.spiceworks.com/topic/493143-trimming-variables-with-powershell?page=1#entry-3306064)
