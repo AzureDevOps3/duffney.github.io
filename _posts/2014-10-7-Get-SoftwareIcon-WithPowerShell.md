@@ -16,4 +16,4 @@ To use this function simply copy the code and save it as Get-Icon.ps1 on your co
 Get-Icon -folder 'C:\temp\exe'
 {% endhighlight %}
 
-![vscodeIcon](/images/posts/2015-12-14/vscodeIcon.png "vscodeIcon")
+![vscodeIcon](/images/posts/2014-10-7/vscodeIcon.png "vscodeIcon")
