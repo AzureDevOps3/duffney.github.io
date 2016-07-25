@@ -4,7 +4,7 @@ title: about
 permalink: /about/
 ---
 
-<img align="right" src="images/geek.jpg">
+<img align="right" src="https://duffney.github.io/images/geek.jpg">
 
 My name is Josh Duffney. I am an IT Professional turned PowerShell Developer, who is fascinated by all things DevOps and automation. I am a Pluralsight author, speaker, blogger, technical writer and an automation engineer. I love learning and it is this love of learning that has inspired me to share my knowledge with you and anyone who is willing listen. 
 
