@@ -2,7 +2,6 @@
 layout: page
 title: about
 permalink: /about/
-slug: about
 ---
 
 <p align="Center">
