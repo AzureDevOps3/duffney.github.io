@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Run CMD Commands within a PowerShell Script
+comments: true
 tags: [PowerShell, CMD]
 modified: 2015-4-10 8:00:00
 date: 2015-4-10 8:00:00

@@ -2,6 +2,7 @@
 layout: post
 title: Copying SQL Tables with PowerShell
 excerpt: "Use PowerShell to Copy SQL tables"
+comments: true
 tags: [PowerShell, SQL, Microsoft SQL]
 modified: 2015-09-19 8:00:00
 date: 2015-09-19 8:00:00

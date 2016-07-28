@@ -1,6 +1,7 @@
 ---
 layout: post
 title: CovertTo MofInstance Certificate Cannot be used for Encryption
+comments: true
 tags: [PowerShell, DSC, encryption, certificates, certificate, Document-Encryption, encipherment]
 modified: 2016-02-15 8:00:00
 date: 2016-02-15 8:00:00

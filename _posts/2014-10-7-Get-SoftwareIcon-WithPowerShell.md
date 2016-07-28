@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Get Software Icon from an .exe with PowerShell
+comments: true
 tags: [PowerShell]
 modified: 2015-10-7 8:00:00
 date: 2015-10-7 8:00:00

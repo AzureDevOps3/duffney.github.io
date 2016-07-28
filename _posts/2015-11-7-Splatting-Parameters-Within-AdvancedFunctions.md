@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Splatting Parameters inside Advanced Functions
+comments: true
 tags: [PowerShell, ADCS, DSC, mof, Encrypting, Certificate, credentials, passwords, clear-text]
 modified: 2015-11-7 8:00:00
 date: 2015-11-7 8:00:00

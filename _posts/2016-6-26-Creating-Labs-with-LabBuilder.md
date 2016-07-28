@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Creating Lab Environments with LabBuilder
+comments: true
 tags: [Hyper-V, DSC, PSRemoting, Lab, LabEnvironments, Desired State Configuration]
 modified: 2016-6-26 8:00:00
 date: 2016-6-26 8:00:00

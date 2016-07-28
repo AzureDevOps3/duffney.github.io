@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Fix 0KB Driver Packages in System Cennter Configuration Manager 2012 with PowerShell
+comments: true
 tags: [PowerShell, SCCM]
 modified: 2015-4-10 8:00:00
 date: 2015-4-10 8:00:00

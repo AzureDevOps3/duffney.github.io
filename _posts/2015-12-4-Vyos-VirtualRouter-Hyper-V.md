@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Setting up a Vyos Virtual Router in Hyper-V
+comments: true
 tags: [PowerShell, Vyos, Router, Hyper-V]
 modified: 2015-12-4 8:00:00
 date: 2015-12-4 8:00:00

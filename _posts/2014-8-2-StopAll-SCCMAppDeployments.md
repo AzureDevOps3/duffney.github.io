@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Stop All System Center Configuration Manager Application Deployments
+comments: true
 tags: [PowerShell, SCCM]
 modified: 2014-8-2 8:00:00
 date: 2014-8-2 8:00:00

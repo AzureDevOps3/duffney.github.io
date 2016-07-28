@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Create Scheduled Tasks with Secure Passwords
+comments: true
 tags: [PowerShell, ScheduledTask, Passwords, Secure]
 modified: 2016-6-22 8:00:00
 date: 2016-6-22 8:00:00

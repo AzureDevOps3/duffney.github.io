@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Change System Center Configuration Manager Client Cache Size with PowerShell
+comments: true
 tags: [PowerShell, SCCM]
 modified: 2015-4-11 8:00:00
 date: 2015-4-11 8:00:00

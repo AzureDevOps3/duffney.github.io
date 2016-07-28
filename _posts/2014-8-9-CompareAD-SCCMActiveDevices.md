@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Compare Active Directory and System Center Configuration Manager Active Devices
+comments: true
 tags: [PowerShell, SCCM]
 modified: 2014-8-9 8:00:00
 date: 2014-8-9 8:00:00

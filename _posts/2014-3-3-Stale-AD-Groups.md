@@ -2,6 +2,7 @@
 layout: post
 title: Stale Active Directory Groups
 excerpt: "Discover Stale AD Groups with PowerShell"
+comments: true
 tags: [PowerShell, Active Directory]
 modified: 2014-03-03 22:00:00
 date: 2014-03-30 22:00:00

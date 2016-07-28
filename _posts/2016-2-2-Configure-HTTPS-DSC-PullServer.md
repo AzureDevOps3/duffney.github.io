@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Configuring an HTTPS Pull Server for Desired State Configuration
+comments: true
 tags: [PowerShell, Pull, DSC, HTTPS, Encrypting, PullServer, Securing]
 modified: 2016-2-2 8:00:00
 date: 2016-2-2 8:00:00

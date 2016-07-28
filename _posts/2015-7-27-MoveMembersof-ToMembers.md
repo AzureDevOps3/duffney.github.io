@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Move all Members of an ActiveDirectory Group to being just Members with PowerShell
+comments: true
 tags: [PowerShell, ActiveDirectory]
 modified: 2015-7-27 8:00:00
 date: 2015-7-27 8:00:00

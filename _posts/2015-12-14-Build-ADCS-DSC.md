@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Build Active Directory Certificate Services with DSC
+comments: true
 tags: [PowerShell, ADCS, DSC, CustomResources, PKI, Certificate]
 modified: 2015-12-14 8:00:00
 date: 2015-12-14 8:00:00

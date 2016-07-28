@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Disable ADComputer in Action
+comments: true
 tags: [PowerShell, ActiveDirectory]
 modified: 2015-8-24 8:00:00
 date: 2015-8-24 8:00:00

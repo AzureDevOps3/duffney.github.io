@@ -2,6 +2,7 @@
 layout: post
 title: Setting up an HTTP Pull Server for DSC
 excerpt: "0 to DSC in a single blog post"
+comments: true
 tags: [PowerShell, DSC, Pull, Server]
 modified: 2015-08-25 8:00:00
 date: 2015-08-25 8:00:00

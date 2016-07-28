@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Encrypting Credentials with DSC Configurations
+comments: true
 tags: [PowerShell, ADCS, DSC, mof, Encrypting, Certificate, credentials, passwords, clear-text]
 modified: 2016-1-11 8:00:00
 date: 2016-1-11 8:00:00

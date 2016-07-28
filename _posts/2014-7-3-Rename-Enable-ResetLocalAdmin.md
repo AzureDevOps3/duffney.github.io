@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Rename Enable and Reset the Local Administrator Account with PowerShell
+comments: true
 tags: [PowerShell]
 modified: 2014-7-3 8:00:00
 date: 2014-7-3 8:00:00

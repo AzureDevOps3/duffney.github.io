@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Windows Event Forwarding for Active Directory Security Logs with DSC
+comments: true
 tags: [Hyper-V, DSC, WindowsEventForwarding, ActiveDirectory, Desired State Configuration, SecurityLogs]
 modified: 2016-6-27 8:00:00
 date: 2016-6-26 8:00:00

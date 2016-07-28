@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Remove Blank Lines from Foreach Results
+comments: true
 tags: [PowerShell, if-statement]
 modified: 2014-12-11 22:00:00
 date: 2014-12-11 22:00:00
