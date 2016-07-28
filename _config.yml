@@ -5,6 +5,7 @@ url: 'http://duffney.io'
 #enforce_ssl: duffney.io
 baseurl: /
 google_analytics: 'UA-41356215-2'
+disqus_shortname: duffney
 
 author:
   name: 'Josh Duffney'
