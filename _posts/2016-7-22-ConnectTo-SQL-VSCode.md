@@ -2,6 +2,7 @@
 layout: post
 title: Connecting to SQL with Visual Studio Code
 excerpt: "I've been working with SQL a lot and in the middle of writing some T-SQL a thought popped into my head, I wonder if I can connect to SQL with VisualStudio Code? As it turns out you can."
+comments: true
 tags: [PowerShell, VSCode, SQL]
 modified: 2016-7-22 8:00:00
 date: 2016-7-22 8:00:00
