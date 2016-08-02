@@ -27,9 +27,9 @@ password in clear text! Check out [Create Scheduled Tasks with Secure Passwords]
 
 {% highlight PowerShell %}
 $ActionParams = @{
-    Execute = 'C:\CorpOps\Apps\Java\Sun_jdk1.8.0_92x64\bin\java.exe' #<-- Java .exe location
-    Argument = '-jar slave.jar -jnlpUrl http://<JenkinsHostName>:8080/computer/<nodeName>/slave-agent.jnlp -secret <some_long_hex_string>' #<-- Java Command connects to master
-    WorkingDirectory = 'C:\CorpOps' #<-- declares Jenkins Working Directory
+    Execute = 'C:\Program Files\Java\jdk1.8.0_102\bin\java.exe'
+    Argument = '-jar slave.jar -jnlpUrl http://master/computer/Slave/slave-agent.jnlp -secret 37e93023c74ae1529db72342d511e508c5ec929138484c7b358be29b1196c7ed'
+    WorkingDirectory = 'C:\Checkouts'
 }
 
 $Action = New-ScheduledTaskAction @ActionParams
@@ -91,9 +91,9 @@ xScript NewJNLPScheduledTask {
     SetScript = {
         
         $ActionParams = @{
-            Execute = 'C:\CorpOps\Apps\Java\Sun_jdk1.8.0_92x64\bin\java.exe'
-            Argument = '-jar slave.jar -jnlpUrl http://<JenkinsHostName>:8080/computer/<nodeName>/slave-agent.jnlp -secret <some_long_hex_string>'
-            WorkingDirectory = 'C:\CorpOps' 
+            Execute = 'C:\Program Files\Java\jdk1.8.0_102\bin\java.exe'
+            Argument = '-jar slave.jar -jnlpUrl http://master/computer/Slave/slave-agent.jnlp -secret 37e93023c74ae1529db72342d511e508c5ec929138484c7b358be29b1196c7ed'
+            WorkingDirectory = 'C:\Checkouts' 
         }
 
         $Action = New-ScheduledTaskAction @ActionParams
@@ -139,9 +139,9 @@ xScript NewJNLPScheduledTask {
     SetScript = {
         
         $ActionParams = @{
-            Execute = 'C:\CorpOps\Apps\Java\Sun_jdk1.8.0_92x64\bin\java.exe'
-            Argument = '-jar slave.jar -jnlpUrl http://<JenkinsHostName>:8080/computer/<nodeName>/slave-agent.jnlp -secret <some_long_hex_string>'
-            WorkingDirectory = 'C:\CorpOps' 
+            Execute = 'C:\Program Files\Java\jdk1.8.0_102\bin\java.exe'
+            Argument = '-jar slave.jar -jnlpUrl http://master/computer/Slave/slave-agent.jnlp -secret 37e93023c74ae1529db72342d511e508c5ec929138484c7b358be29b1196c7ed'
+            WorkingDirectory = 'C:\Checkouts' 
         }
 
         $Action = New-ScheduledTaskAction @ActionParams
@@ -198,92 +198,4 @@ Now that I've explained most of the code, here is the entire DSC configuration. 
 configuration just fine. I've included the LocalConfigurationManager block to change some of the LCM settings. The most important thing here is that I'm specifying the certificate thumbprint that will be used to 
 decrypt the credentails in the .mof document. I'm also using the configdata to provide the nodename, certificate file and the credentails for the svc_jenkins account that will be used for the scheduled task. 
 
-{% highlight PowerShell %}
-Configuration JenkinsSlave {
-    param (
-        [string[]]$NodeName
-    )
-    
-    Import-DscResource -Module PSDesiredStateConfiguration
-    Import-DscResource -Module xPSDesiredStateConfiguration
-
-    Node $AllNodes.Nodename {
-
-        LocalConfigurationManager            
-        {            
-            ActionAfterReboot = 'ContinueConfiguration'            
-            ConfigurationMode = 'ApplyAndAutoCorrect'
-            CertificateID = '8262341171E4E8CC645E496600185EF4C810B52A'            
-            RebootNodeIfNeeded = $true            
-        }           
-
-        Environment Password {
-            Ensure = 'Present'
-            Name = 'Password'
-            Value = ($Node.SvcCredential.GetNetworkCredential().Password)
-        }
-
-        Environment UserName {
-            Ensure = 'Present'
-            Name = 'UserName'
-            Value = $Node.SvcCredential.GetNetworkCredential().UserName
-        }
-
-        xScript NewJNLPScheduledTask {
-            GetScript = {
-                @{
-                    TaskName = (Get-ScheduledTask -TaskName 'Jenkins JNLP Slave Agent').TaskName
-                    State = (Get-ScheduledTask -TaskName 'Jenkins JNLP Slave Agent').State
-                }                
-            }
- 
-            SetScript = {
-                
-                $ActionParams = @{
-                    Execute = 'C:\CorpOps\Apps\Java\Sun_jdk1.8.0_92x64\bin\java.exe'
-                    Argument = '-jar slave.jar -jnlpUrl http://<JenkinsHostName>:8080/computer/<nodeName>/slave-agent.jnlp -secret <some_long_hex_string>'
-                    WorkingDirectory = 'C:\CorpOps' 
-                }
-
-                $Action = New-ScheduledTaskAction @ActionParams
-                $Trigger = New-ScheduledTaskTrigger -RandomDelay (New-TimeSpan -Minutes 5) -AtStartup
-                $Settings = New-ScheduledTaskSettingsSet -DontStopOnIdleEnd -RestartInterval (New-TimeSpan -Minutes 1) -RestartCount 10 -StartWhenAvailable
-                $Settings.ExecutionTimeLimit = "PT0S"
-                $Task = New-ScheduledTask -Action $Action -Trigger $Trigger -Settings $Settings
-
-                $output = $Task | Register-ScheduledTask -TaskName 'Jenkins JNLP Slave Agent' -User $env:UserName -Password $env:Password
-
-                Write-Verbose -message $output
-            }
- 
-            TestScript = {
-                $ScheduledTask = Get-ScheduledTask -TaskName 'Jenkins JNLP Slave Agent' -ErrorAction SilentlyContinue
-                
-                If ($ScheduledTask){
-                    Write-Verbose -Message "ScheduledTask Jenkins [JNLP Slave Agent] exists"
-                    $true
-                } else {
-                    Write-Verbose -Message "ScheduledTask Jenkins [JNLP Slave Agent] did not exists calling SetScript"
-                    $false
-                }
-            }
-        }                
-                
-    }
-}
-
-$ConfigData = @{             
-    AllNodes = @(             
-        @{             
-            Nodename = $env:COMPUTERNAME
-            Certificatefile = 'c:\certs\s2.cer'            
-            SvcCredential = (Get-Credential -UserName 'globomantics\svc_jenkins' -message 'Enter admin pwd')
-        }                      
-    )             
-}
-
-JenkinsSlave -ConfigurationData $ConfigData -OutputPath c:\dsc -Verbose
-
-Set-DscLocalConfigurationManager -Path C:\dsc\ -Verbose -Force
-Start-DscConfiguration -Path c:\dsc -Wait -Force -Verbose
-{% endhighlight %}
+{% gist bf7400da4c8a61a162f087fb8cd503a1 %}
