@@ -19,7 +19,7 @@ The below section of code creates the trigger for the ScheduledTask, I'll use th
 PowerShellscript.ps1 from C:\script and execute it. 
 
 {% highlight powershell %}
-$Action = New-ScheduledTaskAction -Execute 'C:WindowsSystem32WindowsPowerShellv1.0powershell.exe' -Argument "-NonInteractive -NoLogo `
+$Action = New-ScheduledTaskAction -Execute 'C:\Windows\System32\WindowsPowerShellv1.0\powershell.exe' -Argument "-NonInteractive -NoLogo `
 -NoProfile -File 'C:\scripts\PowerShellscript.ps1'" -WorkingDirectory "C:\scripts"
 {% endhighlight %}
 
@@ -67,6 +67,28 @@ scheduler.
 $Task = New-ScheduledTask -Action $Action -Trigger $Trigger -Settings $Settings
 $Task | Register-ScheduledTask -TaskName 'ScheduledTaskName' -User "svc_account" -Password $Password
 {% endhighlight %}
+
+### Complete script
+
+
+{% highlight powershell %}
+$Action = New-ScheduledTaskAction -Execute 'C:\Windows\System32\WindowsPowerShellv1.0\powershell.exe' -Argument "-NonInteractive -NoLogo `
+-NoProfile -File 'C:\scripts\PowerShellscript.ps1'" -WorkingDirectory "C:\scripts"
+
+$Trigger = New-ScheduledTaskTrigger -RandomDelay (New-TimeSpan -Minutes 5) -AtStartup
+
+$Settings = New-ScheduledTaskSettingsSet -DontStopOnIdleEnd -RestartInterval (New-TimeSpan -Minutes 1) -RestartCount 10 -StartWhenAvailable
+$Settings.ExecutionTimeLimit = "PT0S"
+
+$SecurePassword = $password = Read-Host -AsSecureString
+$UserName = "svc_account"
+$Credentials = New-Object System.Management.Automation.PSCredential -ArgumentList $UserName, $SecurePassword
+$Password = $Credentials.GetNetworkCredential().Password 
+
+$Task = New-ScheduledTask -Action $Action -Trigger $Trigger -Settings $Settings
+$Task | Register-ScheduledTask -TaskName 'ScheduledTaskName' -User "svc_account" -Password $Password
+{% endhighlight %}
+
 
 ### Sources
 [How To Build Scheduled Tasks In PowerShell](http://www.tomsitpro.com/articles/powershell-build-scheduled-tasks,2-832.html)
