@@ -11,3 +11,7 @@ Have you ever had functions loaded into your local PowerShell session and needed
 to this problem is to copy the code to the remote system and then load the functions on the remote system to use them. What if I told you
 it is possible to run functions you have stored on your local machine and execute them remotely with Invoke-Command? This post will teach
 you how to do this.
+
+![MyFunction](/images/posts/2016-8-9/MyFunction.gif "MyFunction")
+
+![view-Certificate-thumbprints](/images/posts/2016-1-11/view-certificate-thumbprints.png "view-certificate-thumbprints")
