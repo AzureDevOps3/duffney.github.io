@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  "Run Local Functions Remotely in PowerShell"
-date:   2016-08-09 06:00:00
+title:  Run Local Functions Remotely in PowerShell
+date:   2016-8-9 06:00:00
 comments: true
 tags: [PowerShell]
-modified: 2016-08-09
+modified: 2016-8-9
 ---
 
 Have you ever had functions loaded into your local PowerShell session and needed to run then on a remote system? The typical solution
