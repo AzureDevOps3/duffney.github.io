@@ -36,7 +36,7 @@ Invoke-Command -ComputerName DC1 `
 ### Using Parameters
 
 While the above example works, most functions aren't that simple. Most require several parameters and how do you pass those
-parameters to the function running remotely? To illustrate, I've written another simple function called Get-NetCofig. Provided
+parameters to the function running remotely? To illustrate, I've written another simple function called Get-NetConfig. Provided
 an InterfaceIndex and AddressFamily parameter, it will gather information about the network settings of the system it runs on. 
 In the below example I am passing the values for the InterfaceIndex and AddressFamily by using the -ArgumentList parameter of
 Invoke-Command.
