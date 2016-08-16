@@ -1,10 +1,10 @@
 ---
 layout: post
 title:  "Create Jenkins JNLP Scheduled Tasks with DSC"
-date:   2016-08-07 09:02:00
+date:   2016-8-7 09:02:00
 comments: true
 tags: [PowerShell, Jenkins, DSC]
-modified: 2016-08-07
+modified: 2016-8-7
 ---
 ### Applies to: Windows PowerShell 5.0
 
