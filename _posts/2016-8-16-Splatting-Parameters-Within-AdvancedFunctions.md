@@ -92,6 +92,6 @@ process {
 }
 {% endhighlight %}
 
-### Complete code
+### Complete Code
 
 {% gist 444c3dbfadf915326f074fa1e274f9a9 %}
