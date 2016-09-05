@@ -1,10 +1,10 @@
 ---
 layout: post
 title:  "Create Jenkins JNLP Scheduled Tasks with PowerShell"
-date:   2016-8-5 09:02:00
+date:   2016-9-5 09:02:00
 comments: true
-tags: [PowerShell, Jenkins, DSC]
-modified: 2016-8-5
+tags: [PowerShell, Jenkins, JNLP]
+modified: 2016-9-5
 ---
 
 
