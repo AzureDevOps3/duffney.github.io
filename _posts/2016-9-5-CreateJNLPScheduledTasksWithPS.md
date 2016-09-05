@@ -9,7 +9,7 @@ modified: 2016-9-5
 
 
 In this post, you will learn how to create a scheduled task with PowerShell that connects a Jenkins slave to the master with
-[JNLP](https://docs.oracle.com/javase/tutorial/deployment/deploymentInDepth/jnlp.html).This is just one of several ways to connect
+[JNLP](https://docs.oracle.com/javase/tutorial/deployment/deploymentInDepth/jnlp.html). This is just one of several ways to connect
 a Jenkins slave to a Jenkins master, but I've found it to be the most reliable method. Before I begin I am assuming a few things.
 I'm assuming you have already added the node to Jenkins and that you've copied over the slave.jar to some work directory on the new
 slave node. You will also need to install Java on the slave node before continuing. To learn more about that process be sure to read [Lanch Java Web Start slave agent via Windows Scheduler](https://wiki.jenkins-ci.org/display/JENKINS/Launch+Java+Web+Start+slave+agent+via+Windows+Scheduler)
