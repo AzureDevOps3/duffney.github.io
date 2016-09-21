@@ -44,7 +44,7 @@ of the service does not match a digit.
 
 {% highlight PowerShell %}
 Get-Service | where Name -NotMatch '\d'
-{% endhighlight
+{% endhighlight %}
 
 ![notmatch](/images/posts/2016-9-11/notmatch.png "notmatch")
 
@@ -59,7 +59,7 @@ this case 'Administrator'.
 
 {% highlight PowerShell %}
 Get-Service | where Name -NotMatch '\d'
-{% endhighlight
+{% endhighlight %}
 
 ![replace](/images/posts/2016-9-11/replace.png "replace")
 
@@ -72,7 +72,7 @@ could craft a simple expression that looks for a few verbs Get and Set followed 
 
 {% highlight PowerShell %}
 Select-String -Pattern '[GS]et-AD\w+' -Path *.ps1 -List
-{% endhighlight
+{% endhighlight %}
 
 ![selectstring](/images/posts/2016-9-11/selectstring.png "selectstring")
 
@@ -92,8 +92,47 @@ foreach ($UserName in $UserNames) {
         '["/\\\[\]:;|=,+\*\?<>*]+' {"[$UserName] contains invalid characters"}
     }   
 }
-{% endhighlight
+{% endhighlight %}
 
-### Regex Object
+### Regex Object Matching
 
-The previous examples of using regular expressions in PowerShell have been integrated into cmdlets a
+So far I've been using operators, cmdlets and statements that handle regex in an integrated manner. This means it has been hiding much of the regular expression engine from us.
+I mention this because the regex object, which I'll cover next is not integrated. It is referred to as procedural and object-oriented. If you have experience with other programing
+languages such as java or C# this will look very familair, if not don't worry it's really not that difficult.
+
+To create the regex object, you create a variable and type cast it to *[regex]*. The variable contains the regular expression you want to use. I will be using the regex object to
+extract a domain name from an Active Directory distinguished name. Below has a distinguished name stored in a variable called $DN then I create the regex object and specifiy the
+regular expression to use. Breaking down the regular expression, *(?:.\*?)* matches the entire distinguished name. *.* matches any character and the *** is a quantifer that matches zero or more times.
+It's also option because of the *?*. What is interesting about the first part of this expression is the *?:* it is a non-capturing subexpression. You'll see what that means in a minute.
+*DC=(.\*)* is the second half of the expression and matches the literal characters *DC=* then matches any character zero or more times *.\**. *(.\*)* is within a caputring subexpression which I'll use
+later to obtain the domain name.
+
+{% highlight PowerShell %}
+$DN = 'CN=Administrator,CN=Users,DC=wef,DC=com'
+[regex]$rx='(?:.*?)DC=(.*)'
+{% endhighlight %}
+
+If you ran the above code, you noticed that it didn't actually do anything nor did it populate the $matches variable. This is because, it's an object and to interact with objects you use their methods.
+To take a look at all the methods pipe $rx to get-member *$rx | Get-Member*. The first method I'll demonstrate is the match method. The synatx is *$rx* followed by *.match()* inside *()*
+is the thing you want to match againt. In this case it's the string variable *$dn* that contains the distinguished name. Take a look at the below screenshot and notice that there are only 2 caputers, $0 and $1.
+This is because I used non-caputring parenthesis for the first subexpression. You can also quickly identify the domain name for this distinguished name by looking at the contents of $1 *wef,DC=com*. However, I
+highly doubt management would accept it in this format so let's move on to the replace method and clean it up.  
+
+{% highlight PowerShell %}
+$rx.Match($DN)
+{% endhighlight %}
+
+![regexmatch](/images/posts/2016-9-11/regexmatch.png "regexmatch")
+
+### Regex Object Replace
+
+At this point, I've successfully matched the last half of the distinguished name which contains the domain name. However, that is stored within a capture group $1. It also isn't formatted correctly. It should be wef.com, not
+wef,DC=com. So I really have two problems to solve. First, replace the entire distinguished name with $1. Secondly, I need to replace *,DC=* with *.* to make wef.com. To accomplish this, I'm using both the regex replace method
+and the -replace operator.
+
+{% highlight PowerShell %}
+$rx.Replace($DN,'$1') -replace ',DC=','.'
+{% endhighlight %}
+
+![regexreplace](/images/posts/2016-9-11/regexreplace.png "regexreplace")
+
