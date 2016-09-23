@@ -1,17 +1,17 @@
 ---
 layout: post
 title:  "A Practical Guide for Using Regex in PowerShell"
-date:   2016-9-11 09:02:00
+date:   2016-9-23 09:02:00
 comments: true
 tags: [PowerShell, Regex, RegularExpression]
-modified: 2016-9-11
+modified: 2016-9-23
 ---
 
 ### Introduction
 
 In this blog post you'll learn severals ways to use regular expression from within PowerShell. You've most likely used some of these
-techniques before. Such as the *-match* operator or the *select-string* cmdlet, but probably weren't aware you were using regular epxression.
-This post will not teach you how to craft complex regular epxressions. Instead it focuses on how to use them in PowerShell to find matches, replace
+techniques before. Such as the *-match* operator or the *select-string* cmdlet, but probably weren't aware you were using regular expression.
+This post will not teach you how to craft complex regular expressions. Instead it focuses on how to use them in PowerShell to find matches, replace
 text, and to split on matches.
 
 ### -match Operator
@@ -24,18 +24,18 @@ from Active Directory. This example might not seem like it's using regular expre
 'CN=Administrator,CN=Users,DC=wef,DC=com' -match 'Administrator'
 {% endhighlight %}
 
-![matches](/images/posts/2016-9-11/matches.gif "matches")
+![matches](/images/posts/2016-9-23/matches.gif "matches")
 
 Let's make it a little more regex looking by replacing the literal characters *Administrator* with some regex metacharacters and a subexpression. I'll use the regex
-expression *CN=(\w+)*. The C and N are still literal characters matching a captial C and a captial N, but \w is a metacharacters that matches any word character. The + sign is
+expression *CN=(\w+)*. The C and N are still literal characters matching a capital C and a capital N, but \w is a metacharacters that matches any word character. The + sign is
 another metacharacters that means to match one or more times. The parenthesis are used to capture the match found by \w+, in this example Administrator. The benefit
-of using metacharacters is it makes the expression more dynamic just like paramters do for functions.
+of using metacharacters is it makes the expression more dynamic just like parameters do for functions.
 
 {% highlight PowerShell %}
 'CN=Administrator,CN=Users,DC=wef,DC=com' -match 'CN=(\w+)'
 {% endhighlight %}
 
-![matchesmetachars](/images/posts/2016-9-11/matchesmetachars.gif "matchesmetachars")
+![matchesmetachars](/images/posts/2016-9-23/matchesmetachars.gif "matchesmetachars")
 
 The -match operator has a few different versions you should be aware of. By default PowerShell is case-insensitive so there is a case-sensitive version of the -match
 operator -cmatch. There are opposites of both of these operators -notmatch and -cnotmatch. I won't cover all of these variants, but it's worth taking a look at the
@@ -46,14 +46,14 @@ of the service does not match a digit.
 Get-Service | where Name -NotMatch '\d'
 {% endhighlight %}
 
-![notmatch](/images/posts/2016-9-11/notmatch.png "notmatch")
+![notmatch](/images/posts/2016-9-23/notmatch.png "notmatch")
 
 ### -replace Operator
 
 Matching text is always the first part of using regular expression and it's useful, but most of the time you want to do something with that match. Using the same example
 as above I can use the -replace operator instead of -match to replace the entire string with what I wanted to match. The expression looks like this *'CN=(\w+).\*','$1'*.
 I'm using a subexpression () to capture the match 'Administrator'. Matches found within subexpression are stored in variables. In PowerShell they start at the number 0 and increment
-by one for each subexpression used. That is why you see the *'$1'* in the expression. If you're not familair with -replace the synatx is *'this' -replace 'this','that'* which replace
+by one for each subexpression used. That is why you see the *'$1'* in the expression. If you're not familiar with -replace the syntax is *'this' -replace 'this','that'* which replace
 the word this with that. Relating that to our expression *'CN=(\w+).\** matches the entire distinguished name and *'$1'* replaces it with the match found in the first subexpression. In
 this case 'Administrator'.
 
@@ -61,7 +61,19 @@ this case 'Administrator'.
 Get-Service | where Name -NotMatch '\d'
 {% endhighlight %}
 
-![replace](/images/posts/2016-9-11/replace.png "replace")
+![replace](/images/posts/2016-9-23/replace.png "replace")
+
+### -split Operator
+
+Sometimes you don't want to replace any text from a match but rather simply split it and use both parts to accomplish a given task. That's where the -split operator can come in handy.
+I'll use an example of splitting a users's UPN into two sections the first will contain the user name and the second will contain the domain name. I'll use that information to query the user
+with Get-ADUser and specify the server name.
+
+{% highlight PowerShell %}
+$split = 'ejohnson@wef.com' -split '@'
+
+Get-ADUser -Identify $split[0] -server $split[1]
+{% endhighlight %}
 
 ### Select-String cmdlet
 
@@ -74,7 +86,7 @@ could craft a simple expression that looks for a few verbs Get and Set followed 
 Select-String -Pattern '[GS]et-AD\w+' -Path *.ps1 -List
 {% endhighlight %}
 
-![selectstring](/images/posts/2016-9-11/selectstring.png "selectstring")
+![selectstring](/images/posts/2016-9-23/selectstring.png "selectstring")
 
 ### Switch Statements
 
@@ -98,13 +110,13 @@ foreach ($UserName in $UserNames) {
 
 So far I've been using operators, cmdlets and statements that handle regex in an integrated manner. This means it has been hiding much of the regular expression engine from us.
 I mention this because the regex object, which I'll cover next is not integrated. It is referred to as procedural and object-oriented. If you have experience with other programing
-languages such as java or C# this will look very familair, if not don't worry it's really not that difficult.
+languages such as java or C# this will look very familiar, if not don't worry it's really not that difficult.
 
 To create the regex object, you create a variable and type cast it to *[regex]*. The variable contains the regular expression you want to use. I will be using the regex object to
-extract a domain name from an Active Directory distinguished name. Below has a distinguished name stored in a variable called $DN then I create the regex object and specifiy the
-regular expression to use. Breaking down the regular expression, *(?:.\*?)* matches the entire distinguished name. *.* matches any character and the *** is a quantifer that matches zero or more times.
+extract a domain name from an Active Directory distinguished name. Below has a distinguished name stored in a variable called $DN then I create the regex object and specify the
+regular expression to use. Breaking down the regular expression, *(?:.\*?)* matches the entire distinguished name. *.* matches any character and the *** is a quantifier that matches zero or more times.
 It's also option because of the *?*. What is interesting about the first part of this expression is the *?:* it is a non-capturing subexpression. You'll see what that means in a minute.
-*DC=(.\*)* is the second half of the expression and matches the literal characters *DC=* then matches any character zero or more times *.\**. *(.\*)* is within a caputring subexpression which I'll use
+*DC=(.\*)* is the second half of the expression and matches the literal characters *DC=* then matches any character zero or more times *.\**. *(.\*)* is within a capturing subexpression which I'll use
 later to obtain the domain name.
 
 {% highlight PowerShell %}
@@ -113,26 +125,50 @@ $DN = 'CN=Administrator,CN=Users,DC=wef,DC=com'
 {% endhighlight %}
 
 If you ran the above code, you noticed that it didn't actually do anything nor did it populate the $matches variable. This is because, it's an object and to interact with objects you use their methods.
-To take a look at all the methods pipe $rx to get-member *$rx | Get-Member*. The first method I'll demonstrate is the match method. The synatx is *$rx* followed by *.match()* inside *()*
-is the thing you want to match againt. In this case it's the string variable *$dn* that contains the distinguished name. Take a look at the below screenshot and notice that there are only 2 caputers, $0 and $1.
-This is because I used non-caputring parenthesis for the first subexpression. You can also quickly identify the domain name for this distinguished name by looking at the contents of $1 *wef,DC=com*. However, I
+To take a look at all the methods pipe $rx to get-member *$rx | Get-Member*. The first method I'll demonstrate is the match method. The syntax is *$rx* followed by *.match()* inside *()*
+is the thing you want to match against. In this case it's the string variable *$dn* that contains the distinguished name. Take a look at the below screenshot and notice that there are only 2 captures, $0 and $1.
+This is because I used non-capturing parenthesis for the first subexpression. You can also quickly identify the domain name for this distinguished name by looking at the contents of $1 *wef,DC=com*. However, I
 highly doubt management would accept it in this format so let's move on to the replace method and clean it up.  
 
 {% highlight PowerShell %}
 $rx.Match($DN)
 {% endhighlight %}
 
-![regexmatch](/images/posts/2016-9-11/regexmatch.png "regexmatch")
+![regexmatch](/images/posts/2016-9-23/regexmatch.png "regexmatch")
 
 ### Regex Object Replace
 
 At this point, I've successfully matched the last half of the distinguished name which contains the domain name. However, that is stored within a capture group $1. It also isn't formatted correctly. It should be wef.com, not
 wef,DC=com. So I really have two problems to solve. First, replace the entire distinguished name with $1. Secondly, I need to replace *,DC=* with *.* to make wef.com. To accomplish this, I'm using both the regex replace method
-and the -replace operator.
+and the -replace operator. Below starts by showing the output of just the replace method then combines it with the -replace operator to clean up the formating.
 
 {% highlight PowerShell %}
+$rx.Replace($DN,'$1')
+
 $rx.Replace($DN,'$1') -replace ',DC=','.'
 {% endhighlight %}
 
-![regexreplace](/images/posts/2016-9-11/regexreplace.png "regexreplace")
+![regexreplace](/images/posts/2016-9-23/regexreplace.png "regexreplace")
 
+### Regex Object Split
+
+The regex object also has a split method that can be used to, well split text where a regular expression matches. Previously, I've been creating regex objects and storing them in variables.
+You don't have to do that if you are not going to reuse the expression. Below is an example that takes a URL and split off the HTTP or HTTPS prefix, leaving just the server name and path.
+
+{% highlight PowerShell %}
+[Regex]::Split('http://duffney.io/CreateJNLPScheduledTasksWithPS','^https?://')
+{% endhighlight %}
+
+![regexsplit](/images/posts/2016-9-23/regexreplace.png "regexsplit")
+
+### Acknowledgements and Closing Remarks
+
+If you liked the way my PowerShell prompt looked, check out Matt's blog post.
+
+[Ultimate PowerShell Prompt Customization and Git Setup Guide](https://hodgkins.io/ultimate-powershell-prompt-and-git-setup)
+
+Additional Regular Expressions resources
+
+[Mastering Regular Expressions](https://www.amazon.com/Mastering-Regular-Expressions-Jeffrey-Friedl/dp/0596528124)
+
+[PowerShell in Depth Chapter 13](https://www.amazon.com/PowerShell-Depth-Don-Jones/dp/1617292184/ref=sr_1_1?s=books&ie=UTF8&qid=1474652757&sr=1-1&keywords=powershell+in+depth)
