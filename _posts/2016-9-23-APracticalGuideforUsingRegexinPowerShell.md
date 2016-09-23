@@ -58,7 +58,7 @@ the word this with that. Relating that to our expression *'CN=(\w+).\** matches 
 this case 'Administrator'.
 
 {% highlight PowerShell %}
-Get-Service | where Name -NotMatch '\d'
+'CN=Administrator,CN=Users,DC=wef,DC=com' -replace 'CN=(\w+).*','$1'
 {% endhighlight %}
 
 ![replace](/images/posts/2016-9-23/replace.png "replace")
