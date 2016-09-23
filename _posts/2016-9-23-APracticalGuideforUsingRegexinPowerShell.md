@@ -159,7 +159,7 @@ You don't have to do that if you are not going to reuse the expression. Below is
 [Regex]::Split('http://duffney.io/CreateJNLPScheduledTasksWithPS','^https?://')
 {% endhighlight %}
 
-![regexsplit](/images/posts/2016-9-23/regexreplace.png "regexsplit")
+![regexsplit](/images/posts/2016-9-23/regexsplit.png "regexsplit")
 
 ### Acknowledgements and Closing Remarks
 
