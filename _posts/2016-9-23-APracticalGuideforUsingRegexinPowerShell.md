@@ -51,7 +51,7 @@ Get-Service | where Name -NotMatch '\d'
 
 ![notmatch](/images/posts/2016-9-23/notmatch.png "notmatch")
 
-### -replace Operator
+## -replace Operator
 
 Matching text is always the first part of using regular expression and it's useful, but most of the time you want to do something with that match. Using the same example
 as above I can use the -replace operator instead of -match to replace the entire string with what I wanted to match. The expression looks like this *'CN=(\w+).\*','$1'*.
@@ -66,7 +66,7 @@ this case 'Administrator'.
 
 ![replace](/images/posts/2016-9-23/replace.png "replace")
 
-### -split Operator
+## -split Operator
 
 Sometimes you don't want to replace any text from a match but rather simply split it and use both parts to accomplish a given task. That's where the -split operator can come in handy.
 I'll use an example of splitting a users's UPN into two sections the first will contain the user name and the second will contain the domain name. I'll use that information to query the user
@@ -78,7 +78,7 @@ $split = 'ejohnson@wef.com' -split '@'
 Get-ADUser -Identify $split[0] -server $split[1]
 {% endhighlight %}
 
-### Select-String cmdlet
+## Select-String cmdlet
 
 Select-String searches for text and text patterns in either a string or a set of files. I use it mostly for looking through scripts I've written to identify which scripts
 contain keywords I'm looking for. For example I could use it to search a folder for all scripts that are using Active Directory cmdlets with the verbs Get and Set. To do that, I 
@@ -91,7 +91,7 @@ Select-String -Pattern '[GS]et-AD\w+' -Path *.ps1 -List
 
 ![selectstring](/images/posts/2016-9-23/selectstring.png "selectstring")
 
-### Switch Statements
+## Switch Statements
 
 Another way to use regex in PowerShell is within a switch statement. In the below example I'm using regular expression to validate user names in Active Directory. There are
 three statements one validates service account names, another validates admin accounts and the last one identifies invalid characters. You could perhaps take this logic and 
@@ -109,7 +109,7 @@ foreach ($UserName in $UserNames) {
 }
 {% endhighlight %}
 
-### Regex Object Matching
+## Regex Object Matching
 
 So far I've been using operators, cmdlets and statements that handle regex in an integrated manner. This means it has been hiding much of the regular expression engine from us.
 I mention this because the regex object, which I'll cover next is not integrated. It is referred to as procedural and object-oriented. If you have experience with other programing
@@ -139,7 +139,7 @@ $rx.Match($DN)
 
 ![regexmatch](/images/posts/2016-9-23/regexmatch.png "regexmatch")
 
-### Regex Object Replace
+## Regex Object Replace
 
 At this point, I've successfully matched the last half of the distinguished name which contains the domain name. However, that is stored within a capture group $1. It also isn't formatted correctly. It should be wef.com, not
 wef,DC=com. So I really have two problems to solve. First, replace the entire distinguished name with $1. Secondly, I need to replace *,DC=* with *.* to make wef.com. To accomplish this, I'm using both the regex replace method
@@ -153,7 +153,7 @@ $rx.Replace($DN,'$1') -replace ',DC=','.'
 
 ![regexreplace](/images/posts/2016-9-23/regexreplace.png "regexreplace")
 
-### Regex Object Split
+## Regex Object Split
 
 The regex object also has a split method that can be used to, well split text where a regular expression matches. Previously, I've been creating regex objects and storing them in variables.
 You don't have to do that if you are not going to reuse the expression. Below is an example that takes a URL and split off the HTTP or HTTPS prefix, leaving just the server name and path.
@@ -164,7 +164,7 @@ You don't have to do that if you are not going to reuse the expression. Below is
 
 ![regexsplit](/images/posts/2016-9-23/regexsplit.png "regexsplit")
 
-### Acknowledgements and Closing Remarks
+## Acknowledgements and Closing Remarks
 
 If you liked the way my PowerShell prompt looked, check out Matt's blog post.
 
