@@ -39,6 +39,7 @@ of using metacharacters is it makes the expression more dynamic just like parame
 
 ![matchesmetachars](/images/posts/2016-9-23/matchesmetachars.gif "matchesmetachars")
 
+## -notmatch and Where-Object
 The -match operator has a few different versions you should be aware of. By default PowerShell is case-insensitive so there is a case-sensitive version of the -match
 operator -cmatch. There are opposites of both of these operators -notmatch and -cnotmatch. I won't cover all of these variants, but it's worth taking a look at the
 -notmatch operator. Sometimes it's easier to say what you do not want than what you do want. The below example demonstrates this by getting a list of services where the name 
