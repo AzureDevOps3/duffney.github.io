@@ -7,14 +7,14 @@ tags: [PowerShell, Regex, RegularExpression]
 modified: 2016-9-23
 ---
 
-### Introduction
+## Introduction
 
 In this blog post you'll learn severals ways to use regular expression from within PowerShell. You've most likely used some of these
 techniques before. Such as the *-match* operator or the *select-string* cmdlet, but probably weren't aware you were using regular expression.
 This post will not teach you how to craft complex regular expressions. Instead it focuses on how to use them in PowerShell to find matches, replace
 text, and to split on matches.
 
-### -match Operator
+## -match Operator
 
 The -match operator matches a string with regular expression. It returns a true or false statement indicating whether or not a match was found. Then it
 stores all the matches found in a variable called $matches. A simple example of this is below, I'm matching the word Administrator from a distinguished name
@@ -26,6 +26,7 @@ from Active Directory. This example might not seem like it's using regular expre
 
 ![matches](/images/posts/2016-9-23/matches.gif "matches")
 
+### -match with metacharacters
 Let's make it a little more regex looking by replacing the literal characters *Administrator* with some regex metacharacters and a subexpression. I'll use the regex
 expression *CN=(\w+)*. The C and N are still literal characters matching a capital C and a capital N, but \w is a metacharacters that matches any word character. The + sign is
 another metacharacters that means to match one or more times. The parenthesis are used to capture the match found by \w+, in this example Administrator. The benefit
