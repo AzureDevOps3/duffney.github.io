@@ -26,7 +26,8 @@ from Active Directory. This example might not seem like it's using regular expre
 
 ![matches](/images/posts/2016-9-23/matches.gif "matches")
 
-### -match with metacharacters
+
+## -match Operator with metacharacters
 Let's make it a little more regex looking by replacing the literal characters *Administrator* with some regex metacharacters and a subexpression. I'll use the regex
 expression *CN=(\w+)*. The C and N are still literal characters matching a capital C and a capital N, but \w is a metacharacters that matches any word character. The + sign is
 another metacharacters that means to match one or more times. The parenthesis are used to capture the match found by \w+, in this example Administrator. The benefit
