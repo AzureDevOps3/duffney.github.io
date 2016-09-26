@@ -7,8 +7,6 @@ tags: [PowerShell, Regex, RegularExpression]
 modified: 2016-9-23
 ---
 
-![regularexpression](/images/posts/2016-9-23/regularexpression.png "regularexpression")
-
 ## Introduction
 
 In this blog post you'll learn severals ways to use regular expression from within PowerShell. You've most likely used some of these
