@@ -101,7 +101,7 @@ add it to some PowerShell automation that creates user accounts. Each of these s
 $UserNames = 'svc_jenkins','duffney.admin','<jduffney>'
 
 foreach ($UserName in $UserNames) {
-    switch -regex ($var) {
+    switch -regex ($UserName) {
         'svc_[^"/\\\[\]:;|=,+\*\?<>*]+' {"service account [$UserName]"}
         '[^"/\\\[\]:;|=,+\*\?<>*]+\.admin' {"admin account [$UserName]"}
         '["/\\\[\]:;|=,+\*\?<>*]+' {"[$UserName] contains invalid characters"}
