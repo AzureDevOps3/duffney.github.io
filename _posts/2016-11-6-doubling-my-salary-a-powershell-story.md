@@ -80,4 +80,4 @@ So, now you're caught up with my PowerShell story. I hope it was an enjoyable re
 
 ### Credits
 
-![Credits](/images/posts/2016-11-6/credits.gif "Credits")
+![credits](/images/posts/2016-11-6/credits.gif "credits")
