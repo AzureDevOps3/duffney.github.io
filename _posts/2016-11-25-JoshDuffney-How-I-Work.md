@@ -36,6 +36,7 @@ PowerShell, Visual Studio Code, Slack, Cmder, Github, Twitter, and hummm PowerSh
 
 ### What's a typical workweek look like?
 
+
  _Morning_
 
 A typical workweek for me starts at around 6:00am Monday Morning. I zombie my way to the kitchen and make coffee. I LOVE coffee, so I spend the extra time and brew it with a Chemex. Making coffee easily takes around 10
@@ -85,7 +86,7 @@ Being able to turn it off. I'm lucky in the sense that I do what I love, but I h
 ### Is there anything else you’d like to add that might be interesting to readers?
 
 Focus on improving yourself, both intellectually and socially. It's far too easy to say someone else needs to change, but you really only ever have control over what you do. Work towards becoming the
-best version of yourself every day and speak through actions not words. Also, if you do not already own a mechanical keyboard, but one it will change your life!
+best version of yourself every day and speak through actions not words. Also, if you do not already own a mechanical keyboard, buy one it will change your life!
 
 #### How I Work Series
 
