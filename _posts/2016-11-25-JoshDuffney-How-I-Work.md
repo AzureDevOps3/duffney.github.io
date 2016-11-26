@@ -41,7 +41,7 @@ PowerShell, Visual Studio Code, Slack, Cmder, Github, Twitter, and hummm PowerSh
 A typical workweek for me starts at around 6:00am Monday Morning. I zombie my way to the kitchen and make coffee. I LOVE coffee, so I spend the extra time and brew it with a Chemex. Making coffee easily takes around 10
 minutes. I then down around 15 different vitamins with a glass of water and slowly mosey on up to my office. For the first hour or two of each workday I either work on my Pluralsight course, read twitter, catch up on slack or
 look at mechanical keyboards online. Over the past few weeks I've been completely obsessed with mech keyboards, not sure why but I want like every keycap in the world! I recently started my collection with a WASD Code keyboard
-as you can see in the above picture... and yes... those are PowerShell arrow keys! They were supposed to be the windows keys.. but I don't ready things very carefully at times... After those first few hours I'm fully awake and
+as you can see in the above picture... and yes... those are PowerShell arrow keys! They were supposed to be the windows keys.. but I don't read things very carefully at times... After those first few hours I'm fully awake and
 log into work. I refuse to check emails first so normally I look at tickets and the team's Kanban board for work. 
 
 Once I've figured out what I'll be working on for the day I write it all down in my [Productivity Planner](https://www.intelligentchange.com/products/the-productivity-planner). Using this has increased my focus by at least
