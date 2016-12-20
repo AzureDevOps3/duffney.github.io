@@ -10,7 +10,7 @@ date: 2016-6-22 8:00:00
 
 While writing the DSC configuration for some Jenkins slaves, I discovered the Register-ScheduledTask cmdlet only accepts string variables. 
 This forced me to store my service account password as clear text, which made me cringe. I knew there had to be a better way, even if the cmdlet
-did not allow a credential object to be passed to it. In this post you'll learn how to extract the password from a PS Credetinal object.
+did not allow a credential object to be passed to it. In this post you'll learn how to extract the password from a PS Credential object.
 I'll store those properties in variables and then provide them to the Register-ScheduledTask cmdlet.
 
 ### Create the Action
@@ -44,9 +44,9 @@ $Settings = New-ScheduledTaskSettingsSet -DontStopOnIdleEnd -RestartInterval (Ne
 $Settings.ExecutionTimeLimit = "PT0S"
 {% endhighlight %}
 
-### New PS Credetinal Object
+### New PS Credential Object
 
-Now I have to create a PS Credetinal object that I can extract out the password from. This was the fun part as I hadn't dealt with this to much before.
+Now I have to create a PS Credential object that I can extract out the password from. This was the fun part as I hadn't dealt with this to much before.
 Mainly because most cmdlets allow for encrypted credentials to be passed to them... at any rate. Lines 1-3 create the PS credential object and line 4 creates
 a variable with the password in it. It's a string, but at least it's not stored in the script. Perhaps I should of titled the post secureish? If you don't like the
 read-host prompt, you can turn this code into an advanced function and require a credential parameter. Once I finish mine, I'll be sure to link it here.
