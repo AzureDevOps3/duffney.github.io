@@ -36,5 +36,6 @@ gems:
   - jemoji
   - jekyll-sitemap
   - jekyll-gist
+  - jekyll-seo-tag
 
 exclude: ['README.md', 'Gemfile', 'Gemfile.lock', 'screenshot.png']
