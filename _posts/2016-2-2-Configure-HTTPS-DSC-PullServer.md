@@ -14,7 +14,7 @@ This blog post will guide you through the process of setting up and configuring 
 
 * PowerShell Version 4 or 5
 * [Active Directory Domain](http://blogs.technet.com/b/ashleymcglone/archive/2015/03/20/deploy-active-directory-with-powershell-dsc-a-k-a-dsc-promo.aspx)
-* [Active Directory Certificate Service (ADCS) for PKI (Public Key Infrastructure)](http://duffney.github.io/Build-ADCS-DSC/)
+* [Active Directory Certificate Service (ADCS) for PKI (Public Key Infrastructure)](http://duffney.io/Build-ADCS-DSC)
 * Prebuild Virtual Machine (PullServer) {Domain Joined, Network connectivity established to domain}
 * xPSDesiredStateConfiguration DSC Resource
 
