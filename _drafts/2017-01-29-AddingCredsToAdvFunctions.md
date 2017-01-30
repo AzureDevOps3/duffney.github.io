@@ -17,3 +17,4 @@ to and advanced function even when the cmdlets within the advanced function don'
 
 Adding a credential parameter is easy enough. Instead of using a Username and Password param you just add a single parameter called Credential. The
 name of the parameter can be anything you want, but since most PowerShell cmdlet that support credential objects use that name I tend to stick with it.
+The type you'll use for this parameter is `
