@@ -11,8 +11,7 @@ Often times, you'll need to use cmdlets or command line utilites that do not sup
 you to pass in the password in plan text. If you're like me you don't like this for two reasons. First off,
 it's annoying to have to provide a Username parameter and a Password parameter. Secondly, it makes you a twitch because
 you're putting your password plain text is scripts. Another reason is you want the ability to run your function as a different user. Most likely one
-with elevated access that you don't normally use. Oh, wait you're running your PowerShell session as domain admin right now? Please stop that...
-In this blog post I'll show you serveral ways you can add a credential parameter to and function. Even when the cmdlets within the 
+with elevated access that you don't normally use. In this blog post I'll show you serveral ways you can add a credential parameter to and function. Even when the cmdlets within the 
 function doesn't support credential objects. 
 
 
