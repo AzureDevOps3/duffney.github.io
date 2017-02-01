@@ -7,7 +7,7 @@ tags: [PowerShell, Regex, RegularExpression, Lability, DSC]
 modified: 2017-02-01
 ---
 
-![StartLabConfig](/images/posts/2017-02-01\Start-LabHostConfiguration.png "StartLabConfig")
+![introtoregex](/images/posts/2017-02-01\introtoregex.png "introtoregex")
 
 I'm proud to announce my second Pluralsight course titled [Introduction to Regular Expression (Regex)](https://app.pluralsight.com/library/courses/regular-expression-introduction/table-of-contents) has been released! I'll be honest, this wasn't an easy topic to cover.
 Regular expression is considered difficult for a number of reasons, but I found the most challenging part to be a good reference. I put a lot of thought, time, and effort
@@ -63,7 +63,7 @@ The next step is to copy the DSC files from the course's exercise files to your 
 `Set-LabHostDefault` cmdlet. The course exercise files are located with the course on the [Pluralsight site](https://app.pluralsight.com/library/courses/regular-expression-introduction/exercise-files). 
 Simply click the *Download exercise files* button to get your copy of the files. Once downloaded extract the files.
 
-![exercisefiles](/images/posts/2017-02-01\exercisefiles.png "exercisefiles")
+![excersiefiles](/images/posts/2017-02-01\excersiefiles.png "excersiefiles")
 
 Within the extracted folder there will be a directory called Lability. Browse into that folder and copy _IntroToRegex.ps1_ and _IntroToRegex.psd1_ to `c:\Lability\Configuration' If you 
 kept the folder name of regular-expression-introduction when you extracted the zip you can use the command below to copy the files.
