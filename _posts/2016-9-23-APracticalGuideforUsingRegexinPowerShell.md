@@ -164,13 +164,9 @@ You don't have to do that if you are not going to reuse the expression. Below is
 
 ![regexsplit](/images/posts/2016-9-23/regexsplit.png "regexsplit")
 
-## Acknowledgements and Closing Remarks
-
-If you liked the way my PowerShell prompt looked, check out Matt's blog post.
+## Sources
 
 [Ultimate PowerShell Prompt Customization and Git Setup Guide](https://hodgkins.io/ultimate-powershell-prompt-and-git-setup)
-
-Additional Regular Expressions resources
 
 [Mastering Regular Expressions](https://www.amazon.com/Mastering-Regular-Expressions-Jeffrey-Friedl/dp/0596528124)
 
