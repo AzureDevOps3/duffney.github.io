@@ -175,3 +175,7 @@ Additional Regular Expressions resources
 [Mastering Regular Expressions](https://www.amazon.com/Mastering-Regular-Expressions-Jeffrey-Friedl/dp/0596528124)
 
 [PowerShell in Depth Chapter 13](https://www.amazon.com/PowerShell-Depth-Don-Jones/dp/1617292184/ref=sr_1_1?s=books&ie=UTF8&qid=1474652757&sr=1-1&keywords=powershell+in+depth)
+
+### Pluralsight Course
+
+If you want to learn more about regular expression, check out my Pluralsight course titled [Introduction to Regular Expression (Regex)](https://app.pluralsight.com/library/courses/regular-expression-introduction/table-of-contents).
