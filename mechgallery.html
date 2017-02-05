@@ -1,0 +1,14 @@
+---
+layout: default
+images:
+- image_path: /images/mech/greyblackPS.png
+  title: GreyBlackPS
+---
+
+<ul class="mechgallery">
+    {% for image in page.images %}
+        <li>
+            <img src="{{ image.image.path}}" alt="{{ image.title}}">
+        </li>
+    {% endfor %}
+</ul>
