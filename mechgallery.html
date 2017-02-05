@@ -6,6 +6,7 @@ images:
 ---
 
 <ul class="mechgallery">
+list-style-type: none;    
     {% for image in page.images %}
         <li>
             <img src="{{ image.image_path}}" alt="{{ image.title}}">
