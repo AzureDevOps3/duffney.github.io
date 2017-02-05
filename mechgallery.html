@@ -5,8 +5,7 @@ images:
   title: GreyBlackPS
 ---
 
-<ul class="mechgallery">
-list-style-type: none;    
+<ul class="mechgallery" style="list-style-type:none">
     {% for image in page.images %}
         <li>
             <img src="{{ image.image_path}}" alt="{{ image.title}}">
