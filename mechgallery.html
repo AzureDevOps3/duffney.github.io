@@ -3,12 +3,18 @@ layout: default
 images:
 - image_path: /images/mech/greyblackPS.png
   title: GreyBlackPS
+  link: http://duffney.io
+- image_path: /images/mech/BrandonPadgettErgodox.jpg
+  title: BrandonPadgettErgodox
+  link: http://brandonpadgett.com/
 ---
 
 <ul class="mechgallery" style="list-style-type:none">
     {% for image in page.images %}
         <li>
+         <a href="{{ image.link }}">
             <img src="{{ image.image_path}}" alt="{{ image.title}}">
+         </a>
         </li>
     {% endfor %}
 </ul>
