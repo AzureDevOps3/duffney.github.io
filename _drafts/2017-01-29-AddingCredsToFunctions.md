@@ -21,9 +21,9 @@ function doesn't support credential objects.
 Adding a credential parameter is easy enough. Instead of using a Username and Password params you just add a single parameter called Credential. The
 name of the parameter can be anything you want, but since most PowerShell cmdlet that support credential objects use that name I tend to stick with it.
 Below, I'm using a function called Set-RemoteRegistryValue which is out of [The Pester Book](https://leanpub.com/the-pester-book). I've added the credential parameter
-within the param block and also added the -Credential parameter to the `Invoke-Command` within the function. This will allow me to run this function with alternate
-credentials. By using a default parameter value of `[System.Management.Automation.PSCredential]::Empty` I can make the credential param optional. Which means the
-function will run when a credential is specified and when it is not. This is one of serveral ways to make it optional. Another would be to use splatting. If you're
+within the param block and also added the _-Credential_ parameter to the `Invoke-Command` within the function. This will allow me to run this function with alternate
+credentials. By using a default parameter value of `[System.Management.Automation.PSCredential]::Empty` I can prevent the _-Credential_ param from erroring out when the parameter isn't used. Which means the
+function will run when a credential is specified and when it is not. This is one of serveral ways to handle credential parameters. Another would be to use splatting. If you're
 interested in learning more about splatting inside functions take a look at this blog post [Splatting Parameters Inside Advanced Functions](http://duffney.io/Splatting-Parameters-Within-AdvancedFunctions)
 
 
