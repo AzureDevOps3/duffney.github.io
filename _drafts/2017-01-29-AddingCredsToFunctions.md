@@ -7,13 +7,17 @@ tags: [PowerShell, Credentials, PSCredentials]
 modified: 2017-01-29
 ---
 
-Often times, you'll need to use cmdlets or command line utilites that do not support credential objects. Meaning they require
-you to pass in the password in plan text. If you're like me you don't like this for two reasons. First off,
-it's annoying to have to provide a Username parameter and a Password parameter. Secondly, it makes you a twitch because
-you're putting your password plain text is scripts. Another reason is you want the ability to run your function as a different user. Most likely one
-with elevated access that you don't normally use. In this blog post I'll show you serveral ways you can add a credential parameter to and function. Even when the cmdlets within the 
-function doesn't support credential objects. 
+In this blog post, I'll show you how to add credential parameters to advanced PowerShell functions. But, before I do that let's first talk about why you'd want to add a credential parameter to your functions.
+The purpose of the credential parameter is to allow you to run the function and or cmldet as a different user. Some account other than the one currently running the PowerShell session. The most common use is to run
+the function or cmdlet as an elevated user account. For example the cmdlet `New-ADUser` has a `-Credential` parameter, which you could provide domain admin credentials to in order to create an account in a domain. Assuming
+your normal account running the PowerShell session doesn't have that access already. This blog post walks you through the process of adding such functionality to your PowerShell functions. I also discuss how to get around
+common issues when working with _legacy_ cmdlets that don't support a credential object, but before we get started let's first talk about PSCredential objects and how to generate them.
 
+
+### Creating Credential Object
+
+
+_PSCredential objects represent a set of security credentials, such as a user name and password._ [MSDN](https://msdn.microsoft.com/en-us/library/system.management.automation.pscredential(v=vs.85).aspx) 
 
 ### Adding a Credential Parameter
 
