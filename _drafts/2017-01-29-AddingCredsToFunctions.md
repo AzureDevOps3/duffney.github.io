@@ -80,7 +80,7 @@ to use splatting. I'll walk through this later in the post. The below snippet of
 _Tip_
 
 "Caveat: Some cmdlets that accept a Credential parameter do not support/check for [System.Management.Automation.PSCredential]::Empty like they should. This should be treated as a bug by those cmdlet authors.
-By using the if statement and splatting methods we can get around this limitation, see the Dealing with Legacy Cmdlets section.
+By using an if statement or by using splatting, we can get around this limitation. See the Dealing with Legacy Cmdlets section.
 
 
 {% highlight powershell %}
