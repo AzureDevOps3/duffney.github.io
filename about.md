@@ -11,3 +11,12 @@ My name is Josh Duffney. I am an IT Professional turned PowerShell Developer, wh
 Information Technology is changing at an ever increasing rate. It is impossible for someone to know everything and it is near impossible to keep up with what new technology is released, let alone learn all about it. My mission is to shorten that learning curve and to help you obtain the knowledge you need to do your job, grow your career, or to simply learn something cool. 
 
 I believe that to effectively learn, it has to be applicable to you. Meaning once you’ve learned it, you can go and apply it, implement it or use it in someway. For that reason, I’ve adopted a real world style of teaching, writing and mentoring. Most, if not all of my writing and talks come from real world examples that came from my working experience.
+
+
+### Pluralsight Courses
+
+
+[Practical Desired State Configuration (DSC)](https://app.pluralsight.com/library/courses/practical-desired-state-configuration)
+
+
+[Introduction to Regular Expression (Regex)](https://app.pluralsight.com/library/courses/regular-expression-introduction)
