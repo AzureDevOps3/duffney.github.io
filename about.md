@@ -13,7 +13,7 @@ Information Technology is changing at an ever increasing rate. It is impossible 
 I believe that to effectively learn, it has to be applicable to you. Meaning once you’ve learned it, you can go and apply it, implement it or use it in someway. For that reason, I’ve adopted a real world style of teaching, writing and mentoring. Most, if not all of my writing and talks come from real world examples that came from my working experience.
 
 
-### Pluralsight Courses
+![PSLogo](/images/pslogo.png "PSLogo")
 
 
 [Practical Desired State Configuration (DSC)](https://app.pluralsight.com/library/courses/practical-desired-state-configuration)
