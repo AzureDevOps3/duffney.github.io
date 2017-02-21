@@ -12,6 +12,9 @@ In this blog post I'll show you how to add credential parameters to PowerShell f
 
 This blog post walks you through the process of adding such functionality to your PowerShell functions. I also discuss how to get around common issues when working with _legacy_ cmdlets that don't support a credential object, but before we get started let's first talk about PSCredential objects and how to generate them.
 
+* TOC
+{:toc}
+
 ## Creating Credential Object
 
 
