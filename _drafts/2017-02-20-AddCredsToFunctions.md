@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  "Adding Credentials to PowerShell Functions"
-date:   2017-01-29 09:02:00
+title:  "How to Add a Credential Parameter to PowerShell Functions"
+date:   2017-02-20 09:02:00
 comments: true
 tags: [PowerShell, Credentials, PSCredentials]
-modified: 2017-01-29
+modified: 2017-02-20
 ---
 
 In this blog post I'll show you how to add credential parameters to PowerShell functions. But before I do that let's first talk about why you'd want to add a credential parameter to your functions. The purpose of the credential parameter is to allow you to run the function and/or cmldet as a different user, some account other than the one currently running the PowerShell session. The most common use is to run the function or cmdlet as an elevated user account. For example, the cmdlet `New-ADUser` has a `-Credential` parameter, which you could provide domain admin credentials to in order to create an account in a domain. Assuming your normal account running the PowerShell session doesn't have that access already.
