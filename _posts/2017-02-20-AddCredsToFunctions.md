@@ -337,8 +337,8 @@ Other solutions
 
 ## Sources
 
-https://powershell.org/forums/topic/using-credential-param-as-optional/
-https://blogs.msdn.microsoft.com/koteshb/2010/02/12/powershell-how-to-create-a-pscredential-object/
+[PowerShell.Org: using-credential-param-as-optional](https://powershell.org/forums/topic/using-credential-param-as-optional/)
+[powershell-how-to-create-a-pscredential-object](https://blogs.msdn.microsoft.com/koteshb/2010/02/12/powershell-how-to-create-a-pscredential-object/)
 
 
 ### Shout Out
