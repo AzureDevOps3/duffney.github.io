@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "How to Add a Credential Parameter to PowerShell Functions"
+title:  "How to Add Credential Parameters to PowerShell Functions"
 date:   2017-02-20 09:02:00
 comments: true
 tags: [PowerShell, Credentials, PSCredentials]
