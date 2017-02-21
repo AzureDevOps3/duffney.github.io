@@ -18,7 +18,7 @@ I believe that to effectively learn, it has to be applicable to you. Meaning onc
 
 
 
-![PSLogo](/images/pslogo.png "PSLogo")
+![PSLogo](/images/pslogosmall.png "PSLogo")
 
 
 [Practical Desired State Configuration (DSC)](https://app.pluralsight.com/library/courses/practical-desired-state-configuration)
