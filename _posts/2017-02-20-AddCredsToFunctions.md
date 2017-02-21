@@ -74,7 +74,7 @@ There are a few other methods for handling this problem. One is a simple if stat
 
 _Tip_
 
-"Caveat: Some cmdlets that accept a Credential parameter do not support/check for [System.Management.Automation.PSCredential]::Empty like they should. This should be treated as a bug by those cmdlet authors.
+**Caveat**: Some cmdlets that accept a Credential parameter do not support/check for [System.Management.Automation.PSCredential]::Empty like they should. This should be treated as a bug by those cmdlet authors.
 By using an if statement or by using splatting, we can get around this limitation. See the Dealing with Legacy Cmdlets section.
 
 
@@ -158,6 +158,8 @@ _Tip_
 If you're following allong you'll need to install a few windows features to create this registry value.
 
 `Install-WindowsFeature Web-Server`
+
+
 `Install-WindowsFeature web-mgmt-tools`
 
 ### With Credentials in a variable
@@ -202,7 +204,7 @@ Set-RemoteRegistryValue @remoteKeyParams
 ## Dealing with Legacy Cmdlets
 
 
-Being in the Tech industry, you'll never escape the need to support and/or deal with legacy applications. Working in PowerShell is no different and in this case, you'll eventually run into one or both of the following problems. A cmdlet doesn't support [System.Management.Automation.PSCredential]::Empty`, which I've mentioned a few times. Or, the cmdlet you want to use doesn't even support the `-Credential` parameter at all and instead accepts a string username and string password! This section of the blog post is dedicated to helping you solve this problem. First up is, what to do when a cmdlet doesn't support `[System.Management.Automation.PSCredential]::Empty`.
+Being in the Tech industry, you'll never escape the need to support and/or deal with legacy applications. Working in PowerShell is no different and in this case, you'll eventually run into one or both of the following problems. A cmdlet doesn't support `[System.Management.Automation.PSCredential]::Empty`, which I've mentioned a few times. Or, the cmdlet you want to use doesn't even support the `-Credential` parameter at all and instead accepts a string username and string password! This section of the blog post is dedicated to helping you solve this problem. First up is, what to do when a cmdlet doesn't support `[System.Management.Automation.PSCredential]::Empty`.
 
 
 ### Using If Else to Handle Empty Credentials
@@ -319,6 +321,8 @@ Creating and storing credential objects can be a pain, to help maintain your Pow
 
 
 [BetterCredentials](https://www.powershellgallery.com/packages/BetterCredentials/)
+
+
 [Using Credentials in your Profile](https://beaudry.io/articles/2016-08/azure-profile)
 
 
@@ -326,6 +330,8 @@ Other solutions
 
 
 [Azure Key Vault](https://azure.microsoft.com/en-us/services/key-vault/)
+
+
 [Vault Project](https://www.vaultproject.io/)
 
 
