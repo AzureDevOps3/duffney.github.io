@@ -228,14 +228,105 @@ Invoke-WebRequest -Uri 'https://pull:8080/PSDSCPullServer.svc/' -UseBasicParsing
 
 ![verifypullserver](/images/posts/DSCHTTPSPullServerPSv5/verifypullserver.png "verifypullserver")
 
+## Publishing Content to the Pull Server
 
-## write dsc config for pull server client
-    explain Configuration names replaced node name specific configs
+At this point, you now have an operational DSC HTTPS pull server. It's now time to author some DSC configurations that you want the clients of the pull server to pull down and have them configure themselves with those configurations. There are a few steps involved with this process which consists of the following.
 
-## publish dsc resources and config to the pull server 
+1. Download required DSC resource modules
+2. Author the DSC configuration
+3. Publish content to the pull server
+    1. Generate checksum for DSC configuration
+    2. Copy configuration and checksum to the specified  directory
+    3. Archive DSC resource module
+    4. Copy DSC resource modules and checksums to specified directory
 
-## write LCM Configuration
 
-## push lcm config
+### Downloading Required DSC Resource Modules
 
-## update dsc Configuration
+
+In my example, I'll be writing a simple webserver configuration. Within this configuration I needed to create a virtual directory within IIS. To accomplish this I'll be using the _xWebVirtualDirectory_ DSC resource, which is within the _xWebAdministration_ module. Because of that I'll need to download that module before I can write my DSC configuration. Without the module I won't be able to complie the mof document. To install the module, I'll simply use `Install-Module`. This cmdlet is only available in PowerShell v5 or later.
+
+{% highlight powershell %}
+Install-Module xWebAdministration
+{% endhighlight %}
+
+
+### Authoring the Pull Server Client DSC Configuration [explain Configuration names replaced node name specific configslpkow]
+
+
+The next step is to write the DSC configurations you want the clients of the pull server to pull down. The configuration I'm using installs the windowsfeature web-server as well as creates a folder at the root of C: called Globmantics. The last thing it does is create a virtual directory in IIS with a physical path of the folder created at C:\Globomantics. Creating the virtual directory requires the external DSC resource _xWebAdministration_, which I previsouly downloaded. After you run the configuration you also need to generate a checksum for that configuration as outlines in step 3.1 shown above. Luckily enough there is a cmdlet that will do this for you called `New-DscChecksum`, all you need to do is provide the path of the mof document and it will generate a checksum for you. Once the mof document and checksum are generated it's now time to publish them to the pull server.
+
+
+{% gist 4bf617655382d8e6fe7dc7a18b67c62c %}
+
+
+### Publishing Content to the Pull Server
+
+Before I go into the steps required for publishing the content on the pull server, let's review a snippet of code from the DSC configuration that setup the pull server. Within the xDSCWebService resource we specified a few directories. One of them was called _ModulePath_, this is the location where we need to publish the _xWebAdministration_ module to. This is used by the pull server clients when they don't have the module or modules required for the DSC configuration. By providing it on the pull server they can dynamically pull down which resource modules they need. Which is one huge benefit of a pull server. The next directory we specified was _ConfigurationPath_, this is the location on the pull server we need to publish or copy our new mof and checksum files. This is where the pull server clients look for configurations. You can see that both of these directories are located at _$env:PROGRAMFILES\WindowsPowerShell\DscService_. Now that we know where the pull server is looking for these files we can complete the process by copying them there.
+
+
+{% highlight powershell %}
+xDscWebService PSDSCPullServer
+        {
+        Ensure = 'present'
+        EndpointName = 'PSDSCPullServer'
+        Port = 8080
+        PhysicalPath = "$env:SystemDrive\inetpub\PSDSCPullServer\"
+        CertificateThumbPrint = $certificateThumbPrint
+        ModulePath = "$env:PROGRAMFILES\WindowsPowerShell\DscService\Modules"
+        ConfigurationPath = "$env:PROGRAMFILES\WindowsPowerShell\DscService\Configuration"
+        State = 'Started'
+        DependsOn = '[WindowsFeature]DSCServiceFeature'
+        UseSecurityBestPractices = $true
+        }
+{% endhighlight %}
+
+
+Let's first start by copying the WebServerConfig and it's checksum to the _ConfigurationPath_. As you can see above I chose `$env:PROGRAMFILES\WindowsPowerShell\DscService\Configuration` as the configuration directory so that's where I'll need to copy these files to. You can use any method you'd like to copy the files. In this demonstration I'm going to be using the pull server to update it's own configuration. So in my example the pull server is both the server and the client. If you're using a different node to author the configurations you'll have to copy these files to the pull server. 
+
+_Tip: PowerShell version 5 Copy-Item supports copying over a remote session, an example can be found [here](https://github.com/Duffney/IAC-DSC/blob/master/Helper-Functions/Copy-ItemResources.ps1)_
+
+
+{% highlight powershell %}
+$WebConfigPath = "$env:SystemDrive"+'\dsc\WebServer\*'
+$PullConfigPath = "$env:PROGRAMFILES\WindowsPowerShell\DscService\Configuration"
+
+Copy-Item -Path $WebConfigPath -Destination $PullConfigPath -Recurse
+{% endhighlight %}
+
+
+Looking at steps 3.3 and 3.4 from above, it mentions archiving the module. This means we'll have to zip up the DSC resource modules. When you do this, a specific naming format is required otherwise it will not work properly on the pull server. Which would result in the clients not getting the DSC resource modules they need. The naming standard is _ModuleName_VersionNumber.zip_. You can of course do this all through the GUI if you'd like and I'd recommend that if it's your first time doing that. However, after about three times there isn't much value in manually doing it so instead you can use PowerShell to perform all these actions. Writing some helper functions around the code I'm about to show you is a great idea. After all the files have been generated and copied to the pull server locations, the directories should look like the screenshot below.
+
+{% highlight powershell %}
+$ModuleName = 'xWebAdministration'
+$Version = (Get-Module $ModuleName -ListAvailable).Version
+$ModulePath = (Get-Module $ModuleName -ListAvailable).modulebase+'\*'
+
+$DestinationPath = "$env:PROGRAMFILES\WindowsPowerShell\DscService\Modules\$($ModuleName)_$($Version).zip"
+
+Compress-Archive -Path $ModulePath -DestinationPath $DestinationPath
+New-DscChecksum -Path $DestinationPath
+{% endhighlight %}
+
+
+![pullserverdirs](/images/posts/DSCHTTPSPullServerPSv5/pullserverdirs.png "pullserverdirs")
+
+## Pulling Configurations
+
+You now have an operational pull server and have published both a DSC configuration and a DSC resource module to the pull server. The next and final step is to pull that configuration from the pull server. Before you can pull the configuration you have to configure the client node's LCM _Local Configuration Manager_, this is what connects the client node with the pull server. Since we have to write the LCM configuration before we can apply, let's talk about that next. 
+
+
+### write LCM Configuration
+
+
+In PowerShell version 5 or higher a special line of code is used at the begining of a DSC configuration to indicate that it's a LCM configuration. That line of code is `[DSCLocalConfigurationManager()]` which you'll see on line 1 of the configuration below. Besides this the rest of the configuration is just like a normal DSC configuration.
+The first resource _Settings_ configures the configuration mode and refresh mode. Configuration mode is how the LCM applies the configuration. There are a few options that I won't list here, to learn more check out [Configuring the Local Configuration Manager](https://msdn.microsoft.com/en-us/powershell/dsc/metaconfig). I've chosen to set it to ApplyAndAutoCorrect. Refresh mode only has two settings push and pull. We of course want to set this to pull because we are going to start using our pull server to deliver DSC configurations. 
+
+The next resource _ConfigurationRepositoryWeb_ sets up the configuration repository as the name implies. In a nut shell, it's just telling the LCM where to get it's configurations from. ServerURL is the path to the DSC configurations, in my example it's `https://pull:8080/PsDscPullserver.svc`. The only thing you'd ever need to change is the server name and possibly the port number if you decided to not use 8080. Because we setup an HTTPS pull server we want to make sure we set AllowUnsecureConnection to $false so it rejects http traffic and forces https. Next is the RegistrationKey which we set when we configured the pull server, if you don't remember what it is don't worry it's stored in a .txt file on the pull server at `$env:ProgramFiles\WindowsPowerShell\DscService\RegistrationKeys.txt` or wherever you told it to be stored in the pull server DSC configuration. The last property set within the ConfigurationRepositoryWeb are the ConfigurationNames. ConfigurationNames replaces the ConfigurationID prevsiosly used. It now allows you to specify multiple configurations. I'm only using one which is _WebServerConfig_. It's an array so adding more than one is simple, just make sure the name used here matches the name of the .mof document on the pull server. 
+
+ResourceRepositoryWeb is the last resource used in this LCM configruation. It setups the location where the pull client will look for DSC resource modules. When we update the configuration and it detects that it doesn't have the xWebAdministration module, it will look here to download it. The ServerURL is the same as teh ConfigurationRepositroyWeb, which is `https://pull:8080/PsDscPullserver.svc`. AllowUnsecureConnection is set to false here as well to avoid http requests. The registration key is also used here to authenticate the client with the pull server. 
+
+{% gist 69acfa13e0b3756a69b70443fa42d393 %}
+
+### Set the LCM and Pull the DSC Configuration
+
