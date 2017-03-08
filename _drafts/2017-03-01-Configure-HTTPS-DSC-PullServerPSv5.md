@@ -330,3 +330,73 @@ ResourceRepositoryWeb is the last resource used in this LCM configruation. It se
 
 ### Set the LCM and Pull the DSC Configuration
 
+The moment of truth has arrived! The last few things you need to do in order to complete the pull server is generate the LCM meta.mof document, apply the LCM configuration and then update the DSC configuration from the pull server. Seems like a lot, but it's really just three lines of code. Before you can run the LCM_Pull configuration shown above, you had to load it into memory. Before continuing do that first. After the configuration is loaded into memory execute it by running the configuration by name `LCM_Pull`. This will generate the meta.mof document used to configure the LCM of the client node. Again in my example the pull server is both the server and client. Once the meta.mof document is created you can apply it by using the cmdlet `Set-DSCLocalConfigurationManager`. You'll need to specify the path to the directory where the meta.mof file is. Do not specify the full path to the meta.mof just the folder it's in. I like to turn on both -Verbose and -Force so I can see what's going on. -Force of course overwrides any exsitng settings. With the LCM configured the only thing left is to update the DSC configuration and see if it can successfully pull down a new configuration. The cmdlet for that is `Update-DscConfiguration`, you'll need to provide a computer name to this cmdlet. I again use the -Verbose and -Wait parameters so I can see the verbose output as well as see it in the console window.
+
+
+{% highlight powershell %}
+LCM_Pull
+
+Set-DscLocalConfigurationManager -ComputerName pull -Path .\LCM_Pull -Verbose -Force
+
+Update-DscConfiguration -ComputerName pull -Verbose -Wait
+{% endhighlight %}
+
+
+![updateconfig](/images/posts/DSCHTTPSPullServerPSv5/updateconfig.gif "updateconfig")
+
+### Future Learnings, Sources, and Credits
+
+You now have a fully functional DSC pull server! Once you've run through this a few times it becomes very easy. There are a lot of moving parts which confused me early on and I hope this blog post helps through the process. I often see reddit posts or tweets asking where should I go to learn DSC, so there is my compiled list. I've personally watched or read most of these sources of information and can vouche for their usefulness. 
+
+
+### Best Sources for Learning DSC
+
+*Free Video Training*
+
+
+[Getting Started with PowerShell Desired State Configuration (DSC)](https://mva.microsoft.com/en-US/training-courses/getting-started-with-powershell-desired-state-configuration-dsc-8672?l=ZwHuclG1_2504984382)
+
+
+[Advanced PowerShell Desired State Configuration (DSC) and Custom Resoures](https://mva.microsoft.com/en-US/training-courses/advanced-powershell-desired-state-configuration-dsc-and-custom-resources-8702?l=3DnsS2H1_1504984382)
+
+
+[What's New in PowerShell v5](https://mva.microsoft.com/en-US/training-courses/whats-new-in-powershell-v5-16434?l=Oq4Os59VC_2506218965)
+
+
+*Paid Video Training*
+
+
+[Windows PowerShell Desired State Configuration Fundamentals](https://www.pluralsight.com/courses/powershell-desired-state-configuration-fundamentals)
+
+
+[Advanced Windows PowerShell Desired State Configuration](https://www.pluralsight.com/courses/advanced-powershell-dsc)
+
+_My course thanks for watching!_
+
+
+[Practical Desired State Configuration (DSC)](https://www.pluralsight.com/courses/practical-desired-state-configuration)
+
+
+_Books_
+
+
+[The DSC Book](https://leanpub.com/the-dsc-book)
+
+
+### Sources
+
+
+[The DSC Book](https://leanpub.com/the-dsc-book) - You should pick up a copy :)
+
+
+[Configuring the Local Configuration Manager](https://msdn.microsoft.com/en-us/powershell/dsc/metaconfig)
+
+[Setting up a DSC web pull server](https://msdn.microsoft.com/en-us/powershell/dsc/pullserver)
+
+[http://duffney.io/Configure-HTTPS-DSC-PullServer](http://duffney.io/Configure-HTTPS-DSC-PullServer)
+
+
+### Credit
+
+
+[Arie H](https://disqus.com/by/ArieHein/) left a comment on my blog letting me know that a pervious blog post of mine was out of date and there was a new version documented on msdn. He explained the short commings of my pervious post and pointed out what was different between v1 and v2 at a high level. It was his comment that motivated me to write this blog post. I'll be honest I didn't want to write it as first because of the time commitment, but I knew he was right I should write it so I did! Thanks for the motivation Arie H.
