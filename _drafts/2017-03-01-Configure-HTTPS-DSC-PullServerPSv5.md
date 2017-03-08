@@ -40,7 +40,7 @@ Set-LabHostDefault -ConfigurationPath C:\Lability\Configurations -HotfixPath C:\
 {% endhighlight %}
 
 
-After the lab default are setup it's time to create the directory structure for Lability. To do that we'll use another cmdlet from the Lability module called
+After the lab default are set up it's time to create the directory structure for Lability. To do that we'll use another cmdlet from the Lability module called
 `Start-LabHostConfiguration`. Once the cmdlet runs take a look at the directory structure as shown in the screenshot below. All the directory names are fairly 
 self-explanatory, but it's worth familiarizing yourself with the structure.
 
@@ -66,11 +66,7 @@ Invoke-LabResourceDownload -MediaId 2016_x64_Datacenter_EN_Eval
 
 ### Provision DSC Lab Environment
 Now that you have the Lability directories set up and the Windows Server 2016 media download it's time to build the lab environment. In order for Lability to work you'll need two
-files [DSCPullServerLab.ps1](https://gist.github.com/Duffney/d62d05b3fd42b4308014bae8c586e184) and [DSCPullServerLab.psd1](https://gist.github.com/Duffney/77f038437abbd742fa3b0614bf6471a4). You can either copy
-and paste the code in the GitHub gists and save the code into the two files mentioned or use the following commands to create the two files within your `C:\Lability\Configurations` directory. _DSCPullServerLab.ps1_ is
-the DSC configuration Lability will use to automate the setup of the AD domain and certificate authority. _DSCPullServerLab.psd1_ is the configuration data used by the DSC configuration. It also contains some Lability
-specific information that provide details on what OS to use for the environment as well as much memory and CPU to give the virtual machine. Once both files are created your configurations directory should look like the
-screen shot below.
+files [DSCPullServerLab.ps1](https://gist.github.com/Duffney/d62d05b3fd42b4308014bae8c586e184) and [DSCPullServerLab.psd1](https://gist.github.com/Duffney/77f038437abbd742fa3b0614bf6471a4). You can either copy and paste the code in the GitHub gists and save the code into the two files mentioned or use the following commands to create the two files within your `C:\Lability\Configurations` directory. _DSCPullServerLab.ps1_ is the DSC configuration Lability will use to automate the setup of the AD domain and certificate authority. _DSCPullServerLab.psd1_ is the configuration data used by the DSC configuration. It also contains some Lability specific information that provide details on what OS to use for the environment as well as much memory and CPU to give the virtual machine. Once both files are created your configurations directory should look like the screen shot below.
 
 
 {% highlight powershell %}
@@ -87,9 +83,7 @@ New-Item -Path C:\Lability\Configurations\ -Name DSCPullServerLab.psd1 -Value $c
 ![configurationsdir](/images/posts/DSCHTTPSPullServerPSv5/configurationsdir.png "configurationsdir")
 
 
-With both of these files in place your now ready to run the DSC configuration, but before you can do that you have to load the configuration into memory. To do that I'll dot source _DSCPullServerLab.ps1_ into memory and then
-execute it with the configuration data provided by _DSCPullServerLab.psd1._ After the configuration is executed it will generate two .mof documents. One will be called pull.mof and the other will be called pull.meta.mof. If you're
-not yet familair with these two files I recommend getting a copy of [The DSC Book](https://leanpub.com/the-dsc-book). It does a great job of breaking down all the componets of DSC.
+With both of these files in place your now ready to run the DSC configuration, but before you can do that you have to load the configuration into memory. To do that I'll dot source _DSCPullServerLab.ps1_ into memory and then execute it with the configuration data provided by _DSCPullServerLab.psd1._ After the configuration is executed it will generate two .mof documents. One will be called pull.mof and the other will be called pull.meta.mof. If you're not yet familair with these two files I recommend getting a copy of [The DSC Book](https://leanpub.com/the-dsc-book). It does a great job of breaking down all the componets of DSC.
 
 
 {% highlight powershell %}
@@ -102,8 +96,7 @@ DSCPullServerLab -ConfigurationData .\DSCPullServerLab.psd1 -OutputPath C:\Labil
 ![RunLabilityConfig](/images/posts/DSCHTTPSPullServerPSv5/RunLabilityConfig.gif "RunLabilityConfig")
 
 
-Now that both .mof files are created it now time to start the lab configuration. The cmdlet to do that is `Start-LabConfiguration`. The only mandatory parameter you have to use is `-ConfigurationData`. I however, perfer to add
-the `-Verbose` parameter as well, so I can see what Lability is doing. When prompted enter the local administrator password, the same one entered at the time of generating the DSC configurations.
+Now that both .mof files are created it now time to start the lab configuration. The cmdlet to do that is `Start-LabConfiguration`. The only mandatory parameter you have to use is `-ConfigurationData`. I however, perfer to add the `-Verbose` parameter as well, so I can see what Lability is doing. When prompted enter the local administrator password, the same one entered at the time of generating the DSC configurations.
 
 
 *Delete all external adapters on your Hyper-V host before running this command*
@@ -130,10 +123,7 @@ _Coffee break ETA 10 minutes_
 ## Generate Pull Server Web Certificate
 
 
-Once the virtual machine has finished booting up it should be configured as both a domain controller and a certificate authority. Log into the virtual machine with the user name of administrator and use the password
-you created when generating the .mof documents. Next, open up the PowerShell ISE. We now have to generate the web server certificate that the pull server will use for HTTPS traffic. I'll be using the certutil command line
-utility and PowerShell to request the certificate. All the code required to obtain the certificate is listed below. If you'd like to walk through the process in the GUI, follow the steps in my previous [blog post](http://duffney.io/Configure-HTTPS-DSC-PullServer).
-You could also use a PowerShell function called [New-DomainSignedCertificate](https://gist.github.com/Duffney/d78b3d9beebcf31aa053256e802ad34f), which I found on Stack. It basically wraps the certutil inside a PowerShell function.
+Once the virtual machine has finished booting up it should be configured as both a domain controller and a certificate authority. Log into the virtual machine with the user name of administrator and use the password you created when generating the .mof documents. Next, open up the PowerShell ISE. We now have to generate the web server certificate that the pull server will use for HTTPS traffic. I'll be using the certutil command line utility and PowerShell to request the certificate. All the code required to obtain the certificate is listed below. If you'd like to walk through the process in the GUI, follow the steps in my previous [blog post](http://duffney.io/Configure-HTTPS-DSC-PullServer). You could also use a PowerShell function called [New-DomainSignedCertificate](https://gist.github.com/Duffney/d78b3d9beebcf31aa053256e802ad34f), which I found on Stack. It basically wraps the certutil inside a PowerShell function.
 
 {% highlight powershell %}
 $inf = @"
@@ -172,7 +162,7 @@ $inf | Set-Content -Path $infFile
 {% endhighlight %}
 
 
-## Writting the Pull Server DSC Config
+## Writing the Pull Server DSC Config
 
 
 We now have everything we need to build a pull server. Because DSC is meant to automate the configuration of Windows Servers, I will of course use a DSC configuration to setup the pull server. This configuration has three parameters Nodename,certificateThumbPrint, and RegistrationKey. Nodename will be the name of the pull server. CertificateThumbPrint is the certificate thumbprint of the web server certificate we generated previously. This part can be tricky becasue if you're using certificates to encrypt the mofs there will be a different thumbprints. Just keep in mind this is the thumbprint of the web server certificate which encrypts the HTTPS traffic not the .mof files. The last parameter, RegistrationKey needs a little explaining. In version "2" of the pull server this registration key is used to authenticate the client node with the pull server. It's noting more than a GUID stored in a text file, but it's very important. This replaces the configuration ID used by version "1" of the pull server. This registration key will be used again when we configure the LCM of the client node that connects to the pull server.
@@ -251,7 +241,7 @@ Install-Module xWebAdministration
 {% endhighlight %}
 
 
-### Authoring the Pull Server Client DSC Configuration [explain Configuration names replaced node name specific configslpkow]
+### Authoring the Pull Server Client DSC Configuration
 
 
 The next step is to write the DSC configurations you want the clients of the pull server to pull down. The configuration I'm using installs the windowsfeature web-server as well as creates a folder at the root of C: called Globmantics. The last thing it does is create a virtual directory in IIS with a physical path of the folder created at C:\Globomantics. Creating the virtual directory requires the external DSC resource _xWebAdministration_, which I previsouly downloaded. After you run the configuration you also need to generate a checksum for that configuration as outlines in step 3.1 shown above. Luckily enough there is a cmdlet that will do this for you called `New-DscChecksum`, all you need to do is provide the path of the mof document and it will generate a checksum for you. Once the mof document and checksum are generated it's now time to publish them to the pull server.
@@ -346,7 +336,7 @@ Update-DscConfiguration -ComputerName pull -Verbose -Wait
 
 ### Future Learnings, Sources, and Credits
 
-You now have a fully functional DSC pull server! Once you've run through this a few times it becomes very easy. There are a lot of moving parts which confused me early on and I hope this blog post helps through the process. I often see reddit posts or tweets asking where should I go to learn DSC, so there is my compiled list. I've personally watched or read most of these sources of information and can vouche for their usefulness. 
+You now have a fully functional DSC pull server! Once you've run through this a few times it becomes very easy. There are a lot of moving parts which confused me early on and I hope this blog post helps through the process. I often see reddit posts or tweets asking where should I go to learn DSC, so there is my compiled list. I've personally watched or read most of these sources of information and can vouch for their usefulness. 
 
 
 ### Best Sources for Learning DSC
