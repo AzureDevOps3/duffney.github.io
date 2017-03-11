@@ -1,10 +1,10 @@
 ---
 layout: post
 title:  "Configuring an HTTPS Pull Server for Desired State Configuration PowerShell Version 5"
-date:   2017-03-01 09:02:00
+date:   2017-03-10 09:02:00
 comments: true
 tags: [PowerShell, DSC, DesiredStateConfiguration, LCM, Pull, PullServer, HTTPS]
-modified: 2017-03-01
+modified: 2017-03-10
 ---
 #### Applies to: Windows PowerShell 5.0
 
