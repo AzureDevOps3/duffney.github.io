@@ -317,7 +317,7 @@ New-DscChecksum -Path $DestinationPath
 You now have an operational pull server and have published both a DSC configuration and a DSC resource module to the pull server. The next and final step is to pull that configuration from the pull server. Before you can pull the configuration, you have to configure the client node's LCM _Local Configuration Manager_, this is what connects the client node with the pull server. Since we have to write the LCM configuration before we can apply, let's talk about that next. 
 
 
-### write LCM Configuration
+### Write the Client LCM Configuration
 
 
 In PowerShell version 5 or higher, a special line of code is used at the beginning of a DSC configuration to indicate that it's a LCM configuration. That line of code is `[DSCLocalConfigurationManager()]’, which you'll see on line 1 of the configuration below. Besides this, the rest of the configuration is just like a normal DSC configuration.
@@ -350,7 +350,7 @@ Update-DscConfiguration -ComputerName pull -Verbose -Wait
 You now have a fully functional DSC pull server! Once you've run through this a few times it becomes very easy. There are a lot of moving parts which confused me early on and I hope this blog post helps you through the process. I often see reddit posts or tweets asking where should I go to learn DSC, so there is my compiled list. I've personally watched or read most of these sources of information and can vouch for their usefulness.
 
 
-### Best Sources for Learning DSC
+## Best Sources for Learning DSC
 
 *Free Video Training*
 
@@ -384,7 +384,7 @@ _Books_
 [The DSC Book](https://leanpub.com/the-dsc-book)
 
 
-### Sources
+## Sources
 
 
 [The DSC Book](https://leanpub.com/the-dsc-book) - You should pick up a copy :)
@@ -397,7 +397,7 @@ _Books_
 [http://duffney.io/Configure-HTTPS-DSC-PullServer](http://duffney.io/Configure-HTTPS-DSC-PullServer)
 
 
-### Credit
+## Credit
 
 
 [Arie H](https://disqus.com/by/ArieHein/) left a comment on my blog letting me know that a previous blog post of mine was out of date and there was a new version documented on msdn. He explained the shortcomings of my previous post and pointed out what was different between v1 and v2 at a high level. It was his comment that motivated me to write this blog post. I'll be honest, I didn't want to write it as first because of the time commitment, but I knew he was right, I should write it, so I did! Thanks for the motivation Arie H.
