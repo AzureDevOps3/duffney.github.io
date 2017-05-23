@@ -140,4 +140,52 @@ Invoke-Command -Session $session -ScriptBlock {New-Item -Type Directory -Name In
 Copy-Item -Path "C:\$env:USERPROFILE\Downloads\regular-expression-introduction\*" -Destination 'c:\Intro-To-Regex\' -ToSession $session -Recurse
 {% endhighlight %}
 
+## Non-Hyper-V Hosts Instructions
+
+In case you are not using Hyper-V as your hypervisor you can still use the Dsc documents to provision the lab environment. You will need to create a virtual machine by some means
+on your host. Whether that be by mounting an ISO and installing from disk or by using some other provisioning like vagrant. The following set of instructions assumes you've created a virtual machine and install a Windows Server operation system 2012R2 or higher with PowerShell version 5 installed.
+
+### Setting up the Virutal Machine
+
+
+Before you can run the Dsc configuration you have to download the required resource modules from the PSGallery. The following command will find and install the two required modules.
+You might be promopted when it starts the download to allow it, click `Yes To All` when prompted.
+
+{% highlight powershell %}
+Find-Module xactivedirectory,xwindowseventforwarding | Install-Module
+{% endhighlight %}
+
+The configuration used in this lab requires the server name to be `GDC01`, issue the below command in a PowerShell prompt to rename the computer.
+
+{% highlight powershell %}
+{% endhighlight %}
+
+
+### Download Exercise Files & Run the Configuration
+
+
+Next you will need to download the excercise files found [here](https://app.pluralsight.com/library/courses/regular-expression-introduction/exercise-files). Copy the IntroToRegex.ps1 and IntroToRegex.psd1 into the new virtual machine. Save them to any location you'd like. Once both files are copied open then both up in the PowerShell ISE. You can do that by right clicking and selecting edit.
+
+Within the IntroToRegex.psd1 add `$ConfigData =` at the start of line 1, so it looks like the below snippet. Select all the code by hitting `ctrl + a` and hit F8 to run the code. This will give you the configuration data in a variable called `$ConfigData`. Which will be used with the Dsc configuration in the next step.
+
+{% highlight powershell %}
+$ConfigData = @{
+{% endhighlight %}
+
+With the `$ConfigData` loaded into memory, switch the PowerShell ISE to the IntroToRegex.ps1 file. Hit F5 to run the entire configuration, this will load it into memory so we can execute it. After the configuration in loaded into memory execute the below line in the interactive PowerShell console. When prompted for credential enter the local administrator password and click Ok. When the configuration finishes generating the mof you'll see an output of the 
+
+{% highlight powershell %}
+IntroToRegex -ConfigurationData $ConfData -OutputPath `c:\dsc`
+{% endhighlight %}
+
+The last few stepss are to apply the Local Configuration Manager settings and run the Dsc configuration. To do that issue the below commands pointing the path parameter to the folder that contains the GDC01.mof and GDC01.meta.mof files.
+
+{% highlight powershell %}
+Set-DscLocalConfigurationManager -Path 'C:\dsc`\' -Force -Verbose
+Start-DscConfiguration -Path 'C:\dsc`' -Wait -Verbose -Force
+{% endhighlight %}
+
+After applying the configuration, you'll be forced for a restart. Because the GDC01.meta.mof contain some settings to allow reboots and to continue the configuration after reboot no intervention is required. *Configuration takes 3-5 minutes to run* 
+
+
 *Thank you for your interest in my course, I hope you enjoy it and happy learning!*
