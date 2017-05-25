@@ -89,7 +89,7 @@ With both of these files in place you're now ready to run the DSC configuration,
 {% highlight powershell %}
 cd c:\Lability\Configurations
 .\DSCPullServerLab.ps1
-DSCPullServerLab -ConfigurationData .\DSCPullServerLab.psd1 -OutputPath C:\Lability\Configurations\
+Pull -ConfigurationData .\DSCPullServerLab.psd1 -OutputPath C:\Lability\Configurations\
 {% endhighlight %}
 
 
