@@ -16,9 +16,7 @@ author:
 
 pages_list:
   About: '/about/'
-  Courses": '/courses/'
   Archives: '/archives/'
-  MechGallery: '/mechgallery'
   
 
 # Build settings
