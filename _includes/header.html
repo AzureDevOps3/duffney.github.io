@@ -17,6 +17,18 @@
         <hr class="panel-cover__divider panel-cover__divider--secondary">
 
         <div class="navigation-wrapper">
+
+          <!-- Navigation -->
+          <ul class="menu-navigation";style="list-style-type:none">
+              {% for page in site.pages_list %}
+              <li>
+                <small><a href="{{ page[1]  }}">{{ page[0] }}</a></small>
+              </li>
+              {% endfor %}
+              <li>
+                <small><a href="/tags/">Tags</a>&nbsp|&nbsp<a href="/categories/">Categories</a></small>
+              </li>
+            </ul>        
             
         <nav class="cover-navigation cover-navigation--primary">
           <ul class="navigation">
