@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-# _I am Here to Help You Learn PowerShell_
+## _I am Here to Help You Learn PowerShell_
 
 ### Quick Bio
 
