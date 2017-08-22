@@ -3,7 +3,7 @@ title: duffney.io
 description: 'DevOps Engineer | Pluralsight Author | Speaker | Blogger | PowerShell Advocate'
 url: 'http://duffney.io'
 #enforce_ssl: duffney.io
-baseurl: /
+baseurl: ''
 google_analytics: 'UA-41356215-3'
 disqus_shortname: duffney
 
@@ -22,7 +22,7 @@ pages_list:
 
 # Build settings
 destination: _site
-paginate: 10
+paginate: 5
 permalink: /:title
 markdown: kramdown
 highlighter: rouge
@@ -33,7 +33,7 @@ kramdown:
   # do not replace newlines by <br>s
   hard_wrap: false
 
-gems:
+plugins:
   - jemoji
   - jekyll-sitemap
   - jekyll-gist
