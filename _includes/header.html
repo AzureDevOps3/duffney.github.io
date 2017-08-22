@@ -18,17 +18,15 @@
 
         <div class="navigation-wrapper">
 
+
           <!-- Navigation -->
-          <ul class="menu-navigation";style="list-style-type:none">
+          <ul class="menu-navigation";style="list-style: none;">
               {% for page in site.pages_list %}
               <li>
                 <small><a href="{{ page[1]  }}">{{ page[0] }}</a></small>
               </li>
               {% endfor %}
-              <li>
-                <small><a href="/tags/">Tags</a>&nbsp|&nbsp<a href="/categories/">Categories</a></small>
-              </li>
-            </ul>        
+            </ul>      
             
         <nav class="cover-navigation cover-navigation--primary">
           <ul class="navigation">
