@@ -8,6 +8,11 @@ modified: 2017-08-23
 
 Pester is a PowerShell behavior-driven development (BDD) style testing framework. But, really all you need to know about it before getting started, is that it's a testing framework and it can be used to automate the testing of your PowerShell code. You might think to yourself well what's the point of that? I already wrote my PowerShell function, all I need to do now is run it and see if it does what I want. That's called testing the code and is exactly what Pester can do for you. To put it in perspective a little, you probably learned PowerShell so that you could automate and have the computer do things for you. Why not learn Pester and have the computer do the testing for you as well?
 
+
+* TOC
+{:toc}
+
+
 _Warning blog post written on Ubuntu with PowerShellCore_
 
 
