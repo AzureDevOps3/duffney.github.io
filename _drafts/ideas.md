@@ -2,5 +2,7 @@
 
 * Using Partial (DSC) Desired State Configurations
 * How to Use DSC Composite Configurations
-* Getting Started with Pester
+* [x]Getting Started with Pester
 * Debugging PowerShell with Visual Studio Code
+* Using Invoke-DscResource
+* Using module versions with invoke-dscresource
