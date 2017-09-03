@@ -3,7 +3,7 @@ layout: post
 title:  "Using Module Versions with Invoke-DscResource"
 date:   2017-09-02 09:02:00
 comments: true
-tags: [PowerShell, Dsc, DesiredStatConfiguration, modules, versions, moduleversion, Invoke-DscResource]
+tags: [PowerShell, Dsc, DesiredStatConfiguration, modules, versions, moduleversion, Invoke-DscResource, ModuleSpecification, module, specification, version]
 modified: 2017-09-02
 ---
 
