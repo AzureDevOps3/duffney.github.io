@@ -4,7 +4,8 @@ title: I am Here to Help You Learn
 permalink: /about/
 ---
 
-My name is Josh Duffney and my mission is to help you learn about automation and orchestration. I am a DevOps Engineer focued on automation and orchestartion of Microsoft Windows Platforms. If you landed here hoping to learn about Windows PowerShell, you're in the right place. PowerShell is the technology that makes automation on Windows possible. Because of that the majority of the content here is PowerShell focused, but often times you need something to help manage that automation, so I also blog about orchestration. If you are new to automation and orchestration be sure to check out [Orchestration and Automation: The Big Picture](https://app.pluralsight.com/library/courses/orchestration-automation-big-picture).
+My name is Josh Duffney and I'm here to help you learn about automation and orchestration. I am a DevOps Engineer focused on automation and orchestration of Microsoft Windows Platforms. If you landed here hoping to learn about Windows PowerShell, you're in the right place. PowerShell is the technology that makes automation on Windows possible. Because of that the majority of the content here is PowerShell focused, but often times you need something to help manage that automation, so I also blog about orchestration.
+
 
 ## Community Feedback
 
@@ -12,7 +13,6 @@ My name is Josh Duffney and my mission is to help you learn about automation and
 
 
 ## Pluralsight Courses
-
 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/FFwQ2DjbfVY" frameborder="0" allowfullscreen></iframe>
