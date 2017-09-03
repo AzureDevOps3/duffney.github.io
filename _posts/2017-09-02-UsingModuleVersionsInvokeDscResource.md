@@ -9,6 +9,8 @@ modified: 2017-09-02
 
 Invoke-DscResource is a cmdlet available in PowerShell version 5 and above. It allows you to run a Dsc resource method without having to generate a mof document or even write a configuration document. In this blog post you'll learn how to use a ModuleSpecification to tell the cmdlet which version of a resource module to use. Why would you need to do that? By default, the cmdlet will use the latest version of the resource called which might not be what you want. Knowing how to specify the version will help you avoid unexpected behavior. Furthermore not specifying the module version means you have to ensure only one version exists on the target node. Which would also means you can't take advantage of PowerShell's multiple module version support in PowerShell version 5 and above.
 
+
+### Table of Contents
 * TOC
 {:toc}
 
