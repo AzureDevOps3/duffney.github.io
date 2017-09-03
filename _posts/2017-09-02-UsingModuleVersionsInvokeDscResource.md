@@ -19,7 +19,8 @@ Before I dive into the ModuleSpecification let's take a look at what using Invok
 _If you get an access denied error, open your PowerShell editor or prompt with Admin permissions_
 
 ``` powershell
-Invoke-DscResource -Name File -Method test -ModuleName PSDesiredStateConfiguration -Property @{DestinationPath='C:\temp\InvokeDscResource.ps1';Ensure='Present'}
+Invoke-DscResource -Name File -Method test -ModuleName PSDesiredStateConfiguration`
+ -Property @{DestinationPath='C:\temp\InvokeDscResource.ps1';Ensure='Present'}
 ```
 
 ![FileResourceTestMethod](/images/posts/UsingModuleVersionsInvokeDscResource/FileResourceTestMethod.png "FileResourceTestMethod")
@@ -36,7 +37,8 @@ In example below, I'm using Invoke-DscResource to test if the group Administrato
 
 
 ``` powershell
-Invoke-DscResource -Name xGroup -Method test -ModuleName xPSDesiredStateConfiguration -Property @{GroupName='Administrators';Ensure='Present'}
+Invoke-DscResource -Name xGroup -Method test -ModuleName xPSDesiredStateConfiguration `
+-Property @{GroupName='Administrators';Ensure='Present'}
 ```
 
 
