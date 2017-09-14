@@ -101,13 +101,13 @@ New-DscCompositeResource @splat
 ```
 
 
-After running the code above you should see the same folder structure as shown below in the tree output screenshot.
+After running the code above, you should see the same folder structure as shown below in the tree output screenshot.
 
 
 ![tree](/images/posts/UsingDscCompositeResources/tree.png "tree")
 
 
-You've now got a composite resource, but it won't do anything because we've not added any logic into the composite resources themselves. The composite resource I created for the web server baseline is called WebServerBaseline. To update that resource I have to edit the WebServerBaseline.schema.psm1. When you open it the code should look like this.
+You've now got a composite resource, but it won't do anything because we've not added any logic into the composite resources themselves. The composite resource I created for the web server baseline is called WebServerBaseline. To update that resource I have to edit the WebServerBaseline.schema.psm1. When you open it the code should look like the configuration shown below.
 
 ```powershell
 Configuration WebServerBaseline
@@ -115,7 +115,7 @@ Configuration WebServerBaseline
 }
 ```
 
-At the moment it's an empty configuration called WebServerBaseline. Since we already have the dsc code required for this composite we can simply copy and paste it in. There is one change we have to make to the dsc configuration before it can be used in this composite resource. In order for it to work we have to remove the node block from the configuration. If you don't you'll get an error when trying to compile the mof.
+At the moment, it's an empty configuration called WebServerBaseline. Since we already have the dsc code required for this composite we can simply copy and paste it in. There is one change we have to make to the dsc configuration before it can be used in this composite resource. In order for it to work we have to remove the node block from the configuration. If you don't you'll get an error when trying to compile the mof.
 
 ![nodeblockerror](/images/posts/UsingDscCompositeResources/nodeblockerror.png "nodeblockerror")
 
@@ -190,7 +190,7 @@ configuration UsingAComposite
 ```
 
 
-The next thing to do is to apply the configuration to make sure it executes properly. To do that you must load the configuration into memory, generate the mof document, and then apply the configuration. For this example I'll just use Push mode and issue a `Start-DscConfiguration` command. I have the UsingAComposite.ps1 saved on my target machine so I can just dot source it in if you have the configuration open in vscode or the ise you can just load it into memory there. Once the configuration is loaded you can generate the mof file by calling the configuration. I specified the outputpath parameter because I wanted to specify the directory the mof would end up in. After that apply the configuration to your target server. As I mentioned I"ll do this with the Start-DscConfiguration cmdlet.
+The next thing to do is to apply the configuration to make sure it executes properly. To do that you must load the configuration into memory, generate the mof document, and then apply the configuration. For this example I'll just use Push mode and issue a `Start-DscConfiguration` command. I have the UsingAComposite.ps1 saved on my target machine so I can just dot source it in if you have the configuration open in vscode or the ise you can just load it into memory there. Once the configuration is loaded you can generate the mof file by calling the configuration. I specified the outputpath parameter because I wanted to specify the directory the mof would end up in. After that apply the configuration to your target server. As I mentioned I'll do this with the Start-DscConfiguration cmdlet.
 
 
 ```powershell
@@ -203,10 +203,10 @@ Start-DscConfiguration -Path C:\dsc -Wait -Verbose
 ![DscVerbose](/images/posts/UsingDscCompositeResources/DscVerbose.png "DscVerbose")
 
 
-### Adding Properties To a Composite Resource
+### Adding Properties to a Composite Resource
 
 
-Typically dsc resources have at least one mandatory property, but the WebServerBaseline composite resource we wrote doesn't. The reason for that is I didn't include any mandatory parameters in the composite configuration when I updated the WebServerBaseline.schema.psm1 file. Parameters are how you create both optional and mandatory properties for your composite resources. In order for us to create a mandatory property we'll have to update the WebServerBaseline.schema.psm1 file with a parameter. As an example let's say Globomantics isn't the only possible app pool name for a web server baseline therefore we want to make that a value we can input as a parameter, but we also want to make it mandatory because the configuration will fail without it. In order to do that we simple add a mandatory parameter to the WebServerBaseline.schema.psm1 called $AppPoolName.
+Typically dsc resources have at least one mandatory property, but the WebServerBaseline composite resource we wrote doesn't. The reason for that is I didn't include any mandatory parameters in the composite configuration when I updated the WebServerBaseline.schema.psm1 file. Parameters are how you create both optional and mandatory properties for your composite resources. In order for us to create a mandatory property we'll have to update the WebServerBaseline.schema.psm1 file with a parameter. As an example, let's say Globomantics isn't the only possible app pool name for a web server baseline therefore we want to make that a value we can input as a parameter, but we also want to make it mandatory because the configuration will fail without it. In order to do that we simple add a mandatory parameter to the WebServerBaseline.schema.psm1 called $AppPoolName.
 
 
 ```powershell
