@@ -1,10 +1,10 @@
 ---
 layout: post
 title:  "Getting Started with Invoke-Build"
-date:   2017-09-15 09:02:00
+date:   2017-09-19 09:02:00
 comments: true
 tags: [PowerShell, Modules, ContinuousIntegration, CI, Continuous, Integration, Invoke-Build, InvokeBuild]
-modified: 2017-09-15
+modified: 2017-09-19
 ---
 ### Table of Contents
 * TOC
