@@ -5,11 +5,10 @@
 * [x]Getting Started with Pester
 * Debugging PowerShell with Visual Studio Code
 * InvokeBuild
-    * Getting Started with InvokeBuild part 1
+    * Getting Started with InvokeBuild
         * What is invokebuild and how does it work
-    * Getting Started with InvokeBuild part 2
         * Setting up PS script analyzer
-    * Getting Started with InvokeBuild part 3
         * Adding pester tests to invokebuild
-    * Getting Started with Invoke Build part 4
         * Creating artifacts
+    * Using AppVeyor CI for PowerShell Module Development
+    * Using PSDepend for PowerShell Module Development
