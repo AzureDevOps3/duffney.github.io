@@ -10,9 +10,12 @@ modified: 2017-10-08
 * TOC
 {:toc}
 
+
 Composite resources can be thought of as help functions, but instead of helper functions for your PowerShell scripts it's a helper resource for your DSC configurations. They help solve the same problem helper functions do by modularizing your code. Which reduces the length and complexity of your code. Here is a comparison between a DSC configuration one without using a composite resource and with using a composite resource. As you can probably guess the shorter configuration is the one using a composite resource. Taking some of the logic out of the main DSC configuration helps you maintain the code by breaking it apart.
 
+
 ![compositevsnoncomposite](/images/posts/UsingDscCompositeResources/compositevsnoncomposite.png "compositevsnoncomposite")
+
 
 ### Understanding Composite Resources
 
@@ -36,7 +39,9 @@ In the example below, the resource module is called CompositeModule, which is th
 
 ### DSC Without a Composite Resource
 
+
 Now that you have an understanding of what makes up a composite resource, let’s take a look at what a normal DSC configuration looks like. For this example, I have a web server baseline configuration. It uses the built-in DSC module, PSDesiredStateConfiguration, and a custom DSC resource module, xWebAdministration. Since this configuration is a baseline, it needs to be applied to every web server in the environment. However, I have different types of web servers, so this section of code is repeated over and over again in several separate configurations. Just like when writing PowerShell functions or modules, you should condense repeated code if possible, and that's what a composite resource allows us to do.
+
 
 ``` powershell
 configuration WebServerBaseline
@@ -89,6 +94,7 @@ configuration WebServerBaseline
 
 ### Creating Composite Resources
 
+
 At this point, we have a baseline configuration we want to condense—that's the problem we're trying to solve with a composite resource. So we have the configuration code, but how do we create a composite resource? Luckily, someone has already solved that problem by creating a helper function that generates the composite resource for you. The helper function can be found on GitHub, and it's called [New-DscCompositeResource](https://github.com/PowerShellOrg/DSC/blob/master/Tooling/DscDevelopment/New-DscCompositeResource.ps1). After you look at the code, you'll notice several parameters, but the important ones are -Path, -ModuleName, and -ResourceName. All are self explanatory, but make sure you specify a $env:psmodulepath for the path so the resource can be used.
 
 
@@ -116,11 +122,13 @@ After running the code above, you should see the same folder structure as shown 
 
 You've now got a composite resource, but it won't do anything because we've not added any logic into the composite resources themselves. The composite resource I created for the web server baseline is called WebServerBaseline. To update that resource, I have to edit the WebServerBaseline.schema.psm1 file. When you open it, the code should look like the configuration shown below.
 
+
 ```powershell
 Configuration WebServerBaseline
 {
 }
 ```
+
 
 At the moment, it's an empty configuration called WebServerBaseline. Since we already have the DSC code required for this composite, we can simply copy and paste it in. However, there is one change we have to make to the DSC configuration before it can be used in this composite resource. In order for it to work, we have to remove the node block from the configuration. If we don't, we'll get an error when trying to compile the MOF.
 
@@ -178,9 +186,12 @@ configuration WebServerBaseline
 
 ### Using Composite Resources
 
+
 Now that we've updated the WebServerBaseline composite resource, it's now time to write a new DSC configuration that uses that composite resource. For this example, I'll name the new configuration UsingAComposite. The first thing you should do is import the composite module. You do that the same way as you would a normal DSC resource module with the Import-DscResource cmdlet. Right after the Import-DscResource cmdlet, create a node block. I'll just specify local host for my node. Inside the node block is where you declare the composite resource you want to use. In our case, it is WebServerBaseline. Now the next part might throw you off a bit. Inside the WebServerBaseline resource, I do not define any properties. I'll get to why in a minute, but if you take a look at the syntax for the WebServerBaseline resource `Get-DscResource webserverbaseline -Syntax`, you'll notice there are only two options: DependsOn and PsDscRunAsCredential. Both of those are optional, and I don't need to specify them in my configuration; it will work without them. Notice that the configuration is only 10 lines now, not 45?
 
+
 ![syntax](/images/posts/UsingDscCompositeResources/syntax.png "syntax")
+
 
 ```powershell
 configuration UsingAComposite
@@ -293,6 +304,7 @@ configuration UsingAComposite
 
 And lastly, if we want to apply this new configuration, we'll have to re-load the configuration into memory, generate a MOF document, and then apply the configuration. The only change should be to add a new app pool with the name of AnyAppPoolName.
 
+
 ```powershell
 . .\UsingAComposite.ps1
 UsingAComposite -OutputPath c:\DSC
@@ -301,6 +313,7 @@ Start-DscConfiguration -Path C:\DSC -Wait -Verbose -Force
 
 To check if the app pool got created, import the WebAdministration module and get the contents of IIS:\AppPools:
 
+
 ```powershell
 Import-Module WebAdministration;Get-ChildItem -Path IIS:\AppPools
 ```
@@ -308,5 +321,6 @@ Import-Module WebAdministration;Get-ChildItem -Path IIS:\AppPools
 ![appPools](/images/posts/UsingDscCompositeResources/appPools.png "appPools")
 
 ### Summary
+
 
 In the end it is up to you to decide if you want to use DSC composite resources or not. They have their advantages as you've seen in this post, but they also have a disadvantage. Which is another set of code in this case a composite PowerShell module that needs deployed to all your target nodes.
