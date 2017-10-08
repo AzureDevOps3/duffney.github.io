@@ -1,10 +1,10 @@
 ---
 layout: post
 title:  "Using Desired State Configuration (DSC) Composite Resources"
-date:   2017-09-02 09:02:00
+date:   2017-10-08 09:02:00
 comments: true
 tags: [PowerShell, DSC, DesiredStatConfiguration, Composite, CompositeResource, Resource]
-modified: 2017-09-02
+modified: 2017-10-08
 ---
 ### Table of Contents
 * TOC
