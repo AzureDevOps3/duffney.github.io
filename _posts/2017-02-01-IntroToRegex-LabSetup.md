@@ -68,14 +68,14 @@ Simply click the *Download exercise files* button to get your copy of the files.
 Within the extracted folder there will be a directory called Lability. Browse into that folder and copy _IntroToRegex.ps1_ and _IntroToRegex.psd1_ to `c:\Lability\Configuration` If you 
 kept the folder name of regular-expression-introduction when you extracted the zip you can use the command below to copy the files.
 
-```powershell
+{% highlight powershell %}
 # Download Exercises files to Downloads folder
 
 Expand-Archive $env:USERPROFILE\Downloads\regular-expression-introduction.zip -DestinationPath $env:USERPROFILE\Downloads\regular-expression-introduction
 
 Copy-Item C:\$env:USERPROFILE\Downloads\regular-expression-introduction\Lability\* -Destination C:\Lability\Configurations\
 {% endhighlight %}
-```
+{% endhighlight %}
 
 
 ### Building the Lab with Lability
