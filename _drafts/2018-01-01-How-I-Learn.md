@@ -61,16 +61,35 @@ Deciding for me is by far the most difficult step. In all honesty, I sometimes g
     * Yes, it will make me a beter a developer. 
     * _If question one is no, my peers don't know this well and question three is yes this is almost always a yes answer_
 
+* Do you have any questions that you ask yourself when deciding what to learn? Please leave them in the comments below.
+
 As you can see from these questions the answer should I learn this was a pretty clear yes and it had been clear for about a year before I decided to buckle down and do it. Throughout that year however, I did try and learn it. I attended user groups presenting on Pester, I read and tried to follow blogs, I even watched a few hour Pluralsight course on it but it didn't stick and to be honest it didn't click yet for me. It wasn't until Adam Bertram released [The Pester Book](https://leanpub.com/pesterbook) that I really understood and started to learn Pester. And this is what I mean by quality matters, Adam wrote a quality book from my point of view, a system administrator. I'll talk more about what makes up a quality resource after on in the post.
 
 # Deconstruct
 
-Most likely the thing you've chosen to learn is broad. The first question that comes to my mind after deciding what to learn is; where do I start? or how do I start?
+Most likely the thing you've chosen to learn is broad. The first question that comes to my mind after deciding what to learn is, where do I start? or how do I start?
+When faced with these questions, it's best to deconstruct the topic into manageable pieces you can learn. To deconstruct something I use a meta learning method called DiSSS. I picked it up from a book called [The 4-Hour CHEF](https://www.amazon.com/exec/obidos/ASIN/0547884591/offsitoftimfe-20) by Tim Ferriss. Here is what it means. _Sidenote: I don't follow this to a T_
+
+D = Deconstruction
+S = Selection
+S = Sequencing
+S = Stakes
+
+## Reduce through Research
+
+That's a cool acronym, but how do I deconstruct something? Great question, the first step is to reduce it. What are the minimal learning units? Using Pester as the example again, I had no idea what testing code even meant or what Pester looked like. For me the minimal learning unit was to try and figure out what Pester was. This resulted in those failed attempts to learn Pester I mentioned earlier. The first thing I learned was what a test was. My definition of a test is any execution of code that confirmed, validates or debugs logic. Before this I didn't consider running my code over and over again while creating it a test, but it was and Pester's purpose is to automate that effort. The next thing I needed to learn was the Pester synatx, since it's a DSL _Domain Specific Language_ I needed to understand it. This is how you reduce a topic. You learn enough about it to see the next step forward. During this phase in the learning process it's okay to be everywhere jumping around blog to blog, video to video. You are more or less in the discovery phase and it's used to explor the topic not understand it fully.
+
+# Sequencing
+
+Reducing through research should give you a lot of minimal learning units, but sequencing those is the most important element for learning something quickly. If you stumble upon a high quality resource like I did when I discovered the Pester Book the sequencing is already done for you. Adam does a great job of baby stepping you through the process of learning Pester by starting off with what it is and how it benefits you which is huge. If you can't find a high quality resource you have two options. One, tough it out and try and arrage them yourself or Two, ask around. It's always worth the extra effort to find the best available resource for learning something new. You get the benefit of the countless hours the aurthor put in to make the content digestable. Some topics are to new or niche to have good resources in that case you'll have to do your best to arrange the learning units yourself.
+
+What do you mean by ask around?
+
+what is a quality resource?
 
 
 # Research
 
-what is a quality resource?
 
 # Experiment
 
