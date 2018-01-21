@@ -12,3 +12,6 @@
         * Creating artifacts
     * Using AppVeyor CI for PowerShell Module Development
     * Using PSDepend for PowerShell Module Development
+* using docker compose
+* using docker on windows
+* using dsc with docker
