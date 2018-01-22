@@ -81,17 +81,21 @@ That's a cool acronym, but how do I deconstruct something? Great question, the f
 
 # Sequencing
 
-Reducing through research should give you a lot of minimal learning units, but sequencing those is the most important element for learning something quickly. If you stumble upon a high quality resource like I did when I discovered the Pester Book the sequencing is already done for you. Adam does a great job of baby stepping you through the process of learning Pester by starting off with what it is and how it benefits you which is huge. If you can't find a high quality resource you have two options. One, tough it out and try and arrage them yourself or Two, ask around. It's always worth the extra effort to find the best available resource for learning something new. You get the benefit of the countless hours the aurthor put in to make the content digestable. Some topics are to new or niche to have good resources in that case you'll have to do your best to arrange the learning units yourself.
+Reducing through research should give you a lot of minimal learning units, but sequencing those is the most important element for learning something effectivly. If you stumble upon a high quality resource like I did when I discovered the Pester Book the sequencing is already done for you. Adam did a great job of baby stepping you through the process of learning Pester by starting off with what it is and how it benefits you which is huge. If you can't find a high quality resource you have two options. One, tough it out and try and arrage them yourself or Two, ask around. It's always worth the extra effort to find the best available resource for learning something new. You get the benefit of the countless hours the aurthor put in to make the content digestable. Some topics are to new or niche to have good resources in that case you'll have to do your best to arrange the learning units yourself. The best method for this is trail and error as I did when I first tried to learn Pester. I consumed all I could find on the subject and I did gain some knowledge but it was time consuming and a little frustrating.
 
-What do you mean by ask around?
+## High Quality Resources
 
-what is a quality resource?
+A high quality resource is something that takes care of the reducing, the sequencing and to some degree the selection from the DiSSS acronym mentioned ealier. The resource can come in any format a book, a Pluralsight course, or a well written blog post or series of blog posts. When you discover it you should feel as if the gates of knowledge have opened and white light is shining on it. More realistically you should think to yourself this is it, I understand from a high level the table of contents. So how do you find such a resource?
+
+### Searching for High Quality Resources
+
+Finding a high quality resource isn't all that difficult in today's information age. A quick Google search `best regex book` will take you a long way. It get's tricky when what your trying to learn is inbetween beginner and advanced or on a topic that is say spread between system administrator and developement. This is when you have to utalize your social skills... This is what I meant by ask around. Ask peers, mentors or blast the question of socail media to strangers. I've found vauge questions like "What's the best c# resource to learn from?" to be not very effecitve. It's ineffective for a number of reasons one it doesn't provide context to how I want to learn. I learn best fron a well structured book. In that case I should rephrase to "What's the best book for learning c#? That is better but still didn't get me what I wanted. What I really want and I don't know if it exists is "What's the best book for c# for a persom from operations?" See my reason for wanting to learn C# is different than most, I don't want to learn how to create apps I want to create servies and understand .net better to improve my PowerShell skills. 
 
 
-# Research
 
 
-# Experiment
+
+### Experiment
 
 # Apply
 
