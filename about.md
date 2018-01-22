@@ -1,24 +1,38 @@
 ---
 layout: page
-title: I am Here to Help You Learn
+title: about
 permalink: /about/
 ---
 
-My name is Josh Duffney and I'm here to help you learn about automation and orchestration. I am a DevOps Engineer focused on automation and orchestration of Microsoft Windows Platforms. If you landed here hoping to learn about Windows PowerShell, you're in the right place. PowerShell is the technology that makes automation on Windows possible. Because of that the majority of the content here is PowerShell focused, but often times you need something to help manage that automation, so I also blog about orchestration.
+My name is Josh Duffney, I spent the first part of my career in technology avoiding programming. Since then, I've had a change of heart and started down the DevOps path. I quickly figured out coding is where I belong, I no longer consider my job a job. I'm a craftsman! I started my journey as a sysadmin. More specificly a Windows sysadmin. A few years ago I picked up PowerShell and have not looked back since. I have a long road a head of me as I seek to understand and apply all things DevOps, but I could not be more excited! Along this journey I'm dedicated to documenting my learns. Whether that be in the form of blog posts, code repositories, presentations, or Pluralsight courses. My goal is to take as many of you with me as I can. Teach what I know and learn from you what I don't know. In the background, I have several obsessions. Biohacking, productivity hacking, health, fitness, and self improvement. Which are helping me unlock my full potential. You can learn more about me by reading [Doubling My Salary a PowerShell Story](http://duffney.io/doubling-my-salary-a-powershell-story).
 
 
-## Community Feedback
+## My Work
 
-![streetcred](/images/streetcred.png "streetcred")
+### Open Source Projects
+
+[InvokeDsc](https://github.com/Duffney/InvokeDSC)
+
+[ansibleish](https://github.com/Duffney/ansibleish)
+
+[AppProvisionOctopusDSC](https://github.com/Duffney/AppProvisionOctopusDSC)
+
+### Conference Sessions
+
+*PowerShell+DevOps Summit 2018*
+
+[Application Provisioning with DSC and Octopus Deploy](https://powershelldevopsglobalsummit2018.sched.com/event/Cq9Y/application-provisioning-with-dsc-and-octopus-deploy)
 
 
-## Pluralsight Courses
+### Pluralsight Courses
+
+[Practical Desired State Configuration (DSC)](https://app.pluralsight.com/library/courses/practical-desired-state-configuration)
 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/FFwQ2DjbfVY" frameborder="0" allowfullscreen></iframe>
+[Introduction to Regular Expression (Regex)](https://app.pluralsight.com/library/courses/regular-expression-introduction)
 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/KguCmHCj668" frameborder="0" allowfullscreen></iframe>
+[Orchestration and Automation: The Big Picture](https://app.pluralsight.com/library/courses/orchestration-automation-big-picture)
 
 
-[![IntroToRegex](/images/IntroToRegex.png "IntroToRegex")](https://app.pluralsight.com/library/courses/regular-expression-introduction)
+[Debugging PowerShell in VS Code](https://www.pluralsight.com/courses/debugging-powershell-vs-code)

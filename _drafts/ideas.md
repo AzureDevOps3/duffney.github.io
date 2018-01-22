@@ -15,3 +15,4 @@
 * using docker compose
 * using docker on windows
 * using dsc with docker
+* my recommended powershell learning path
