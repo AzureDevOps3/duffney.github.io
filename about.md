@@ -10,28 +10,20 @@ My name is Josh Duffney, I spent the first part of my career in technology avoid
 
 ### Open Source Projects
 
-[InvokeDsc](https://github.com/Duffney/InvokeDSC)
-
-[ansibleish](https://github.com/Duffney/ansibleish)
-
-[AppProvisionOctopusDSC](https://github.com/Duffney/AppProvisionOctopusDSC)
+* [InvokeDsc](https://github.com/Duffney/InvokeDSC)
+* [ansibleish](https://github.com/Duffney/ansibleish)
+* [AppProvisionOctopusDSC](https://github.com/Duffney/AppProvisionOctopusDSC)
 
 ### Conference Sessions
 
 *PowerShell+DevOps Summit 2018*
 
-[Application Provisioning with DSC and Octopus Deploy](https://powershelldevopsglobalsummit2018.sched.com/event/Cq9Y/application-provisioning-with-dsc-and-octopus-deploy)
+* [Application Provisioning with DSC and Octopus Deploy](https://powershelldevopsglobalsummit2018.sched.com/event/Cq9Y/application-provisioning-with-dsc-and-octopus-deploy)
 
 
 ### Pluralsight Courses
 
-[Practical Desired State Configuration (DSC)](https://app.pluralsight.com/library/courses/practical-desired-state-configuration)
-
-
-[Introduction to Regular Expression (Regex)](https://app.pluralsight.com/library/courses/regular-expression-introduction)
-
-
-[Orchestration and Automation: The Big Picture](https://app.pluralsight.com/library/courses/orchestration-automation-big-picture)
-
-
-[Debugging PowerShell in VS Code](https://www.pluralsight.com/courses/debugging-powershell-vs-code)
+* [Practical Desired State Configuration (DSC)](https://app.pluralsight.com/library/courses/practical-desired-state-configuration)
+* [Introduction to Regular Expression (Regex)](https://app.pluralsight.com/library/courses/regular-expression-introduction)
+* [Orchestration and Automation: The Big Picture](https://app.pluralsight.com/library/courses/orchestration-automation-big-picture)
+* [Debugging PowerShell in VS Code](https://www.pluralsight.com/courses/debugging-powershell-vs-code)
