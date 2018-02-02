@@ -16,3 +16,6 @@
 * using docker on windows
 * using dsc with docker
 * my recommended powershell learning path
+* regex
+    * lookbehind and lookaheads explained
+* different between scripter and developer
