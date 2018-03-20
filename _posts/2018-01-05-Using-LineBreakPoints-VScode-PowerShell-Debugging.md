@@ -1,10 +1,10 @@
 ---
 layout: post
 title:  "Using Line Breakpoints in VScode to Debug PowerShell"
-date:   2018-01-06 09:02:00
+date:   2018-03-20 09:02:00
 comments: true
 tags: [PowerShell, visualstudio, visualstudiocode, vscode, debug, debugging, breakpoints, conditional breakpoints, function breakpoints]
-modified: 2018-01-06
+modified: 2018-03-20
 ---
 
 Write-Host messages are not the only way to debug PowerShell code. In this blog post you'll learn how to use the debugger in Visual Studio Code to set line breakpoints. Line breakpoints allows you to pause the code's execution on a specific line. Which makes debugging much easier. I will also show you how to manage breakpoints. You'll learn how to enable, disable, and remove breakpoints. By the end of this blog post you'll be able to debug PowerShell code with Visual Studio Code. For this blog post you'll need two things.
