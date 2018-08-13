@@ -17,7 +17,7 @@ In the image below is my current ansible repo layout. I have a group_vars folder
 
 ![unsecureVarValue](/images/posts/SecureGroupVarsWithAnsibleVault/unsecureVarValue.png "unsecureVarValue")
 
-If we run the ansible command with the debug module we can see the variables available to the remote systems. To do that I'll run the ansible command with the debug module and the argument `var=hostvars[inventory_hostname]` to display all the variables. Since I'm not using the default ansible location I also have to specify my inventory file and group of hosts I'd like to target. As you can see in the output below the password is visable here as well in clear text. We could solve this problem two ways. We could encrypt the entire file with ansible-value or we can seperate sensitive and nonsensitive variables. I'll opt to seperate the variables, encrypting the entire is a bit overkill in this example.
+If we run the ansible command with the debug module we can see the variables available to the remote systems. To do that I'll run the ansible command with the debug module and the argument `var=hostvars[inventory_hostname]` to display all the variables. Since I'm not using the default ansible location I also have to specify my inventory file and group of hosts I'd like to target. As you can see in the output below the password is visible here as well in clear text. We could solve this problem two ways. We could encrypt the entire file with ansible-value or we can separate sensitive and non-sensitive variables. I'll opt to separate the variables, encrypting the entire is a bit overkill in this example.
 
 ```powershell
 ansible -m debug -a 'var=hostvars[inventory_hostname]' -i /vagrant/inventory.yml win
@@ -29,7 +29,7 @@ ansible -m debug -a 'var=hostvars[inventory_hostname]' -i /vagrant/inventory.yml
 
 ### Create Directory Structure
 
-Before we can encrypt the senstive variable value we have to rebane and move the files in group_vars around a bit. First we'll rename web.yml to vars. Then we'll create a directory under group_vars called win and move vars inside that new folder.
+Before we can encrypt the sensitive variable value we have to renme and move the files in group_vars around a bit. First we'll rename web.yml to vars. Then we'll create a directory under group_vars called win and move vars inside that new folder.
 
 ```powershell
 mv group_vars/win.yml group_vars/vars
@@ -61,7 +61,7 @@ Next, we'll create a vault-encrypted file within the win directory to store all 
 ansible-vault create group_vars/win/vault
 ```
 
-When prompted enter your desired password and after you confirm the password a new file will open. In the file, put in the sensitive variable from the pervious vars folder. A common practice is to use the same variable name but prefix it with `vault_` to indicate these are defined in a vault protected file. The three `---` indicate a yaml file. Save and close the file after making the necessary changes.
+When prompted enter your desired password and after you confirm the password a new file will open. In the file, put in the sensitive variable from the previous vars folder. A common practice is to use the same variable name but prefix it with `vault_` to indicate these are defined in a vault protected file. The three `---` indicate a yaml file. Save and close the file after making the necessary changes.
 
 ```
 ---
@@ -75,7 +75,7 @@ The directory structure should now look like this. To compare use the three comm
 
 ### Referencing Vault Variables from Unencrypted Variables
 
-We could use the variables as they are right now with all the unsecure variables being in the vars file and all the secure variables being in the valut file. However this does make it difficult to keep track of the variables. That's why I'll be refercing the variables in the vault file inside the vars file. To do that open the vars file and make the following changes. It's not necessary to add a comment section seperated the nonsensitve and sensitive variables, but it does make it clear which vars are coming from the vault file.
+We could use the variables as they are right now with all the unsecure variables being in the vars file and all the secure variables being in the vault file. However, this does make it difficult to keep track of the variables. That's why I'll be referring the variables in the vault file inside the vars file. To do that open the vars file and make the following changes. It's not necessary to add a comment section separated the non-sensitive and sensitive variables, but it does make it clear which vars are coming from the vault file.
 
 ```powershell
 vi group_vars/win/vars
@@ -100,7 +100,7 @@ At this point, we're done. To verify the password is no longer shown in clear te
 ansible -m debug -a 'var=hostvars[inventory_hostname]' -i /vagrant/inventory.yml win
 ```
 
-Notice that when you run this command now it fails. This is because it uses encrypted variables and you now have to provide the vault password with the command. If we run it again with the --ask-vault-pass parameter and specify the password we'll get what we would expect. 
+Notice that when you run this command now it fails. This is because it uses encrypted variables and you now have to provide the vault password with the command. If we run it again with the --ask-vault-pass parameter and specify the password, we'll get what we would expect. 
 
 ![secureVar](/images/posts/SecureGroupVarsWithAnsibleVault/secureVar.png "secureVar")
 
@@ -108,4 +108,4 @@ As you can see the value for ansible_password is now the secure variable in vaul
 
 ## Conclusion
 
-Variables are senstive and nonsensitive, but having them in different places reduces visabliity. Putting sensitive values in a vault protected file is a must, but you can also include them in normal variable files to improve visibility.
+Variables can be sensitive and non-sensitive, but having them in different places reduces visibility. Putting sensitive values in a vault protected file is a must, but you can also include them in normal variable files to improve visibility.
