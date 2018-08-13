@@ -109,3 +109,7 @@ As you can see the value for ansible_password is now the secure variable in vaul
 ## Conclusion
 
 Variables can be sensitive and non-sensitive, but having them in different places reduces visibility. Putting sensitive values in a vault protected file is a must, but you can also include them in normal variable files to improve visibility.
+
+### Sources
+
+[How To Use Vault to Protect Sensitive Ansible Data](https://www.digitalocean.com/community/tutorials/how-to-use-vault-to-protect-sensitive-ansible-data-on-ubuntu-16-04)
