@@ -81,18 +81,18 @@ We could use the variables as they are right now with all the unsecure variables
 vi group_vars/win/vars
 ```
 
-_group_vars/win/vars contents_
-
+{% raw %}
+```shell
 ---
-nonsensitive data
-
+# nonsensitive data
 ansible_user: vagrant
 ansible_port: 5985
 ansible_connection: winrm
 
-sensitive data
-
+# sensitive data
 ansible_password: "{{ vault_ansible_password }}"
+```
+{% endraw %}
 
 
 ### Verify the Password is Encrypted
