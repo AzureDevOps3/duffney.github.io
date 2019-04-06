@@ -80,18 +80,21 @@ We could use the variables as they are right now with all the unsecure variables
 ```powershell
 vi group_vars/win/vars
 ```
-~~~
-```shell
+
+_group_vars/win/vars contents_
+
 ---
-# nonsensitive data
+nonsensitive data
+
 ansible_user: vagrant
 ansible_port: 5985
 ansible_connection: winrm
 
-# sensitive data
+sensitive data
+
 ansible_password: "{{ vault_ansible_password }}"
-```
-~~~
+
+
 ### Verify the Password is Encrypted
 
 At this point, we're done. To verify the password is no longer shown in clear text we can run the ansible debug command again.
