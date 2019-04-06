@@ -89,7 +89,7 @@ ansible_port: 5985
 ansible_connection: winrm
 
 # sensitive data
-ansible_password: "{{ vault_ansible_password }}"
+ansible_password: `"{{ vault_ansible_password }}`"
 ```
 
 ### Verify the Password is Encrypted
