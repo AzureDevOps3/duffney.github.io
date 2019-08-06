@@ -11,6 +11,10 @@ Digital minimalism is a difficult thing to implement when your job requires you 
 * TOC
 {:toc}
 
+## On-Call Detox Grace Period
+
+It's important to give yourself one to two days to transition back into a deep work mode. If you dive straight into this protocol it might appear you've dropped off the face of the earth. Leaving your team to wonder "What are they doing?" "Are they on leave?" To avoid that use the one to two days grace period to plan deep work sessions and communicate that with the team. If you use a Kanban board or similar tool be sure to update that with what you're planning on working on. That or state it in a daily stand up or equivalent meeting. Another reason for the detox grace period is on-call work tends to follow you. If you were the one involved, you'll be the one asked to complete retros and the like. Be sure to give yourself enough time to complete this work. This will reduce the chances of your deep work sessions being interrupted with urgent requests. I learned both of these lessons after the fact. In hindsight they are obvious but what can you do besides learn from your mistakes. 
+
 ## 1. Cell Phone on Airplane Mode
 
 At 8:00am the morning I go off call, my cell phone goes on airplane mode. I have Imessage setup on my laptop and if someone really needs me I can be alerted there. There is no need for me to have my cell phone on and at my desk after I'm on-call. The only exception to this is a brief period when I need it for multi factor authentication. This is probably alarming to some people and would make them feel rather uncomfortable. What ifs start to creep into their minds. What if I miss an important call? What if I miss a Tweet? What if I miss... the list goes on and on. The reality is you're probably not going to miss much. Keep track for a while, see if you get any important messages. I bet you can go weeks with zero super important messages. Your cell phone has a lot less power over you when it doesn't constantly alert you and isn't visibly seen. Which is the next step in my protocol.
