@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "The Pursuit of Autonomy Master and Purpose"
+title:  "The Pursuit of Autonomy Mastery and Purpose"
 date:   2019-08-06 13:37:00
 comments: true
 modified: 2019-08-06
@@ -28,7 +28,7 @@ Reflecting on the past three years, those are the three things I’ve strived to
 
 Purpose however, has been elusive and fleeting. At times the stars have aligned and the power of the infinity stones unleashed. It is at those times I feel on top of my game. But then purpose fades and becomes unclear. One by one, the infinity stones are stolen from my gauntlet. I’ve only just begun to contemplate the reasons as to why this happens. Perhaps, it’s normal to lose purpose as one chapter ends and another beings. But I can’t shake the feeling that this thinking is wrong and a common thread should instead tie the chapters together. Even though I do not have all the answers, I’ll share what I’ve learned so far along my journey. I’ll start by diving into each of the three factors; autonomy, mastery, and purpose. 
 
-### Defining Autonomy Master and Purpose
+### Defining Autonomy Mastery and Purpose
 
 In my mind I equate autonomy with freedom. The freedom to decide where and how I invest my time and energy. I’ve found that this is the largest contributor to my happiness. It makes me feel trusted, valued, and respected. Autonomy can be earned, but if you work for an employer, it’s largely given to you. I’ve been very fortunate in this regard. If you’re interviewing make sure to get a really good feel for your future boss’s leadership style. I chose the word leadership for a reason. You want someone who leads you not “manages” you. 
 
