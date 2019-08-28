@@ -9,6 +9,7 @@ modified: 2019-08-26
 I've been using Ansible to manage a Windows environment for a little over a year now and I wanted to share a method of using Ansible that's helped me adopt it. Coming from a Windows background, I obviously have a strong PowerShell background and to be honest I struggled and still struggle sometimes using Ansible. The reason being, my default behavior is to open up a PowerShell prompt and start hacking away. Skilling up with Ansible has been somewhat difficult because I heavily lean on PowerShell when I need to do something quickly. What I've discovered is that by not taking those as opportunities to learn more Ansible I was slowing down my acquisition of Ansible knowledge. After realizing that I put some thought into how I could use Ansible more like I use PowerShell. Which made it easier for me to gravitate toward writing a playbook instead of writing a script. Using the method below I've started to shift my default behavior and have begun to enjoy learning Ansible a lot more.
 
 * TOC
+{:toc}
 
 ### Setting up WinRM
 
