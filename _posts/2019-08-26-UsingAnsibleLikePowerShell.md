@@ -11,14 +11,6 @@ I've been using Ansible to manage a Windows environment for a little over a year
 * TOC
 {:toc}
 
-### Setting up WinRM
-
-Ansible is an agentless configuration management tool. Meaning it uses other remote management protocols to connect to its targets. For Windows it's WinRM and for non-Windows it's ssh. Because it uses WinRM for Windows machines you need to configure WinRM so it can communicate with Ansible. Since Ansible does not run on Windows setting up WinRM is a bit more involved than you might be used to. The setup of WinRM depends on your authentication method, which I'll talk more about later. A common setup however is to use self-signed certificates. Which is what I'll be using for this post. 
-
-You can setup the WinRM service and listeners by hand or you can just run the nice script Ansible has called [ConfigureRemotingForAnsible.ps1](https://github.com/ansible/ansible/blob/devel/examples/scripts/ConfigureRemotingForAnsible.ps1). You can learn more about these options by reading the [Setting Up a Windows Host](https://docs.ansible.com/ansible/latest/user_guide/windows_setup.html#setting-up-a-windows-host) wiki page. For my lab environments I run this script within the build process of the image. That way it's already setup and I don't have to worry about remoting in and running it. In production environments you might chose to use PKI issued certs over self-signed. You'll have to answer this question before moving on.
-
-
-
 ### Target All, All the Time
 
 Ansible has the concept of groups. Those groups are defined in a host or inventory file. As the name implies groups are used to... well group machines together. Typically by type or function. For example, webserver or database. Being a PowerShell user, I've never really had to worry about an inventory per say or groups. I either knew the host names or the host name patterns and specified them or converted them to an array to be used with `Invoke-Command` or other cmdlets. Having to maintain an inventory for my purposes here was cumbersome and for that reason I default to using the `all` group in my playbooks. Unless I know the specific host names for the playbook I just leave the hosts section of the playbook set to `all` as shown below.
@@ -31,7 +23,7 @@ Ansible has the concept of groups. Those groups are defined in a host or invento
 
 ### Define Connection Variables
 
- Because Ansible was developed to manage Linux systems first it's no surprise that it's default is to connect with ssh on port 22. That's a problem for those of us who manage Windows systems. Luckily it's a problem easily solved by defining some Ansible variables. There are A LOT of places you can define Ansible variables and this is one thing that tripped me up for awhile. Having these variables defined in a hostfile or group_vars location made Ansible seem to heavy. I wanted something light weight where I could write out a few tasks and target the systems I needed to without having to parse a hostfile or figure out which group had the correct variables. The solution to this problem is pretty simple. Just define the variables at the top of the playbook. Ansible offers several authentication options, which you can read more about on the [Windows Remote Management Authentication Options](https://docs.ansible.com/ansible/latest/user_guide/windows_winrm.html#authentication-options) wiki page. In this example, I'm using ntlm over WinRM with http.
+ Because Ansible was developed to manage Linux systems first it's no surprise that it's default is to connect with ssh on port 22. That's a problem for those of us who manage Windows systems. Luckily it's a problem easily solved by defining some Ansible variables. There are A LOT of places you can define Ansible variables and this is one thing that tripped me up for awhile. Having these variables defined in a hostfile or group_vars location made Ansible seem to heavy. I wanted something light weight where I could write out a few tasks and target the systems I needed to without having to parse a hostfile or figure out which group had the correct variables. The solution to this problem is pretty simple. Just define the variables at the top of the playbook. Ansible offers several authentication options, which you can read more about on the [Windows Remote Management Authentication Options](https://docs.ansible.com/ansible/latest/user_guide/windows_winrm.html#authentication-options) wiki page. In this example, I'm using ntlm over WinRM with http. Previous to the variable `ansible_winrm_message_encryption`, you'd have to generate a self-signed certificate in order to setup a Windows host. Now, you don't have to worry about that. By specifiying `ansible_winrm_message_encryption: always` Ansible will enable message encryption and WinRM will be happy. You have a few different options for available and you can learn about about in the [Setting Up a Windows Host](https://docs.ansible.com/ansible/latest/user_guide/windows_setup.html#setting-up-a-windows-host) wiki page. Special thanks to [Jeremy Murrah](https://twitter.com/JeremyMurrah) for pointing out the ansible_winrm_message_encryption option to me!
 
 ```
 - hosts: all
@@ -42,6 +34,7 @@ Ansible has the concept of groups. Those groups are defined in a host or invento
     ansible_connection: winrm
     ansible_winrm_transport: ntlm
     ansible_winrm_server_cert_validation: ignore
+    ansible_winrm_message_encryption: always
 ```
 
 ### Adding Tasks
