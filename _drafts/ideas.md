@@ -3,6 +3,7 @@
 ## Kubernetes
 
 * ~~Deploying Traefik as a Kubernetes Ingress Controller with TLS~~
+* Using Kubernetes Local Persistent Volumes on Docker-Desktop
 
 ## Ansible
 
