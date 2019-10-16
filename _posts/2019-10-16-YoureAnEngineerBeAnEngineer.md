@@ -70,4 +70,5 @@ Another piece of advice I’ve been given several times lately is to be aggressi
 [Jocko Motivation GOOD](https://www.youtube.com/watch?v=IdTMDpizis8)
 
 Friend - Josephe Beaudry
+
 Co-worker - Jaigene Kang
