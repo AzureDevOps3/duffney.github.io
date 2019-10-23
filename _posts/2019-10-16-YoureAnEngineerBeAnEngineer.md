@@ -24,7 +24,7 @@ Three years ago I started a position as a coveted DevOps engineer. During which 
 For awhile I was in denial. I blamed my job for not presenting me with the opportunity to adopt these new technologies. I became increasingly unhappy when I’d push for such change or opportunity and it wouldn’t happen. Finally, I was brought to the conclusion that it’s not my employer’s responsibility to provide these opportunities. It’s my responsibility to keep a pulse on the industry and to make continual investments in my career. Even if there isn’t a direct application or project that requires knowledge of that technology at work. The other lesson I was able to learn from this is contentment is not the same as complacency. You can be content with where you are, but you still need to keep an eye on the path forward. This has been an extremely difficult concept for me to grok, it’s a daily struggle for me.
 
 
-### Devote Yourself to Learning & Experimenting (The First 20 Hours)
+## Devote Yourself to Learning & Experimenting (The First 20 Hours)
 Going back to the feedback I had gotten; “I feel you always dig these holes of analysis paralysis and then jump in late”- I discovered a pattern in my behavior. With all the new technologies that didn’t directly apply to my job, I’d do the following: Invest enough time to become vaguely familiar with the technology and then stop learning it because I couldn’t “apply” it… at work… I did this with learning Azure, AWS, and docker. The underlying problem was, I was not allowing myself the time to become competent. I was overwhelmed by what I didn’t know and I let that prevent me from continually learning. I had also convinced myself I couldn’t fully learn these technologies because I’m not a “developer”. Which I know now is just an excuse I used to make myself feel better. To my credit, I would eventually convince myself to learn some of the technology, but as was stated in the feedback, I’d jump in late. Not only did I jump in late, I’d  also jump into the shallow end and stay there...
 
 After reflecting on all of this I was reminded of a book I read several years ago. The book is titled “The First 20 Hours: How to Learn Anything . . . Fast!” by Josh Kaufman. The book points out that you do not need 10,000 hours to learn a new skill. You need roughly 10,000 hours to completely master a skill. It then explains that it only takes around 20 hours of deliberate practice to become competent in something. Hearing this idea again gave me an AH-HA moment. I realized I didn’t need to devote endless time trying to learn these new skills. Spending 20 hours was a much more palatable investment of time. Armed with the 20 hour rule, I was able to give myself the freedom to experiment and learn. 
@@ -32,7 +32,7 @@ After reflecting on all of this I was reminded of a book I read several years ag
 My biggest challenge with using the 20 hours rule to learn new things is becoming comfortable being “unproductive”. Learning new things is fun and exciting, but it’s also time spent that you could have invested elsewhere which might of been more “productive”. Productive in the sense of an existing project or task at work. In all honesty, this is something I still struggle with and the way I overcome it is to commit and focus on the strategy, not the tactics. Acknowledging that  this learning will greatly benefit me in the future does a lot to push the obsession of productivity out of my mind. 
 
 
-### Learning Isn’t the Same as Practice
+## Learning Isn’t the Same as Practice
 
 Another flaw I discovered in my understanding of skill acquisition is learning is not the same as practice. I would waste a lot of mental cycles researching the best learning material (my favorite are Manning books) and after much deliberation, jump in. Only problem was, I was learning, not practicing. I would read the chapters, take notes, and do all the labs. I would leave each chapter having learned something, but not knowing something. Frustrated that I wasn’t absorbing the knowledge, my willpower would eventually deplete and I’d stop reading the book.
 
@@ -40,11 +40,11 @@ Within the same conversation that sparked this blog post. It was recommended tha
 
 I then started to seek out a project that I could use as application. I finally decided on TeamCity as an application to put into Kubernetes. I chose it because docker images exist for it already and I’m very familiar with the architecture. As I went through my Kubernetes book I applied the lessons there to my TeamCity project. It was magical! I began to truly acquire the knowledge I was seeking. I fall in and out of this now, but the phrase that keeps me on track is “Learn enough to practice, practice until you understand.” The best advice I can give here is to seek application through bluesky projects. Will I ever deploy TeamCity on Kubernetes at my day job? Unlikely. Is that going to stop me? No.
 
-### Default Aggressive
+## Default Aggressive
 
 Another piece of advice I’ve been given several times lately is to be aggressive. I’m still working through the application of this advice, but here is what I’ve come up with so far. Be aggressive in your pursuit of knowledge. Have an aggressive will to win. Do not allow daily constraints hold you back from what you want to do. Aggressively find avenues to apply the knowledge you’ve acquired and just because it hasn’t been done before or no one is asking you to do it, it doesn’t mean it can’t be done. On a more practical level, I’ve taken this advice to mean learn and learn as much as I can. Being aggressive to me means, waking up early before my day begins and opening a nearly 600 page book on Kubernetes and getting through maybe 10 pages in an hour. It means not letting the constraints of my job limit my learning of new technology. It means constantly battling the voice of imposter syndrome that says “I’m not an expert” with a reply of “No I’m not, but I will be.”
 
-### Takeaways
+## Takeaways
 
 * You’re an engineer, go be one.
 * Adding new lines to your resume is your responsibility.
