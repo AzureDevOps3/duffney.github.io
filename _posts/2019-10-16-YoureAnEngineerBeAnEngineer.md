@@ -3,7 +3,7 @@ layout: post
 title:  "You Are an Engineer Be an Engineer"
 date:   2019-10-16 13:37:00
 comments: true
-modified: 2019-10-16
+modified: 2019-10-23
 ---
 
 Several weeks ago I got some feedback that caused me to pause and reflect. The two lines of feedback were; “I feel you always dig these holes of analysis paralysis and then jump in late.” And “You’re an engineer, go be one.”  To add context, these comments were made in a conversation I was having with a friend around how to best dive into Kubernetes. He is someone I look to when learning newer technologies. He dove into Azure, then to Containers, and most recently, Kubernetes. As he learned each technology, I meekly followed, trying to find the best ways to “learn” the technologies, which resulted in a very shallow understanding of each. I would gain a basic understanding and stop. Reflecting on the past few years, I can now understand his frustration with me. He was saying “Stop thinking, start doing”.
@@ -53,22 +53,42 @@ Another piece of advice I’ve been given several times lately is to be aggressi
 * Learn enough to practice, practice until you understand.
 * Be aggressive, go after what you want. Don’t wait to be told.
 * Community is important, find someone to push you and take action on their advice.
+* Enjoy the process.
+* Be decisive.
 
 
-### Resources, Motivation & Credits
+## Resources, Motivation, & Credits
+
+### Books
+
+[Be the Master Third Edition](https://leanpub.com/bethemaster3)
+
+[Extreme Ownership: How U.S. Navy SEALs Lead and Win](https://www.amazon.com/Extreme-Ownership-U-S-Navy-SEALs-ebook/dp/B00VE4Y0Z2)
+
+[The First 20 Hours: How to Learn Anything… Fast](https://first20hours.com/)
+
+### WebSites
 
 [Be the Master](https://bethemaster.com/)
 
 [Cloudskills](https://cloudskills.io/)
 
+### Podcasts
+
 [Cloudskills Podcast](https://cloudskills.fm/)
 
-[The First 20 Hours: How to Learn Anything… Fast](https://first20hours.com/)
+[Jocko Podcast](https://jockopodcast.com/)
+
+### Motivation
 
 [JOCKO Willink - Time Is Running Out](https://www.youtube.com/watch?v=tOYgiWEoJgs&t=1s)
 
 [Jocko Motivation GOOD](https://www.youtube.com/watch?v=IdTMDpizis8)
 
+### Credits
+
 Friend - Josephe Beaudry
 
 Co-worker - Jaigene Kang
+
+Influencers - Don Jones, Mike Pfeiffer
