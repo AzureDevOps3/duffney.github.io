@@ -1,5 +1,16 @@
 # Blog Post Ideas
 
+## PSBlogWeek
+
+* [ ] Using the markdown cmdlets 
+
+Name Ideas
+
+* _Writing Markdown from the Terminal with PowerShell_ +100
+* Using PowerShell with Markdown
+* 
+
+
 ## Kubernetes
 
 * ~~Deploying Traefik as a Kubernetes Ingress Controller with TLS~~

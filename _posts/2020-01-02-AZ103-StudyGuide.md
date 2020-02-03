@@ -158,4 +158,4 @@ _Time Commitment:_ ~2 hours per day
 
 _Tips:_
 
-* **Don’t be afraid to invest in your career financially.**
+**Don’t be afraid to invest in your career financially.**
