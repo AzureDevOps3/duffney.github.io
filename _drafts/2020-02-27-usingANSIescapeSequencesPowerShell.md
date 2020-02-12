@@ -117,30 +117,71 @@ $text = '#PS7Now'
 Write-Output "`e[s$text`e[u`e[1P"
 ```
 
+A few other text modification sequences worth mentioning are the erase in display and erase in line. While I struggle to find practical use for the at the moment. I can see them being useful as part of an April fools joke. Say you have a co-worker who is somewhat obsessed with their prompt display. You could add `` `e[s`e[u`e[K`` to the prompt function. The `s` and `u` save and restore cursor position as you've already learned. `K` in the erase in line sequence that will replace all text on the line with space characters. Which will effectively destroy their prompt function.
+
+```powershell
+$text = '#PS7Now'
+"`e[s`e[36m$test`e[u`e[K`e[0m"
+```
+
+Another fun sequence might be to erase the entire display. The sequence for that is `<n>J`, where `<n>` is the number of space characters that will replace the display.
+
+```powershell
+$text = '#PS7Now'
+"`e[2J`e[36m$text`e[0m"
+```
+
 _Read more about [Text Modification](https://docs.microsoft.com/en-us/windows/console/console-virtual-terminal-sequences#text-modification) and [Cursor Positioning](https://docs.microsoft.com/en-us/windows/console/console-virtual-terminal-sequences#cursor-positioning)._
-
-# 	Erase Display:
-"`e[2J`e[1;38;5;93m$pwd.path `e[0m normal test"
-
-# delete what you did
-"`e[s`e[1;38;5;93m$pwd.path `e[0m normal test`e[u`e[K"
-
-* erase line
-* erase display
-
-_april fools place erase display in a co-workers profile_
 
 _read more [ANSI Escape sequence](http://ascii-table.com/ansi-escape-sequences.php)._
 
-# Colors
+# Basic Foreground & Background Colors
 
-## Basic 16-Color Foreground & Background
+The original specifications of ANSI only had 8 colors that could be used to set the foreground and background colors.  The SGR (“Select Graphics Rendition”) parameters 30-37 selected the foreground color, while 40-47 selected the background. You can use these color sequences with the `m` SGR function to modify the foreground and background colors of the text. Remember to reset your sequences.
 
-## 256-Color Foreground & Background
+|Color|Foreground Code|Background Code|
+|---|---|---|
+|Black |30|40
+|Red|31|41
+|Green|32|42
+|Yellow|33|43
+|Blue|34|44
+|Magenta|35|45
+|Cyan|36|46
+|White|37|47
 
-"`e[1;38;5;93m$pwd.path `e[0m normal test"
+```powershell
+$fgColors = '30','31','32','33','34','35','36','37'
+$bgColors = '40','41','42','43','44','45','46','47'
 
-### How all 256 colors in the terminal 
+foreach ($fgColor in $fgColors)
+{
+    $bgColor = $bgColors | Get-Random
+    Write-Output "`e[$($fgColor)m#PS7`e[0m`e[30;$($bgColor)m Now `e[0m`e[7;$($fgColor);$($bgColor)m >_ `e[0m"
+}
+```
+
+_insert image here_
+
+# 8-bit 256-Color Foreground & Background
+
+If 8 colors isn't enough, which it might not be. You can also use the 8-bit sequence which provides you with a range of 265 colors. The ANSI sequence for using 8-bit color is `` `e[<Foreground or Background Code>;5;(n)`` the `(n)` represent the 8 bit color code. Foreground is indicated by `38` and background is `48`. An example sequence might look like this, `` `e[38;5;220m#PSNow``. This sequence changes the foreground color to a dark yellow. The 256 color range has different sections; 0-7 are standard colors, 8-15 are high intensity colors, 16-231 are a 6x6x6 color cube, and 232-255 are grayscale colors.
+
+ESC[ 38;5;⟨n⟩ m Select foreground color
+
+ESC[ 48;5;⟨n⟩ m Select background color
+
+0-7: standard colors
+
+8-15: high intensity colors
+
+16-231: 6 × 6 × 6 cube (216 colors)
+
+232-255: grayscale
+
+_Read more about [ANSI escape code colors](https://en.wikipedia.org/wiki/ANSI_escape_code#Colors)._
+
+You probably haven't memorized the color codes for all the 256 colors that are available. That's okay, you can output them in the terminal for reference. The following script block will output all the colors for both the foreground and background colors along with their code.
 
 ```powershell
 # 256-Color Foreground & Background Charts
@@ -158,7 +199,46 @@ foreach ($fgbg in 38,48) {  # foreground/background switch
 }
 ```
 
-# Basic Prompt Modification with ANSI
+Putting the sequence to use, you can create some very interesting text. Below are some examples outputting #PS7Now and some ANSI art for the PowerShell icon.
 
+```powershell
+"`e[38;5;27m#PS7`e[1mNow `e[22;38;5;15;48;5;27m >_ `e[0m"
+```
 
-_advanced prompt resources below_
+```powershell
+"`e[38;5;248m#PS7`e[1mNow `e[22;38;5;15;48;5;237m >_ `e[0m"
+```
+
+# Prompt Modification with ANSI
+
+Now you are armed with enough knowledge to dive into the world of hardcore prompt customizations! Instead of covering that within the confines of this post, I will instead refer you to several other sources for inspiration.
+
+[Basic To Boss: Customizing Your PowerShell Prompt by Thomas Rayner](https://www.youtube.com/watch?v=SdQYooRg7Cw&feature=youtu.be&t=)
+
+[Prompt Example from Thomas Rayner](https://github.com/thomasrayner/dev-workstation/blob/master/prompt.ps1)
+
+[How to make a pretty prompt in Windows Terminal with Powerline, Nerd Fonts, Cascadia Code, WSL, and oh-my-posh](https://www.hanselman.com/blog/HowToMakeAPrettyPromptInWindowsTerminalWithPowerlineNerdFontsCascadiaCodeWSLAndOhmyposh.aspx)
+
+[Anatomy of a Prompt (PowerShell) by Brad Wilson](https://bradwilson.io/blog/prompt/powershell)
+
+[Customize Your PowerShell Prompt with Nerd Fonts & ANSI Escape Sequences by  Trevor Sullivan](https://www.youtube.com/watch?v=DhzR7mbFE9I&feature=youtu.be)
+
+# Sources
+
+Before writing this blog post I knew nothing of ANSI escape sequences, let alone the ANSI escape character. I must give credit where it is due and list all the sources I used to gain an understanding of ANSI escape sequences.
+
+[The (Mostly) Dependency Free PowerShell Prompt - Part 1 ](https://ephos.github.io/posts/2019-6-24-PowerShell-Prompt-1)
+
+[ANSI escape code](https://en.wikipedia.org/wiki/ANSI_escape_code)
+
+[Bash tips: Colors and formatting (ANSI/VT100 Control sequences)](https://misc.flogisoft.com/bash/tip_colors_and_formatting#terminals_compatibility)
+
+[tip_colors_and_formatting](https://misc.flogisoft.com/bash/tip_colors_and_formatting)
+
+[Console Virtual Terminal Sequences](https://docs.microsoft.com/en-us/windows/console/console-virtual-terminal-sequences#screen-colors)
+
+[How To Use ANSI/VT100 Formatting in PowerShell](https://powershell.org/forums/topic/how-to-use-ansi-vt100-formatting-in-powershell-ooh-pretty-colors/)
+
+[ANSI Escape sequences](http://ascii-table.com/ansi-escape-sequences.php)
+
+[Build your own Command Line with ANSI escape codes](http://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html)
