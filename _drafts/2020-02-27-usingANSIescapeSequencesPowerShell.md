@@ -29,13 +29,11 @@ $asciiArt = @"
 "@
 
 Write-Output "`e[5;36m$asciiArt`e[0m";
-#Write-Host "`e[5;38;5;40m$n `e[0m"
 ```
-https://notes.burke.libbey.me/ansi-escape-codes/
 
-# _insert gif here of blinking #ps7now_
+![asciiArtPS7Now](/images/posts/ansiEscapeSequences/asciiArtPS7Now.gif "asciiArtPS7Now")
 
-_Blinking is determined by your terminal, it might not support it._
+_Blinking is determined by your terminal, yours might not support it._
 
 # Text Styling
 
@@ -51,9 +49,11 @@ ANSI escape sequences support a few different text styling options; bold, underl
 ## Bold
 
 ```powershell
-$text = '#PS7Now'
+$text = '#PS7Now';
 Write-Output "`e[1m$text";
 ```
+
+![bold](/images/posts/ansiEscapeSequences/bold.png "bold")
 
 ## Underline
 
@@ -62,12 +62,16 @@ $text = '#PS7Now';
 Write-Output "`e[4m$text";
 ```
 
+![underline](/images/posts/ansiEscapeSequences/underline.png "underline")
+
 ## Invert
 
 ```powershell
 $text = '#PS7Now';
 Write-Output "`e[7m$text";
 ```
+
+![invert](/images/posts/ansiEscapeSequences/invert.png "invert")
 
 ## Resets
 
@@ -78,15 +82,24 @@ $text = '#PS7Now'
 Write-Output "`e[1;7m$text, ANSI not reset, text is still bold and inverted"
 ```
 
+![noRest](/images/posts/ansiEscapeSequences/noReset.png "noReset")
+
 When using ANSI reset sequences you have two options. You can either reset the attribute individually or reset all of them. Using the table above you know that the bold argument is `1` and the invert argument is `7`. Combining them you can create the escape sequence `` `e[1;7m``. This sequence will style the text bold and invert the foreground and background colors. To reset just the invert you would use the sequence `` `e[27m``. The text after that sequence would remain bold, but not inverted. To reset just the bold attribute you would use another sequence `` `e[22m``. That would remove all the attributes applied by the first sequence and the text would no longer be inverted or bold. Another option available if you do not need to keep any of the attributes enable is to reset all of them at once. The sequence to reset all attributes is `` `e[0m``.
 
 ```powershell
 $text = '#PS7Now'
 #reset styles individually
 Write-Output "`e[1;7m$text `e[27m Not Inverted `e[22mNot Bold or Inverted";
+```
+
+![individualReset](/images/posts/ansiEscapeSequences/individualReset.png "individualReset")
+
+```powershell
 #reset all
 Write-Output "`e[1;7m$text`e[0m Not Bold or Inverted";
 ```
+
+![resetAll](/images/posts/ansiEscapeSequences/resetAll.png "resetAll")
 
 # Moving the Cursor
 
@@ -98,6 +111,8 @@ _Learn more about ANSI cursor positioning [here](http://ascii-table.com/ansi-esc
 "`e[1m$pwd`e[2A";sleep 5
 ```
 
+![movecursor](/images/posts/ansiEscapeSequences/movecursor.gif "movecursor")
+
 # Viewport Positioning "Scrolling"
 
 Using the `S` ANSI sequence you can also use scrolling to add padding to the text that is output. The sequence `` `e[3S$text`e[S3`` will fill new lines in from the bottom of the screen. The value `3` is the number of lines that will be filled in. There is a scroll down sequence as well. You can read more about viewport positioning [here](https://docs.microsoft.com/en-us/windows/console/console-virtual-terminal-sequences#viewport-positioning).
@@ -108,6 +123,8 @@ $text = '#PS7Now'
 Write-Output "`e[3S$text`e[3S"
 ```
 
+![scrolling](/images/posts/ansiEscapeSequences/scrolling.gif "scrolling")
+
 # Cursor Positioning & Text Modification
 
 ANSI escape sequences can also modify the cursor position. While the possibilities are endless, one way it can be used is to save and restore cursor location. To save the current cursor position you'll use the sequence `s` after the control sequence introducer. This will not modify the output of the string in anyway, it simply saves the position for restoring later. After the variable `$text` outputs #PS7Now you'll use the restore sequence which is `u`. This will place the cursor at the `#` character. With the cursor at that location you can use a text modification to delete the # at the beginning. The ANSI sequence for deleting a character is `P`. The `1` before the P is the number of characters that will be deleted. Running the below line of code will result in the `#` character being deleted. Simple, silly, but yet fun!
@@ -117,19 +134,29 @@ $text = '#PS7Now'
 Write-Output "`e[s$text`e[u`e[1P"
 ```
 
+![textModification](/images/posts/ansiEscapeSequences/textModification.png "textModification") #png
+
 A few other text modification sequences worth mentioning are the erase in display and erase in line. While I struggle to find practical use for the at the moment. I can see them being useful as part of an April fools joke. Say you have a co-worker who is somewhat obsessed with their prompt display. You could add `` `e[s`e[u`e[K`` to the prompt function. The `s` and `u` save and restore cursor position as you've already learned. `K` in the erase in line sequence that will replace all text on the line with space characters. Which will effectively destroy their prompt function.
+
+## Erase Line
 
 ```powershell
 $text = '#PS7Now'
-"`e[s`e[36m$test`e[u`e[K`e[0m"
+Write-Output "`e[s`e[36m$test`e[u`e[K`e[0m"
 ```
+
+![textmodDeleteLine](/images/posts/ansiEscapeSequences/textmodDeleteLine.gif "textmodDeleteLine")
 
 Another fun sequence might be to erase the entire display. The sequence for that is `<n>J`, where `<n>` is the number of space characters that will replace the display.
 
+## Erase Display
+
 ```powershell
 $text = '#PS7Now'
-"`e[2J`e[36m$text`e[0m"
+Write-Output "`e[2J`e[36m$text`e[0m"
 ```
+
+![clearDisplay](/images/posts/ansiEscapeSequences/clearDisplay.gif "clearDisplay")
 
 _Read more about [Text Modification](https://docs.microsoft.com/en-us/windows/console/console-virtual-terminal-sequences#text-modification) and [Cursor Positioning](https://docs.microsoft.com/en-us/windows/console/console-virtual-terminal-sequences#cursor-positioning)._
 
@@ -161,7 +188,7 @@ foreach ($fgColor in $fgColors)
 }
 ```
 
-_insert image here_
+![basicBackgroundColors](/images/posts/ansiEscapeSequences/basicBackgroundColors.gif "basicBackgroundColors")
 
 # 8-bit 256-Color Foreground & Background
 
@@ -205,9 +232,13 @@ Putting the sequence to use, you can create some very interesting text. Below ar
 "`e[38;5;27m#PS7`e[1mNow `e[22;38;5;15;48;5;27m >_ `e[0m"
 ```
 
+![bluePSansiArt](/images/posts/ansiEscapeSequences/bluePSansiArt.png "bluePSansiArt")
+
 ```powershell
 "`e[38;5;248m#PS7`e[1mNow `e[22;38;5;15;48;5;237m >_ `e[0m"
 ```
+
+![greyPSansiArt](/images/posts/ansiEscapeSequences/greyPSansiArt.png "greyPSansiArt")
 
 # Prompt Modification with ANSI
 
@@ -227,7 +258,7 @@ Now you are armed with enough knowledge to dive into the world of hardcore promp
 
 Before writing this blog post I knew nothing of ANSI escape sequences, let alone the ANSI escape character. I must give credit where it is due and list all the sources I used to gain an understanding of ANSI escape sequences.
 
-[The (Mostly) Dependency Free PowerShell Prompt - Part 1 ](https://ephos.github.io/posts/2019-6-24-PowerShell-Prompt-1)
+[The (Mostly) Dependency Free PowerShell Prompt - Part 1](https://ephos.github.io/posts/2019-6-24-PowerShell-Prompt-1)
 
 [ANSI escape code](https://en.wikipedia.org/wiki/ANSI_escape_code)
 
