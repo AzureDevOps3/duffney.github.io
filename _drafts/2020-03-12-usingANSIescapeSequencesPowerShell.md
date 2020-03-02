@@ -1,9 +1,9 @@
 ---
 layout: post
 title:  "Using ANSI Escape Sequences in PowerShell"
-date:   2020-02-27 13:37:00
+date:   2020-03-12 13:37:00
 comments: true
-modified: 2020-02-27
+modified: 2020-03-12
 ---
 
 * TOC
@@ -12,11 +12,11 @@ modified: 2020-02-27
 # Introduction
 
 When using ANSI within PowerShell there are two main parts; the `escape character` and the `escape sequence`. The escape character is used to indicate the beginning of a sequence and changes the meaning of the characters that follow the escape character. Most commonly escape characters are used to specify a virtual terminal sequence (ANSI escape sequence) that modifies the terminal. Escape characters are a standard of in-band signaling that control the cursor location, color, font styling, and other options within terminals and terminal emulators. ANSI escape sequences are often used with modifying command line prompt displays! 
-Windows PowerShell doesn't have a built-in escape special character. Because of that you'd have to use `"$([char]27)"` to output a ASCII character representing an escape character. However, PowerShell now includes a [special character for escape](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_special_characters?view=powershell-7#escape-e) `` `e`` . To use the escape character you start a string with the escape character `` `e`` followed by an opening square bracket `` `e[``. Inside the square bracket is where you place the escape sequence. That escape sequence will determine how the terminal interpret the characters and acts accordingly. 
+Windows PowerShell doesn't have a built-in escape special character. Because of that you'd have to use `"$([char]27)"` to output an ASCII character representing an escape character. However, PowerShell now includes a [special character for escape](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_special_characters?view=powershell-7#escape-e) `` `e`` . To use the escape character, you start a string with the escape character `` `e`` followed by an opening square bracket `` `e[``. Inside the square bracket is where you place the escape sequence. That escape sequence will determine how the terminal interpret the characters and acts accordingly.
 
-The best way to understand ANSI escape sequences is to break it down into its different parts. Using some ASCII art as an example you can break down the sequence `` `"`e[5;36m$asciiArt`e[0m"``  into its different parts. The sequence starts with the control sequence introducer `` `e[``.  The `` `e`` is the escape character and `[` is the introducer. What follows is the sequence. Each of the numbers within this sequence represent an argument. The number `5` represents an argument that makes the text within the sequence blink. Each argument must be separated by a semi colon, which is why you see a semi colon between 5 and 36. Values 30-37 represent different foreground colors. In this example `36` represents a foreground color of cyan. 
+The best way to understand ANSI escape sequences is to break it down into its different parts. Using some ASCII art as an example you can break down the sequence `` `"`e[5;36m$asciiArt`e[0m"``  into its different parts. The sequence starts with the control sequence introducer `` `e[``.  The `` `e`` is the escape character and `[` is the introducer. What follows is the sequence. Each of the numbers within this sequence represent an argument. The number `5` represents an argument that makes the text within the sequence blink. Each argument must be separated by a semi colon, which is why you see a semi colon between 5 and 36. Values 30-37 represent different foreground colors. In this example `36` represents a foreground color of cyan.
 
-Next in the sequence is the letter `m` which represents a function. The function is called SGR (“Select Graphics Rendition”) and accepts several arguments which were define earlier in the sequence. What follows after the function is the text that will be displayed. In this example that is a here-string stored in a the variable `$acsiiArt` that contains the ASCII art for #PS7Now. At the very end of the sequence `` `e[0m`` is calling the SGR function again, but this time it is using the argument `0` to reset and turn off all the attributes defined in the first sequence. Putting the sequence back together again and running it within a terminal will result in the ASCII art #PSNow being displayed with a cyan font and flashing text. Now that you have a good understanding of ANSI escape sequences, let's take a look at what else can be done with them and have some fun!
+Next in the sequence is the letter `m` which represents a function. The function is called SGR (“Select Graphics Rendition”) and accepts several arguments which were define earlier in the sequence. What follows after the function is the text that will be displayed. In this example that is a here-string stored in the variable `$acsiiArt` that contains the ASCII art for #PS7Now. At the very end of the sequence `` `e[0m`` is calling the SGR function again, but this time it is using the argument `0` to reset and turn off all the attributes defined in the first sequence. Putting the sequence back together again and running it within a terminal will result in the ASCII art #PSNow being displayed with a cyan font and flashing text. Now that you have a good understanding of ANSI escape sequences, let's take a look at what else can be done with them and have some fun!
 
 ```powershell
 $asciiArt = @"
@@ -75,7 +75,7 @@ Write-Output "`e[7m$text";
 
 ## Resets
 
-All of the previous examples do not include a reset sequence. If you do not include a reset sequence the ANSI attributes you applied will continue to apply to all future text your code outputs to the screen. In PowerShell the command or script scope limit its impact, but it does effect the output of your code. Running the below code snippet, you'll notice that the text following #PS7Now is still bold and inverted. It will also change the first new line return of your terminal prompt.
+All of the previous examples do not include a reset sequence. If you do not include a reset sequence the ANSI attributes you applied will continue to apply to all future text your code outputs to the screen. In PowerShell the command or script scope limit its impact, but it does affect the output of your code. Running the below code snippet, you'll notice that the text following #PS7Now is still bold and inverted. It will also change the first new line return of your terminal prompt.
 
 ```powershell
 $text = '#PS7Now'
@@ -103,7 +103,7 @@ Write-Output "`e[1;7m$text`e[0m Not Bold or Inverted";
 
 # Moving the Cursor
 
-ANSI sequences can do more than just modify the style of text. ANSI also supports cursor movement. While I'm not sure of the practical usage of this in a PowerShell script, it is fun to play around with. Using `` `e[1m$pwd`e[2A;sleep 5`` as an example sequence you can see the curious position change. As you learned perviously the first sequence `` `e[1m$pwd`` is bolding the font and then outputting the variable `$pwd`. The second sequence `` `e[2A`` is what is moving the cursor position. The number `2` is defining how many positions to move the cursor and `A` is an ANSI function for cursor up. Normally this would happen so fast you wouldn't be able to see it. To take care of that the `sleep 5` is pausing the output for 5 seconds so you can see the cursor move.
+ANSI sequences can do more than just modify the style of text. ANSI also supports cursor movement. While I'm not sure of the practical usage of this in a PowerShell script, it is fun to play around with. Using `` `e[1m$pwd`e[2A;sleep 5`` as an example sequence you can see the curious position change. As you learned previously the first sequence `` `e[1m$pwd`` is bolding the font and then outputting the variable `$pwd`. The second sequence `` `e[2A`` is what is moving the cursor position. The number `2` is defining how many positions to move the cursor and `A` is an ANSI function for cursor up. Normally this would happen so fast you wouldn't be able to see it. To take care of that the `sleep 5` is pausing the output for 5 seconds so you can see the cursor move.
 
 _Learn more about ANSI cursor positioning [here](http://ascii-table.com/ansi-escape-sequences.php)._
 
@@ -134,9 +134,9 @@ $text = '#PS7Now'
 Write-Output "`e[s$text`e[u`e[1P"
 ```
 
-![textModification](/images/posts/ansiEscapeSequences/textModification.png "textModification") #png
+![textModification](/images/posts/ansiEscapeSequences/textModification.png "textModification")
 
-A few other text modification sequences worth mentioning are the erase in display and erase in line. While I struggle to find practical use for the at the moment. I can see them being useful as part of an April fools joke. Say you have a co-worker who is somewhat obsessed with their prompt display. You could add `` `e[s`e[u`e[K`` to the prompt function. The `s` and `u` save and restore cursor position as you've already learned. `K` in the erase in line sequence that will replace all text on the line with space characters. Which will effectively destroy their prompt function.
+A few other text modification sequences worth mentioning are the erase in display and erase in line. While I struggle to find practical use for the at the moment. I can see them being useful as part of an April fools' joke. Say you have a co-worker who is somewhat obsessed with their prompt display. You could add `` `e[s`e[u`e[K`` to the prompt function. The `s` and `u` save and restore cursor position as you've already learned. `K` in the erase in line sequence that will replace all text on the line with space characters. Which will effectively destroy their prompt function.
 
 ## Erase Line
 
@@ -192,7 +192,7 @@ foreach ($fgColor in $fgColors)
 
 # 8-bit 256-Color Foreground & Background
 
-If 8 colors isn't enough, which it might not be. You can also use the 8-bit sequence which provides you with a range of 265 colors. The ANSI sequence for using 8-bit color is `` `e[<Foreground or Background Code>;5;(n)`` the `(n)` represent the 8 bit color code. Foreground is indicated by `38` and background is `48`. An example sequence might look like this, `` `e[38;5;220m#PSNow``. This sequence changes the foreground color to a dark yellow. The 256 color range has different sections; 0-7 are standard colors, 8-15 are high intensity colors, 16-231 are a 6x6x6 color cube, and 232-255 are grayscale colors.
+If 8 colors isn't enough, which it might not be. You can also use the 8-bit sequence which provides you with a range of 265 colors. The ANSI sequence for using 8-bit color is `` `e[<Foreground or Background Code>;5;(n)`` the `(n)` represent the 8 bit color code. Foreground is indicated by `38` and background is `48`. An example sequence might look like this, `` `e[38;5;220m#PSNow``. This sequence changes the foreground color to a dark yellow. The 256-color range has different sections; 0-7 are standard colors, 8-15 are high intensity colors, 16-231 are a 6x6x6 color cube, and 232-255 are grayscale colors.
 
 ESC[ 38;5;⟨n⟩ m Select foreground color
 
