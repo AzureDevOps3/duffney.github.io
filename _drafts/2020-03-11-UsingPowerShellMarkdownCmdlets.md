@@ -162,3 +162,19 @@ Shout out to [David Coulter](https://www.linkedin.com/in/davidcoulter/) and [Sea
 [markdig](https://github.com/lunet-io/markdig)
 
 _Special thanks to [Jeff Hicks](https://twitter.com/JeffHicks) for including me and putting together the PowerShell 7 Blog week!_
+
+# PowerShell 7 Blog Week Authors
+
+| Author | Twitter | Blog |
+| :----- | :----- | :----- |
+|Josh King|@WindosNZ|[https://toastit.dev/](https://toastit.dev/) |
+|Josh Duffney|@joshduffney|[http://duffney.io/](http://duffney.io/) |
+|Adam Bertram|@adbertram|[https://adamtheautomator.com/](https://adamtheautomator.com/) |
+|Mike Kanakos|@MikeKanakos|[https://www.networkadm.in/](https://www.networkadm.in/) |
+|Jonathan Medd|@jonathanmedd|[https://www.jonathanmedd.net/](https://www.jonathanmedd.net/) |
+|Thomas Lee|@doctordns|[https://tfl09.blogspot.com/](https://tfl09.blogspot.com/) |
+|Prateek Singh|@singhprateik|[https://ridicurious.com/](https://ridicurious.com/) |
+|Dave Carroll| @thedavecarroll|[https://powershell.anovelidea.org/](https://powershell.anovelidea.org/) |
+|Dan Franciscus|@dan_franciscus|[https://winsysblog.com/](https://winsysblog.com/) |
+|Jeff Hicks|@jeffhicks| [https://jdhitsolutions.com/](https://jdhitsolutions.com/)|
+|Tommy Maynard|@thetommymaynard| [https://tommymaynard.com/](https://tommymaynard.com/) |

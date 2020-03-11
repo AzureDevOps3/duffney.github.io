@@ -16,7 +16,7 @@ Windows PowerShell doesn't have a built-in escape special character. Because of 
 
 The best way to understand ANSI escape sequences is to break it down into its different parts. Using some ASCII art as an example you can break down the sequence `` `"`e[5;36m$asciiArt`e[0m"``  into its different parts. The sequence starts with the control sequence introducer `` `e[``.  The `` `e`` is the escape character and `[` is the introducer. What follows is the sequence. Each of the numbers within this sequence represent an argument. The number `5` represents an argument that makes the text within the sequence blink. Each argument must be separated by a semi colon, which is why you see a semi colon between 5 and 36. Values 30-37 represent different foreground colors. In this example `36` represents a foreground color of cyan.
 
-Next in the sequence is the letter `m` which represents a function. The function is called SGR (“Select Graphics Rendition”) and accepts several arguments which were define earlier in the sequence. What follows after the function is the text that will be displayed. In this example that is a here-string stored in the variable `$acsiiArt` that contains the ASCII art for #PS7Now. At the very end of the sequence `` `e[0m`` is calling the SGR function again, but this time it is using the argument `0` to reset and turn off all the attributes defined in the first sequence. Putting the sequence back together again and running it within a terminal will result in the ASCII art #PSNow being displayed with a cyan font and flashing text. Now that you have a good understanding of ANSI escape sequences, let's take a look at what else can be done with them and have some fun!
+Next in the sequence is the letter `m` which represents a function. The function is called SGR ("Select Graphics Rendition") and accepts several arguments which were define earlier in the sequence. What follows after the function is the text that will be displayed. In this example that is a here-string stored in the variable `$acsiiArt` that contains the ASCII art for #PS7Now. At the very end of the sequence `` `e[0m`` is calling the SGR function again, but this time it is using the argument `0` to reset and turn off all the attributes defined in the first sequence. Putting the sequence back together again and running it within a terminal will result in the ASCII art #PSNow being displayed with a cyan font and flashing text. Now that you have a good understanding of ANSI escape sequences, let's take a look at what else can be done with them and have some fun!
 
 ```powershell
 $asciiArt = @"
@@ -164,7 +164,7 @@ _read more [ANSI Escape sequence](http://ascii-table.com/ansi-escape-sequences.p
 
 # Basic Foreground & Background Colors
 
-The original specifications of ANSI only had 8 colors that could be used to set the foreground and background colors.  The SGR (“Select Graphics Rendition”) parameters 30-37 selected the foreground color, while 40-47 selected the background. You can use these color sequences with the `m` SGR function to modify the foreground and background colors of the text. Remember to reset your sequences.
+The original specifications of ANSI only had 8 colors that could be used to set the foreground and background colors.  The SGR ("Select Graphics Rendition") parameters 30-37 selected the foreground color, while 40-47 selected the background. You can use these color sequences with the `m` SGR function to modify the foreground and background colors of the text. Remember to reset your sequences.
 
 |Color|Foreground Code|Background Code|
 |---|---|---|
@@ -273,3 +273,19 @@ Before writing this blog post I knew nothing of ANSI escape sequences, let alone
 [ANSI Escape sequences](http://ascii-table.com/ansi-escape-sequences.php)
 
 [Build your own Command Line with ANSI escape codes](http://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html)
+
+# PowerShell 7 Blog Week Authors
+
+| Author | Twitter | Blog |
+| :----- | :----- | :----- |
+|Josh King|@WindosNZ|[https://toastit.dev/](https://toastit.dev/) |
+|Josh Duffney|@joshduffney|[http://duffney.io/](http://duffney.io/) |
+|Adam Bertram|@adbertram|[https://adamtheautomator.com/](https://adamtheautomator.com/) |
+|Mike Kanakos|@MikeKanakos|[https://www.networkadm.in/](https://www.networkadm.in/) |
+|Jonathan Medd|@jonathanmedd|[https://www.jonathanmedd.net/](https://www.jonathanmedd.net/) |
+|Thomas Lee|@doctordns|[https://tfl09.blogspot.com/](https://tfl09.blogspot.com/) |
+|Prateek Singh|@singhprateik|[https://ridicurious.com/](https://ridicurious.com/) |
+|Dave Carroll| @thedavecarroll|[https://powershell.anovelidea.org/](https://powershell.anovelidea.org/) |
+|Dan Franciscus|@dan_franciscus|[https://winsysblog.com/](https://winsysblog.com/) |
+|Jeff Hicks|@jeffhicks| [https://jdhitsolutions.com/](https://jdhitsolutions.com/)|
+|Tommy Maynard|@thetommymaynard| [https://tommymaynard.com/](https://tommymaynard.com/) |
