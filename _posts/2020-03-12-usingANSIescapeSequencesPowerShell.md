@@ -103,7 +103,7 @@ Write-Output "`e[1;7m$text`e[0m Not Bold or Inverted";
 
 # Moving the Cursor
 
-ANSI sequences can do more than just modify the style of text. ANSI also supports cursor movement. While I'm not sure of the practical usage of this in a PowerShell script, it is fun to play around with. Using `` `e[1m$pwd`e[2A;sleep 5`` as an example sequence you can see the curious position change. As you learned previously the first sequence `` `e[1m$pwd`` is bolding the font and then outputting the variable `$pwd`. The second sequence `` `e[2A`` is what is moving the cursor position. The number `2` is defining how many positions to move the cursor and `A` is an ANSI function for cursor up. Normally this would happen so fast you wouldn't be able to see it. To take care of that the `sleep 5` is pausing the output for 5 seconds so you can see the cursor move.
+ANSI sequences can do more than just modify the style of text. ANSI also supports cursor movement. While I'm not sure of the practical usage of this in a PowerShell script, it is fun to play around with. Using `` `e[1m$pwd`e[2A;sleep 5`` as an example sequence you can see the cursor position change. As you learned previously the first sequence `` `e[1m$pwd`` is bolding the font and then outputting the variable `$pwd`. The second sequence `` `e[2A`` is what is moving the cursor position. The number `2` is defining how many positions to move the cursor and `A` is an ANSI function for cursor up. Normally this would happen so fast you wouldn't be able to see it. To take care of that the `sleep 5` is pausing the output for 5 seconds so you can see the cursor move.
 
 _Learn more about ANSI cursor positioning [here](http://ascii-table.com/ansi-escape-sequences.php)._
 
