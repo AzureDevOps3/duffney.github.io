@@ -30,13 +30,15 @@ Since taking Mike's advice and over-communicating and engaging on social, I've r
 
 Over the years I've read several books, some of which when I look at my bookshelf cause me to pause and reflect on how profoundly they've influenced the person I am today. _The ONE Thing: The Surprisingly Simple Truth Behind Extraordinary Results_ will be among them when I reflect back in a few years. After reading this book and using the exercises within it to focus on my ONE thing, I came to the conclusion that at the core of all my work, the thing that brings me the most joy is writing. I can't help but chuckle at the expression I imagine would be on my mom's face if she reads this. "You? The boy who never read an assigned book in school? The one who hated spelling and got horrible grades in every class in any way related to writing, wants to become a writer?" Yes, I do and have slowly become one over that past six years as I've practiced within the comfort of my blog.
 
+[![theonething](/images/posts/createabusinessfromacreativeoutlet/book.png "theonething")](https://www.the1thing.com//)
+
 Redefining autonomy, mastery, and purpose has left me asking a lot of questions; If my purpose is to share my knowledge and experience to lighten the burden people carry, what's the best way to reach more people? If I want to reach more people, what products would I create? Is it time to move past the blog posts and experiment with podcasting, book writing, and do more video training? How would I pay for all of this? Equipment, subscriptions, and domain renewals all cost money. Not to mention the time investment. Then it hit me, this creative outlet I found is my career. It's time to treat my career as a business, a real business.
 
 ## Know What Your Premiums Are
 
 Just as I began to formulate this in my mind, Mike said another one of those short sentences with only a few words that stuck. Here is what he said, "Know what your premiums are." After giving this a lot of thought, there are several things I could create as a product. But only one thing that I'm really excited about. That one thing is writing a book! I've been really inspired by [Daniel Vassallo](https://twitter.com/dvassallo)'s story and successful ebook experiment where he made [$40,000 in 16 Days from his first book](https://www.writerontheside.com/40k-in-16-days-from-daniel-vassallo-and-the-good-parts-of-aws/).
 
-[![podcast](/images/posts/createabusinessfromacreativeoutlet/podcast.png "selfDoubt")](https://www.writerontheside.com/40k-in-16-days-from-daniel-vassallo-and-the-good-parts-of-aws/)
+[![podcast](/images/posts/createabusinessfromacreativeoutlet/podcast.png "podcast")](https://www.writerontheside.com/40k-in-16-days-from-daniel-vassallo-and-the-good-parts-of-aws/)
 
 I don't expect to have the same results, but since he's openly shared his story, tactics, and progress, I'm inspired to follow the path he went down. As a matter of coincidence, after listening to Writer on the Side's podcast with Daniel, I found a course from the podcast's author [Hassan Osman](https://twitter.com/HassanO) titled ["How to Pick a Bestselling Book Title Before Writing a Book"](https://www.udemy.com/course/pick-a-bestselling-book-title-before-writing-your-book/). This course greatly helped me frame the idea I have for the book and I think I might just have a title already.
 
