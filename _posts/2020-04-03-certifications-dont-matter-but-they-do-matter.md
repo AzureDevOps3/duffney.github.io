@@ -12,7 +12,9 @@ One of my favorite quotes is "Titles don't matter, but they absolutely do matter
 
 ## Why Certifications Don't Matter
 
-There is merit in both sides of the certification argument. When people say certifications don't matter, they're really meaning; Certifications do not equate to experience, mastery, or competence. Why would they say this? Well, in a lot of cases people can cheat the system. Braindumps exist and someone who has the skill to memorize all of them can pass the exam without actually knowing the content. Certifications also don't mean experience. You learn things through experience that you won't learn by studying for an exam. Different conditions exist in the real world than in a lab environment. Certifications do not mean mastery either, especially entry-level exams. Mastery can only happen through experience. Now some of the high profile certifications like the CCIE are an exception. I'm not sure you could make it to that level on braindumps. While these are all valid points to the argument, I still don't think certifications should be dismissed. Also where does this leave people who aren't in a position to acquire that experience through their job?
+There is merit in both sides of the certification argument. When people say certifications don't matter, they're really meaning; Certifications do not equate to experience, mastery, or competence. Why would they say this? Well, in a lot of cases people can cheat the system. Braindumps exist and someone who has the skill to memorize all of them can pass the exam without actually knowing the content. Certifications also don't mean experience.
+
+You learn things through experience that you won't learn by studying for an exam. Different conditions exist in the real world than in a lab environment. Certifications do not mean mastery either, especially entry-level exams. Mastery can only happen through experience. Now some of the high profile certifications like the CCIE are an exception. I'm not sure you could make it to that level on braindumps. While these are all valid points to the argument, I still don't think certifications should be dismissed. Also where does this leave people who aren't in a position to acquire that experience through their job?
 
 > Certifications do not equate to experience, mastery, or competence.
 
@@ -90,3 +92,5 @@ Here's Everything You'll Get in this DevOps Bootcamp:
 [Enroll in the CloudSkills Azure DevOps Certification Bootcamp](https://portal.cloudskills.io/a/23659/Edn49eNg)
 
 _The link above is an affiliate link. If you want to support me and the work I'm doing, feel free to use that link when you enroll. Or don't that's fine too._
+
+You can follow me on [Twitter](https://twitter.com/joshduffney), [LinkedIn](https://www.linkedin.com/in/joshduffney/), and [SoundCloud](https://soundcloud.com/duffney_io).
