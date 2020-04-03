@@ -10,6 +10,9 @@ As I've reset my sights over the past six to eight months, I've come back to the
 
 _I enjoy the process of writing so much that I now wake up between 4:00 am and 4:30 am and spend the first hour or so writing more or less every day. It is 4:32 am as I write this sentence._
 
+* TOC
+{:toc}
+
 ## Over Communicate and Engage on Social
 
 Mike Pfeiffer has this way of saying a sentence of only a few words that will stick with me for months. In one such sentence he said "Over-communicate and engage on social". At first, I resisted the idea, I had just read Digital Minimalism when he said this and it appeared to go against the recommendations in that book. After giving it some thought and putting in some safeguards to ensure I don't get sucked in, becoming yet another cog in the attention economy, I dove in.
