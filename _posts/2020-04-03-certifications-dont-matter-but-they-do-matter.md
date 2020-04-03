@@ -45,9 +45,9 @@ I was completely overwhelmed by the choices I had. Instead of being paralyzed by
 
 Fast forward several months and I now am an AWS Certified Cloud Practitioner, Microsoft certified Microsoft Azure Administrator Associate and a Microsoft certified Azure DevOps Engineer Expert. Having these certifications does not mean I'm an expert in any of it by any means. It doesn't mean I'll be qualified for $10,000 more a year. What was the point of it then? The point is, I'm no longer afraid of either cloud provider, It gave me the confidence I needed to dive deeper into each of these technologies and gain the experience I was lacking. It also helped me rediscover my love of learning. It revitalizes my career.
 
-[![Since Be an Engineer](/images/posts/certifications-dont-matter/sincebeanengineer.png "sincebeanengineer")](https://twitter.com/joshduffney/status/1232714246930210816?s=20)
-
 > Certifications revitalized my career and got me back in the game.
+
+[![Since Be an Engineer](/images/posts/certifications-dont-matter/sincebeanengineer.png "sincebeanengineer")](https://twitter.com/joshduffney/status/1232714246930210816?s=20)
 
 ## Conclusion
 
