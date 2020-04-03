@@ -91,6 +91,6 @@ Here's Everything You'll Get in this DevOps Bootcamp:
 
 [Enroll in the CloudSkills Azure DevOps Certification Bootcamp](https://portal.cloudskills.io/a/23659/Edn49eNg)
 
-_The link above is an affiliate link. If you want to support me and the work I'm doing, feel free to use that link when you enroll. Or don't that's fine too._
+> The link above is an affiliate link. If you decide to use it to enroll, thank you!
 
 You can follow me on [Twitter](https://twitter.com/joshduffney), [LinkedIn](https://www.linkedin.com/in/joshduffney/), and [SoundCloud](https://soundcloud.com/duffney_io).
