@@ -10,6 +10,8 @@ _Simply sitting here watching my children play a voice says "Aha! Yes, this is t
 
 What you've just read is an entry I wrote in my pocket notebook while on a thirty day digital declutter. It captures a moment, a moment of being completely present. Being not only physically present but mentally present as well. I now understand that, prior to this experiment I didn't actually understand what it meant to be present. I thought as long as I was physically there, I was present. I could be eating dinner with my family, but still "productive" solving problems at work or elsewhere. After all if you want to be productive you have to be busy all the time right? No time to waste! Chop Chop! More Work!
 
+_Listen to the [Sysadmin Show Episode 041 - Digital Declutter with Josh Duffney](https://sysadminshow.com/sas041/)._
+
 * TOC
 {:toc}
 
