@@ -4,11 +4,10 @@ title:  "How to Add Credential Parameters to PowerShell Functions"
 date:   2017-02-20 09:02:00
 comments: true
 tags: [PowerShell, Credentials, PSCredentials]
-modified: 2017-02-20
+modified: 2020-07-15
 ---
 
-In this blog post I'll show you how to add credential parameters to PowerShell functions. But before I do that let's first talk about why you'd want to add a credential parameter to your functions. The purpose of the credential parameter is to allow you to run the function and/or cmldet as a different user, some account other than the one currently running the PowerShell session. The most common use is to run the function or cmdlet as an elevated user account. For example, the cmdlet `New-ADUser` has a `-Credential` parameter, which you could provide domain admin credentials to in order to create an account in a domain. Assuming your normal account running the PowerShell session doesn't have that access already.
-
+In this blog post, I'll show you how to add credential parameters to PowerShell functions. But before I do that let's first talk about why you'd want to add a credential parameter to your functions. The purpose of the credential parameter is to allow you to run the function and/or cmdlet as a different user, some account other than the one currently running the PowerShell session. The most common use is to run the function or cmdlet as an elevated user account. For example, the cmdlet `New-ADUser` has a `-Credential` parameter, which you could provide domain admin credentials in order to create an account in a domain. Assuming your normal account running the PowerShell session doesn't have that access already.
 
 This blog post walks you through the process of adding such functionality to your PowerShell functions. I also discuss how to get around common issues when working with _legacy_ cmdlets that don't support a credential object, but before we get started let's first talk about PSCredential objects and how to generate them.
 
@@ -37,7 +36,7 @@ $Cred = Get-Credential -UserName domain\user -Message 'Enter Password'
 Sometimes, you won't want an interactive method of creating credential objects as I just demonstrated. Most automation tools such as Jenkins, TeamCity, and Octopus Deploy require a non-interactive method. To do this you'll have to create a secure string, which contains the password. You then have to pass the secure string and user name to the `System.Management.Automation`'s PSCredential method. Sounds a lot more complicated than it is, I assure you.
 
 
-The syntax for creating a secure string looks like this `ConvertTo-SecureString “PlainTextPassword” -AsPlainText -Force`. Both the `-AsPlainText` and `-Force` parameters are required or you'll receive error messages saying you shouldn't pass plain text into a secure string. Reason being, if your PowerShell session is logged, that password would exist in the log. With the secure string created you'll need to pass it to the PSCredential method to create the credential object. That syntax looks like this `New-Object System.Management.Automation.PSCredential (“username”, $secpasswd)`. In the example below, I'm storing the secure string into a variable called $password and the credential object into a variable $Cred.
+The syntax for creating a secure string looks like this `ConvertTo-SecureString “PlainTextPassword” -AsPlainText -Force`. Both the `-AsPlainText` and `-Force` parameters are required or you'll receive error messages saying you shouldn't pass plain text into a secure string. The reason being, if your PowerShell session is logged, that password would exist in the log. With the secure string created you'll need to pass it to the PSCredential method to create the credential object. That syntax looks like this `New-Object System.Management.Automation.PSCredential (“username”, $secpasswd)`. In the example below, I'm storing the secure string into a variable called $password and the credential object into a variable $Cred.
 
 
 {% highlight powershell %}
@@ -68,18 +67,14 @@ function Get-Something {
 
 The code above would be enough to have a working credential parameter, however there are a few things you can add to make it more robust. The first thing you can add is `[ValidateNotNull()]`, which checks to see if the value being passed to `-Credential` is null. If it is, it will stop the function from executing. If you don't have proper credential input specified, why execute? The next thing you can add is `[System.Management.Automation.Credential()]`. This allows you to pass in a username as a string and have an interactive prompt for the password, which I'll demonstrate later in the post.
 
+The last thing you can do is set a default value for the $Credential parameter. Adding `[System.Management.Automation.PSCredential]::Empty` as a default value will populate an empty credential object. Why do this? Well, in your code you might be passing this $Credential object to existing PowerShell cmdlets that use the `-Credential` parameter. If you do not provide a credential object to your function, the code will error out when it hits the cmdlet inside your code that requires a credential. By providing a default empty credential object, you can resolve that error.
 
-The last thing you can do is set a default value for the $Credential parameter. Adding `[System.Management.Automation.PSCredential]::Empty` as a default value will populate an empty credential object. Why do this? Well, in your code you might be passing this $Credential object to existing PowerShell cmdlets that uses the `-Credential` parameter. If you do not provide a credential object to your function, the code will error out when it hits the cmdlet inside your code that requires a credential. By providing a default empty credential object, you can resolve that error.
-
-
-There are a few other methods for handling this problem. One is a simple if statement and another option is to use splatting. I'll walk through this later in the post. The snippet of code below shows what the function would now look like with all these changes.
-
+There are a few other methods for handling this problem. One is a simple if statement and another option are to use splatting. I'll walk through this later in the post. The snippet of code below shows what the function would now look like with all these changes.
 
 _Tip_
 
-**Caveat**: Some cmdlets that accept a Credential parameter do not support/check for [System.Management.Automation.PSCredential]::Empty like they should. This should be treated as a bug by those cmdlet authors.
+**Caveat**: Some cmdlets that accept a Credential parameter do not support/check for [System.Management.Automation.PSCredential]::Empty as they should. This should be treated as a bug by those cmdlet authors.
 By using an if statement or by using splatting, we can get around this limitation. See the Dealing with Legacy Cmdlets section.
-
 
 {% highlight powershell %}
 function Get-Something {
@@ -203,18 +198,13 @@ Value = '1'
 Set-RemoteRegistryValue @remoteKeyParams
 {% endhighlight %}
 
-
 ## Dealing with Legacy Cmdlets
 
-
-Being in the Tech industry, you'll never escape the need to support and/or deal with legacy applications. Working in PowerShell is no different and in this case, you'll eventually run into one or both of the following problems. A cmdlet doesn't support `[System.Management.Automation.PSCredential]::Empty`, which I've mentioned a few times. Or, the cmdlet you want to use doesn't even support the `-Credential` parameter at all and instead accepts a string username and string password! This section of the blog post is dedicated to helping you solve this problem. First up is, what to do when a cmdlet doesn't support `[System.Management.Automation.PSCredential]::Empty`.
-
+Being in the tech industry, you'll never escape the need to support and/or deal with legacy applications. Working in PowerShell is no different and in this case, you'll eventually run into one or both of the following problems. A cmdlet doesn't support `[System.Management.Automation.PSCredential]::Empty`, which I've mentioned a few times. Or, the cmdlet you want to use doesn't even support the `-Credential` parameter at all and instead accepts a string username and string password! This section of the blog post is dedicated to helping you solve this problem. First, up is, what to do when a cmdlet doesn't support `[System.Management.Automation.PSCredential]::Empty`.
 
 ### Using If Else to Handle Empty Credentials
 
-
-Before I dive into solving this problem, let me first expand on what the problem is. So, what does it mean when I say the cmdlet doesn't support `[System.Management.Automation.PSCredential]::Empty`? It means that when you do not provide a credential object, the function you wrote will fail because the cmdlet inside your function will fail as it's unable to accept the empty credential object. The function you wrote will work wonderfully as long as you supply a credential object, but as soon as you don't, no dice. So, how do we fix it? There are a few ways, the first is to check the `-Credential` parameter for a value with an if else statement. The if statement checks the value of the $credential and adds the `-Credential` parameter to `Invoke-Command` only if it's not empty, otherwise it issues the `Invoke-Command` without the `-Credential` parameter.
-
+Before I dive into solving this problem, let me first expand on what the problem is. So, what does it mean when I say the cmdlet doesn't support `[System.Management.Automation.PSCredential]::Empty`? It means that when you do not provide a credential object, the function you wrote will fail because the cmdlet inside your function will fail as it's unable to accept the empty credential object. The function you wrote will work wonderfully as long as you supply a credential object, but as soon as you don't, no dice. So, how do we fix it? There are a few ways, the first is to check the `-Credential` parameter for a value with an if-else statement. The if statement checks the value of the $credential and adds the `-Credential` parameter to `Invoke-Command` only if it's not empty, otherwise it issues the `Invoke-Command` without the `-Credential` parameter.
 
 {% highlight powershell %}
 function Set-RemoteRegistryValue {
@@ -279,14 +269,11 @@ function Set-RemoteRegistryValue {
 ### Working with [string] Passwords
 
 
-A good example of a cmdlet that accepts a string as a password is the `Invoke-Sqlcmd` cmdlet. Invoke-Sqlcmd is an extremely useful cmldet that allows you to interact with SQL via PowerShell. I use it all the time within my code to perform simple SQL insert, update, and delete statements. The problem is, I don't want to pass a clear text password to my function in order to use Invoke-Sqlcmd. I want to pass a credential object like I would when using a modern and well-designed PowerShell cmdlet. To accomplish this I have to hydrate and dehydrate a credential object. Which is fancy talk for create a credential object and extract out the username and password from it. You've already learned how to create credential objects in this blog post so I won't cover that in much detail. However, I will step the process of extracting or _dehydrating_ the username and password from a credential object.
+A good example of a cmdlet that accepts a string as a password is the `Invoke-Sqlcmd` cmdlet. Invoke-Sqlcmd is an extremely useful cmdlet that allows you to interact with SQL via PowerShell. I use it all the time within my code to perform simple SQL insert, update, and delete statements. The problem is, I don't want to pass a clear text password to my function in order to use Invoke-Sqlcmd. I want to pass a credential object like I would when using a modern and well-designed PowerShell cmdlet. To accomplish this I have to hydrate and dehydrate a credential object. Which is fancy talk for create a credential object and extract out the username and password from it. You've already learned how to create credential objects in this blog post so I won't cover that in much detail. However, I will step the process of extracting or _dehydrating_ the username and password from a credential object.
 
+To demonstrate how to dehydrate a credential object, I've written a PowerShell function called `Get-AllSQLDatabases`. This function wraps around the `Invoke-Sqlcmd` cmdlet and queries a SQL server for all its databases. Notice that I have all the settings used before to add a credential parameter to my function. This allows me to pass in a credential object like I've been teaching you throughout this post. But, how is that going to work if `Invoke-Sqlcmd` doesn't support the `-Credential` object? Well, the username and password exist within the `$Credential` variable. So, all we have to do is extract it. The user name is easy to obtain, we can get that by calling out the UserName property of the $Credential variable. In the example below, I'm storing that into a variable called $UserName. To obtain the password you have to use the `GetNetworkCredential` method of the $Credential object. The syntax for that is `$Credential.GetNetworkCredential().Password`. I'm taking the output of that, which is the password as a string and storing it to a variable called $Password. Keep in mind these variables are only accessible inside the function.
 
-To demonstrate how to dehydrate a credential object, I've written a PowerShell function called `Get-AllSQLDatabases`. This function wraps around the `Invoke-Sqlcmd` cmdlet and queries a sql server for all it's databases. Notice that I have all the settings used before to add a credential parameter to my function. This allows me to pass in a credential object, like I've been teaching you throughout this post. But, how is that going to work if `Invoke-Sqlcmd` doesn't support the `-Credential` object? Well, the username and password exists within the `$Credential` variable. So, all we have to do is extract it. The user name is easy to obtain, we can get that by calling out the UserName property of the $Credential variable. In the example below, I'm storing that into a variable called $UserName. To obtain the password you have to use the `GetNetworkCredential` method of the $Credential object. The syntax for that is `$Credential.GetNetworkCredential().Password`. I'm taking the output of that, which is the password as a string and storing it to a variable called $Password. Keep in mind these variables are only accessible inside the function.
-
-
-Now, that I have a username and password variable stored as a string I can pass those to the `Invoke-Sqlcmd`. Instead of passing all the `Invoke-Sqlcmd` parameter and values on a single line, I chose to create a hash table and splat them to the cmdlet. I didn't need to create an extra $UserName and $Password variable in this example. I could of just put the code inside the hash table or directly to the `Invoke-Sqlcmd` parameters, but this makes it a little easier to see what's going on.
-
+Now, that I have a username and password variable stored as a string I can pass those to the `Invoke-Sqlcmd`. Instead of passing all the `Invoke-Sqlcmd` parameters and values on a single line, I chose to create a hash table and splat them to the cmdlet. I didn't need to create an extra $UserName and $Password variable in this example. I could of just put the code inside the hash table or directly to the `Invoke-Sqlcmd` parameters, but this makes it a little easier to see what's going on.
 
 {% highlight powershell %}
 function Get-AllSQLDatabases {
@@ -346,5 +333,5 @@ Other solutions
 
 ### Shout Out
 
-I want to give a shout out to [Joel Bennett](https://twitter.com/Jaykul). He was kind enough to review this blog post and provide some really great techical insights. With his help,
-I learned as much as you did, if not more. Teaching is the best way to learn after all. Thanks Joel! 
+I want to give a shout out to [Joel Bennett](https://twitter.com/Jaykul). He was kind enough to review this blog post and provide some really great technical insights. With his help,
+I learned as much as you did, if not more. Teaching is the best way to learn after all. Thanks, Joel! 
