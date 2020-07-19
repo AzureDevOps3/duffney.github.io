@@ -304,8 +304,6 @@ $Credential= New-Object -TypeName System.Management.Automation.PSCredential `
 Get-AllSQLDatabases -SQLServer SQL01 -Credential $Credential
 {% endhighlight %}
 
-<script async data-uid="96433366f0" src="https://unique-writer-1890.ck.page/96433366f0/index.js"></script>
-
 ## Continued Learning _Credential Management_
 
 
@@ -326,6 +324,8 @@ Other solutions
 
 [Vault Project](https://www.vaultproject.io/)
 
+
+<script async data-uid="96433366f0" src="https://unique-writer-1890.ck.page/96433366f0/index.js"></script>
 
 ## Sources
 
